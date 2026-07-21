@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-
   images: {
     remotePatterns: [
       {
@@ -12,12 +11,16 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "cledinfos-backend.onrender.com",
+        pathname: "/storage/**",
+      },
+      {
+        protocol: "https",
         hostname: "cledinfos.com",
         pathname: "/storage/**",
       },
     ],
   },
-
 };
 
 export default nextConfig;

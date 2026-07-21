@@ -19,8 +19,9 @@ export default function AboutPage() {
         </h1>
 
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-8">
-          Clé d'Infos est un média numérique indépendant qui informe
-          ses lecteurs avec rapidité, impartialité et professionnalisme.
+          Clé d'Infos est un média numérique engagé à apporter une information claire,
+           fiable et rapide au public. Voici une présentation 
+           détaillée de notre identité, de notre mission et de notre vision.
         </p>
 
       </section>
@@ -33,11 +34,11 @@ export default function AboutPage() {
         </h2>
 
         <p className="text-gray-700 leading-8 text-lg">
-          Clé d'Infos est une plateforme d'information moderne couvrant
-          l'actualité nationale et internationale.
-          Nous publions chaque jour des informations fiables sur
-          la politique, l'économie, le sport, la culture,
-          la technologie et bien d'autres sujets.
+          Clé d'Infos est une plateforme médiatique moderne, indépendante et dynamique. Porté par 
+          une équipe de journalistes et de créateurs de contenu passionnés, notre média croit 
+          fermement au pouvoir d'une information de qualité. Dans un monde saturé par les rumeurs 
+          et les fausses informations (fake news), nous nous positionnons comme la « clé » qui ouvre 
+          la porte de la vérité, en offrant des faits vérifiés, objectifs et utiles au quotidien. 
         </p>
 
       </section>
@@ -46,13 +47,21 @@ export default function AboutPage() {
       <section className="mb-20">
 
         <h2 className="text-4xl font-bold mb-6">
-          Notre mission
+          Notre mission 🎯
+           
+          « Éclairer les esprits grâce à une information à forte valeur ajoutée. »
         </h2>
 
         <p className="text-gray-700 leading-8 text-lg">
-          Notre mission est de fournir une information claire,
-          fiable et accessible à tous afin d'aider chaque lecteur
-          à mieux comprendre l'actualité et les enjeux du monde.
+        Notre mission principale s'articule autour de trois grands axes : 
+
+        ● Informer et éduquer : Diffuser l'actualité locale et internationale, tout en abordant 
+        des sujets liés à l'éducation, la technologie, la culture et l'économie. 
+        ● Lutter contre la désinformation : Traquer les fausses rumeurs et vérifier 
+        rigoureusement les faits afin de garantir la publication d'une information 
+        exclusivement véridique. 
+        ● Donner de la voix aux citoyens : Servir de canal d'expression pour la population 
+        afin de relayer ses réalités, ses défis et ses aspirations.
         </p>
 
       </section>
@@ -65,9 +74,15 @@ export default function AboutPage() {
         </h2>
 
         <p className="text-gray-700 leading-8 text-lg">
-          Devenir une référence de l'information numérique en Haïti
-          et dans la Caraïbe en proposant un journalisme moderne,
-          indépendant et proche de ses lecteurs.
+         Notre ambition pour l'avenir est de : 
+          ● Devenir la référence absolue : S'imposer comme la source d'information 
+          incontournable vers laquelle le public se tourne naturellement pour obtenir des faits 
+          authentiques. 
+          ● Bâtir une société mieux informée : Favoriser l'émergence d'un citoyen conscient et 
+          éclairé, capable de prendre les meilleures décisions pour son avenir. 
+          ● Innover dans le traitement de l'information : Utiliser les nouvelles technologies et 
+          les formats modernes (vidéos dynamiques, podcasts, réseaux sociaux) pour rendre 
+          l'information plus accessible, interactive et captivante.
         </p>
 
       </section>
@@ -87,11 +102,12 @@ export default function AboutPage() {
             <div className="text-5xl mb-4">✔️</div>
 
             <h3 className="text-2xl font-bold mb-3">
-              Vérité
+              L'Intégrité 
             </h3>
 
             <p className="text-gray-600">
-              Des informations vérifiées avant toute publication.
+               Nous recherchons la vérité et la restituons de manière honnête. 
+
             </p>
 
           </div>
@@ -101,11 +117,12 @@ export default function AboutPage() {
             <div className="text-5xl mb-4">🤝</div>
 
             <h3 className="text-2xl font-bold mb-3">
-              Transparence
+              L'Objectivité
             </h3>
 
             <p className="text-gray-600">
-              Un travail honnête, responsable et indépendant.
+              Nous traitons l'information de façon neutre, équilibrée et sans parti 
+pris
             </p>
 
           </div>
@@ -115,11 +132,13 @@ export default function AboutPage() {
             <div className="text-5xl mb-4">🎯</div>
 
             <h3 className="text-2xl font-bold mb-3">
-              Professionnalisme
+              La Responsabilité 
             </h3>
 
             <p className="text-gray-600">
-              Nous respectons les meilleures pratiques journalistiques.
+              Nous sommes conscients de l'impact de nos mots et de nos 
+              images, et nous nous engageons à respecter scrupuleusement l'éthique 
+              journalistique. 
             </p>
 
           </div>
