@@ -45,24 +45,34 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Notre mission 🎯
+          </h2>
 
-        <h2 className="text-4xl font-bold mb-6">
-          Notre mission 🎯
-           
-          « Éclairer les esprits grâce à une information à forte valeur ajoutée. »
-        </h2>
+          <p className="text-lg text-gray-700 italic">
+            « Éclairer les esprits grâce à une information à forte valeur ajoutée. »
+          </p>
+    
+       <ol className="text-gray-700 leading-8 text-lg list-decimal pl-6 space-y-4">
+        <li>
+          <strong>Informer et éduquer :</strong> Diffuser l'actualité locale et
+          internationale, tout en abordant des sujets liés à l'éducation, la
+          technologie, la culture et l'économie.
+        </li>
 
-        <p className="text-gray-700 leading-8 text-lg">
-        Notre mission principale s'articule autour de trois grands axes : 
+        <li>
+          <strong>Lutter contre la désinformation :</strong> Traquer les fausses
+          rumeurs et vérifier rigoureusement les faits afin de garantir la
+          publication d'une information exclusivement véridique.
+        </li>
 
-        ● Informer et éduquer : Diffuser l'actualité locale et internationale, tout en abordant 
-        des sujets liés à l'éducation, la technologie, la culture et l'économie. 
-        ● Lutter contre la désinformation : Traquer les fausses rumeurs et vérifier 
-        rigoureusement les faits afin de garantir la publication d'une information 
-        exclusivement véridique. 
-        ● Donner de la voix aux citoyens : Servir de canal d'expression pour la population 
-        afin de relayer ses réalités, ses défis et ses aspirations.
-        </p>
+        <li>
+          <strong>Donner de la voix aux citoyens :</strong> Servir de canal
+          d'expression pour la population afin de relayer ses réalités, ses défis et
+          ses aspirations.
+        </li>
+      </ol>
+    
 
       </section>
 
@@ -73,17 +83,32 @@ export default function AboutPage() {
           Notre vision
         </h2>
 
-        <p className="text-gray-700 leading-8 text-lg">
-         Notre ambition pour l'avenir est de : 
-          ● Devenir la référence absolue : S'imposer comme la source d'information 
-          incontournable vers laquelle le public se tourne naturellement pour obtenir des faits 
-          authentiques. 
-          ● Bâtir une société mieux informée : Favoriser l'émergence d'un citoyen conscient et 
-          éclairé, capable de prendre les meilleures décisions pour son avenir. 
-          ● Innover dans le traitement de l'information : Utiliser les nouvelles technologies et 
-          les formats modernes (vidéos dynamiques, podcasts, réseaux sociaux) pour rendre 
-          l'information plus accessible, interactive et captivante.
-        </p>
+        <div className="text-gray-700 leading-8 text-lg">
+          <p className="mb-4">
+            Notre ambition pour l'avenir est de :
+          </p>
+
+          <ul className="list-disc pl-6 space-y-4">
+            <li>
+              <strong>Devenir la référence absolue :</strong> S'imposer comme la source
+              d'information incontournable vers laquelle le public se tourne naturellement
+              pour obtenir des faits authentiques.
+            </li>
+
+            <li>
+              <strong>Bâtir une société mieux informée :</strong> Favoriser l'émergence
+              d'un citoyen conscient et éclairé, capable de prendre les meilleures
+              décisions pour son avenir.
+            </li>
+
+            <li>
+              <strong>Innover dans le traitement de l'information :</strong> Utiliser les
+              nouvelles technologies et les formats modernes (vidéos dynamiques, podcasts,
+              réseaux sociaux) pour rendre l'information plus accessible, interactive et
+              captivante.
+            </li>
+          </ul>
+        </div>
 
       </section>
 
