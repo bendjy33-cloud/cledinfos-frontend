@@ -25,7 +25,7 @@ export default async function Header() {
               width={180}
               height={60}
               priority
-      
+              unoptimized
               className="h-12 w-auto object-contain"
             />
           ) : (
