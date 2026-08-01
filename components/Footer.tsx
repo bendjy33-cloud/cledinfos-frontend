@@ -26,7 +26,7 @@ export default function Footer({ settings }: Props) {
 
           <p className="mt-5 text-gray-400 leading-7">
             {settings.about ||
-              "Clé d'Infos est un média numérique engagé à apporter une information claire, fiable et rapide au public. Voici une présentation détaillée de notre identité, de notre mission et de notre vision."}
+              "Clé d'Infos est un média numérique engagé à apporter une information claire, fiable et rapide au public."}
           </p>
 
 
