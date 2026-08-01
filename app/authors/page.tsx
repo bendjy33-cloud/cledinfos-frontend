@@ -28,8 +28,14 @@ export default async function AuthorsPage() {
 
             <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden">
 
-              <Image
-                src={author.photo || "/avatar.png"}
+             <Image
+                src={
+                  author.photo_url
+                    ? author.photo_url
+                    : author.photo
+                    ? `${process.env.NEXT_PUBLIC_API_URL?.replace("/api", "")}/storage/${author.photo}`
+                    : "/avatar.png"
+                }
                 alt={author.name}
                 fill
                 unoptimized

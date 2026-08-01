@@ -8,9 +8,7 @@ export default async function Header() {
   const categories = await getCategories();
   const settings = await getSettings();
 
-  const logoUrl = settings.logo
-    ? `${process.env.NEXT_PUBLIC_API_URL?.replace("/api", "")}/storage/${settings.logo}`
-    : null;
+  const logoUrl = settings.logo_url ?? null;
 
   return (
     <header className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
