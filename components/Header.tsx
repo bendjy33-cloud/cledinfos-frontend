@@ -8,7 +8,9 @@ export default async function Header() {
   const categories = await getCategories();
   const settings = await getSettings();
 
-  const logoUrl = settings.logo_url ?? null;
+  const logoUrl = settings.logo?.startsWith("http")
+  ? settings.logo
+  : null;
 
   return (
     <header className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
@@ -23,7 +25,7 @@ export default async function Header() {
               width={180}
               height={60}
               priority
-              unoptimized
+      
               className="h-12 w-auto object-contain"
             />
           ) : (
