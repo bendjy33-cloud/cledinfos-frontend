@@ -20,9 +20,7 @@ export default function ViewCounter({
     const viewed = localStorage.getItem(key);
 
 
-    console.log("ViewCounter loaded:", slug);
-    console.log("Already viewed:", viewed);
-
+   
 
     if (viewed === "true") {
       return;
@@ -36,7 +34,6 @@ export default function ViewCounter({
         const data = await incrementPostView(slug);
 
 
-        console.log("View incremented:", data);
 
 
         localStorage.setItem(

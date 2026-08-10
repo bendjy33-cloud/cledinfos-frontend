@@ -1,16 +1,20 @@
 import Image from "next/image";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function TrendingPosts({
   posts,
 }: {
   posts: any[];
 }) {
+
+  const t = useTranslations("TrendingPosts");
+
   return (
     <section className="mt-10">
 
       <h2 className="text-2xl font-bold mb-6">
-        📈 Tendances
+        📈 {t("title")}
       </h2>
 
 
@@ -48,8 +52,9 @@ export default function TrendingPosts({
                 {post.title}
               </h3>
 
+
               <p className="text-sm text-gray-500">
-                👁 {post.views} vues
+                👁 {post.views} {t("views")}
               </p>
 
             </div>

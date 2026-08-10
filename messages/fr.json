@@ -1,5 +1,415 @@
 {
   "site": {
     "name": "Clé d'Infos"
-  }
+  },
+
+  "menu": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "search": "Rechercher..."
+  },
+
+  "home": {
+    "featured": "À la Une",
+    "latest": "Derniers Articles",
+    "viewAll": "Voir toutes les actualités"
+  },
+
+  "footer": {
+    "contact": "Contact",
+    "links": "Liens utiles",
+    "about": "À propos",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Politique cookies",
+    "terms": "Conditions d'utilisation",
+    "copyright": "Tous droits réservés.",
+    "defaultCountry": "Haïti",
+    "description": "Clé d'Infos est un média numérique engagé à apporter une information claire, fiable et rapide au public."
+  },
+
+  "newsletter": {
+    "title": "Newsletter",
+    "heading": "Ne manquez aucune actualité",
+    "description": "Recevez gratuitement les dernières informations de Clé d'Infos directement dans votre boîte mail.",
+    "placeholder": "Votre adresse e-mail",
+    "button": "Je m'abonne",
+    "sending": "Envoi...",
+    "success": "Merci pour votre abonnement !",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "footer": "En vous abonnant, vous acceptez de recevoir les newsletters de Clé d'Infos."
+  },
+  
+  "TrendingPosts": {
+    "title": "Tendances",
+    "views": "vues"
+  },
+
+  "BreakingNews": {
+    "label": "DERNIÈRE MINUTE"
+  },
+
+   "FeaturedSection": {
+    "title": "Actualités à la une"
+  },
+
+   "Hero": {
+    "readArticle": "Lire l'article"
+  },
+
+   "PostCard": {
+    "views": "vues"
+  },
+
+   "AuthorBox": {
+    "aboutAuthor": "À propos de l'auteur",
+    "publishedOn": "Publié le"
+  },
+
+  "Comments": {
+    "title": "Commentaires",
+    "empty": "Aucun commentaire pour le moment.",
+    "leaveComment": "Laisser un commentaire",
+    "success": "Votre commentaire est en attente de validation.",
+    "error": "Erreur",
+    "name": "Votre nom",
+    "email": "Votre email",
+    "comment": "Votre commentaire",
+    "sending": "Envoi...",
+    "send": "Envoyer"
+  },
+
+  "SearchBar": {
+    "placeholder": "Rechercher...",
+    "button": "Rechercher"
+  },
+
+    "Pagination": {
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+
+   "MostRead": {
+    "title": "Les plus lus"
+  },
+
+  "CookieBanner": {
+    "title": "Cookies",
+    "description": "Clé d'Infos utilise des cookies afin d'améliorer votre expérience, mesurer l'audience et personnaliser certains contenus.",
+    "accept": "Accepter",
+    "reject": "Refuser"
+  },
+
+    "MobileMenu": {
+    "menu": "Menu",
+    "search": "Rechercher...",
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+
+  "TableOfContents": {
+    "title": "Sommaire"
+  },
+
+  "ActualitesPage": {
+    "title": "Toutes les actualités",
+    "breadcrumb": "Actualités",
+    "description": "Découvrez toutes les actualités de Clé d'Infos : politique, économie, sport, culture et plus encore."
+  },
+
+  "PostPage": {
+    "views": "vues",
+    "tags": "Tags",
+    "share": "Partager cet article",
+    "related": "Articles similaires"
+  },
+
+  "AuthorsPage": {
+  "title": "Nos Auteurs"
+},
+
+  "AuthorPage": {
+    "articlesBy": "Articles de {name}",
+    "metaTitle": "{name} | Clé d'Infos",
+    "metaDescription": "Découvrez les articles publiés par {name} sur Clé d'Infos."
+  },
+
+  "SearchPage": {
+    "title": "Recherche",
+    "breadcrumb": "Recherche",
+    "placeholder": "Saisissez un mot-clé pour rechercher des articles.",
+    "results": "{count} résultat(s) pour « {query} »",
+    "noResults": "Aucun résultat trouvé",
+    "tryAgain": "Essayez avec un autre mot-clé.",
+    "metaTitle": "Recherche | Clé d'Infos",
+    "metaDescription": "Recherchez des articles sur Clé d'Infos."
+  },
+
+"CategoryPage": {
+  "metaTitle": "{category} - Clé d'Infos",
+  "noPosts": "Aucun article trouvé.",
+  "metaDescription": "Découvrez toutes les actualités de la catégorie {category} sur Clé d'Infos.",
+  "metaOgDescription": "Les dernières informations concernant {category}."
+},
+
+"TagPage": {
+  "metaTitle": "#{tag} | Clé d'Infos",
+  "metaDescription": "Découvrez tous les articles liés au tag {tag}.",
+  "noPosts": "Aucun article trouvé pour ce tag."
+},
+
+"TagsPage": {
+  "title": "Tags",
+  "metaTitle": "Tags | Clé d'Infos",
+  "metaDescription": "Découvrez tous les tags disponibles sur Clé d'Infos.",
+  "noTags": "Aucun tag disponible."
+},
+
+"ContactPage": {
+  "title": "Contactez-nous",
+  "subtitle": "Une question ? Une information à partager ? Notre équipe vous répondra rapidement.",
+  "name": "Nom",
+  "email": "E-mail",
+  "subject": "Sujet",
+  "message": "Votre message...",
+  "send": "Envoyer",
+  "sending": "Envoi...",
+  "success": "Message envoyé avec succès.",
+  "error": "Une erreur est survenue.",
+  "serverError": "Impossible de contacter le serveur.",
+  "metaTitle": "Contact | Clé d'Infos",
+  "metaDescription": "Contactez l'équipe de Clé d'Infos pour toute question, suggestion, partenariat ou demande d'information.",
+  "metaOgDescription": "Contactez l'équipe de Clé d'Infos."
+},
+
+"AboutPage": {
+  "metaTitle": "À propos | Clé d'Infos",
+  "metaDescription": "Découvrez Clé d'Infos, notre mission, nos valeurs et notre équipe.",
+  "heroTitle": "À propos de Clé d'Infos",
+  "heroDescription": "Clé d'Infos est un média numérique engagé à apporter une information claire, fiable et rapide au public. Voici une présentation détaillée de notre identité, de notre mission et de notre vision.",
+
+
+  "who": {
+    "title": "Qui sommes-nous ?",
+    "description": "Clé d'Infos est une plateforme médiatique moderne, indépendante et dynamique. Porté par une équipe de journalistes et de créateurs de contenu passionnés, notre média croit fermement au pouvoir d'une information de qualité. Dans un monde saturé par les rumeurs et les fausses informations (fake news), nous nous positionnons comme la « clé » qui ouvre la porte de la vérité, en offrant des faits vérifiés, objectifs et utiles au quotidien."
+  },
+
+  "mission": {
+    "title": "Notre mission 🎯",
+    "quote": "« Éclairer les esprits grâce à une information à forte valeur ajoutée. »",
+
+    "item1Title": "Informer et éduquer :",
+    "item1": "Diffuser l'actualité locale et internationale, tout en abordant des sujets liés à l'éducation, la technologie, la culture et l'économie.",
+
+    "item2Title": "Lutter contre la désinformation :",
+    "item2": "Traquer les fausses rumeurs et vérifier rigoureusement les faits afin de garantir la publication d'une information exclusivement véridique.",
+
+    "item3Title": "Donner de la voix aux citoyens :",
+    "item3": "Servir de canal d'expression pour la population afin de relayer ses réalités, ses défis et ses aspirations."
+  },
+
+  "vision": {
+    "title": "Notre vision",
+    "intro": "Notre ambition pour l'avenir est de :",
+
+    "item1Title": "Devenir la référence absolue :",
+    "item1": "S'imposer comme la source d'information incontournable vers laquelle le public se tourne naturellement pour obtenir des faits authentiques.",
+
+    "item2Title": "Bâtir une société mieux informée :",
+    "item2": "Favoriser l'émergence d'un citoyen conscient et éclairé, capable de prendre les meilleures décisions pour son avenir.",
+
+    "item3Title": "Innover dans le traitement de l'information :",
+    "item3": "Utiliser les nouvelles technologies et les formats modernes afin de rendre l'information plus accessible, interactive et captivante."
+  },
+
+  "values": {
+    "title": "Nos Valeurs",
+
+    "integrity": "L'Intégrité",
+    "integrityText": "Nous recherchons la vérité et la restituons de manière honnête.",
+
+    "objectivity": "L'Objectivité",
+    "objectivityText": "Nous traitons l'information de façon neutre, équilibrée et sans parti pris.",
+
+    "responsibility": "La Responsabilité",
+    "responsibilityText": "Nous sommes conscients de l'impact de nos mots et de nos images, et nous respectons scrupuleusement l'éthique journalistique.",
+
+    "respect": "Respect",
+    "respectText": "Respect de nos lecteurs, de nos sources et des faits."
+  },
+
+  "stats": {
+    "title": "Clé d'Infos en chiffres",
+    "articles": "Articles publiés",
+    "categories": "Catégories",
+    "news": "Actualités",
+    "verified": "Informations vérifiées"
+  },
+
+  "team": {
+    "title": "Notre Équipe",
+    "description": "Une équipe passionnée qui travaille chaque jour pour offrir une information fiable et de qualité.",
+    "ceo": "CEO || HOST",
+    "developer": "Informaticien || Web Developer",
+    "assistant": "Assistant Vidéaste || Photographer",
+    "designer": "Designer"
+      } 
+},
+
+  "cookies": {
+    "metaTitle": "Politique relative aux Cookies | Clé d’Infos",
+    "metaDescription": "Découvrez comment Clé d’Infos utilise les cookies.",
+
+    "title": "Politique relative aux Cookies",
+
+    "intro": "Clé d’Infos utilise des cookies afin d'améliorer votre expérience de navigation et fournir certains services.",
+
+    "whatTitle": "Que sont les cookies ?",
+    "whatText": "Les cookies sont de petits fichiers enregistrés sur votre appareil lorsque vous visitez notre site.",
+
+    "whyTitle": "Pourquoi utilisons-nous des cookies ?",
+
+    "items": {
+      "performance": "Améliorer les performances du site.",
+      "analytics": "Mesurer l'audience grâce à Google Analytics.",
+      "preferences": "Mémoriser certaines préférences.",
+      "content": "Afficher des contenus adaptés aux utilisateurs."
+    },
+
+    "manageTitle": "Gestion des cookies",
+    "manageText": "Vous pouvez accepter, refuser ou supprimer les cookies depuis les paramètres de votre navigateur.",
+
+    "updateTitle": "Modification de cette politique",
+    "updateText": "Cette politique peut être mise à jour afin de respecter les évolutions légales ou techniques."
+  },
+
+  "privacy": {
+
+    "metaTitle": "Politique de Confidentialité | Clé d’Infos",
+    "metaDescription": "Découvrez comment Clé d’Infos protège vos données personnelles.",
+
+    "title": "Politique de Confidentialité",
+
+    "intro": "Chez Clé d’Infos, nous accordons une grande importance à la protection de votre vie privée.",
+
+    "collectTitle": "Informations collectées",
+    "collectText": "Nous pouvons collecter certaines informations telles que votre nom, votre adresse e-mail ainsi que des données de navigation lorsque vous utilisez notre site.",
+
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Notre site utilise des cookies afin d'améliorer votre expérience, mesurer l'audience et personnaliser certains contenus.",
+
+    "analyticsTitle": "Google Analytics",
+    "analyticsText": "Nous utilisons Google Analytics afin d'analyser le trafic du site et améliorer nos services. Google peut collecter certaines informations anonymes concernant votre navigation.",
+
+    "adsTitle": "Publicités",
+    "adsText": "À l'avenir, notre site pourra utiliser Google AdSense afin d'afficher des publicités personnalisées.",
+
+    "protectionTitle": "Protection des données",
+    "protectionText": "Nous mettons en œuvre des mesures raisonnables afin de protéger vos informations contre tout accès non autorisé.",
+
+    "contactTitle": "Nous contacter",
+    "contactText": "Pour toute question concernant cette politique, veuillez utiliser la page Contact du site."
+  },
+
+  "terms": {
+
+    "metaTitle": "Conditions d'utilisation | Clé d’Infos",
+    "metaDescription": "Consultez les conditions d'utilisation de Clé d’Infos.",
+
+    "title": "Conditions d'utilisation",
+
+    "intro": "Bienvenue sur Clé d’Infos. En utilisant ce site, vous acceptez les présentes conditions d'utilisation.",
+
+    "useTitle": "Utilisation du site",
+    "useText": "Les informations publiées sur Clé d’Infos sont destinées à informer le public. Elles ne doivent pas être utilisées à des fins illégales.",
+
+    "intellectualTitle": "Propriété intellectuelle",
+    "intellectualText": "Les textes, images, logos et autres contenus publiés sur ce site sont protégés par les lois relatives à la propriété intellectuelle. Toute reproduction sans autorisation est interdite.",
+
+    "responsibilityTitle": "Responsabilité",
+    "responsibilityText": "Clé d’Infos s'efforce de fournir des informations fiables, mais ne garantit pas l'absence totale d'erreurs ou d'omissions.",
+
+    "externalTitle": "Liens externes",
+    "externalText": "Notre site peut contenir des liens vers d'autres sites. Nous ne sommes pas responsables de leur contenu ni de leurs politiques.",
+
+    "modificationTitle": "Modification des conditions",
+    "modificationText": "Ces conditions peuvent être modifiées à tout moment afin de tenir compte des évolutions du site ou de la législation.",
+
+    "contactTitle": "Contact",
+    "contactText": "Pour toute question concernant ces conditions, veuillez utiliser notre page Contact."
+  },
+
+  "faq": {
+
+    "metaTitle": "FAQ | Clé d’Infos",
+    "metaDescription": "Questions fréquemment posées sur Clé d’Infos.",
+
+    "title": "Questions fréquentes",
+
+    "description": "Retrouvez les réponses aux questions les plus posées.",
+
+    "items": [
+      {
+        "question": "Qu'est-ce que Clé d'Infos ?",
+        "answer": "Clé d'Infos est un média numérique qui publie des actualités nationales et internationales."
+      },
+      {
+        "question": "Les informations sont-elles vérifiées ?",
+        "answer": "Oui. Toutes nos informations sont vérifiées avant publication."
+      },
+      {
+        "question": "Puis-je partager les articles ?",
+        "answer": "Oui. Vous pouvez partager nos articles via Facebook, WhatsApp ou X."
+      },
+      {
+        "question": "Comment contacter la rédaction ?",
+        "answer": "Vous pouvez utiliser notre page Contact pour nous écrire."
+      },
+      {
+        "question": "Comment recevoir les dernières actualités ?",
+        "answer": "Abonnez-vous gratuitement à notre newsletter."
+      }
+    ]
+  },
+
+   "news": {
+    "metaTitle": "Toutes les actualités | Clé d’Infos",
+    "metaDescription": "Découvrez toutes les actualités nationales et internationales sur Clé d’Infos.",
+
+    "title": "Toutes les actualités"
+  },
+
+    "Layout": {
+    "defaultTitle": "Clé d'Infos - National and International News",
+    "description": "Latest news from Haiti and around the world."
+  },
+
+  "NotFound": {
+  "title": "Page introuvable",
+  "description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+  "button": "Retour à l'accueil"
+  },
+
+  "ErrorPage": {
+    "title": "Une erreur est survenue",
+    "button": "Réessayer"
+  },
+
+  "BackToTop": {
+  "label": "Retour en haut"
+  },
+
+  "Breadcrumb": {
+  "home": "Accueil",
+  "ariaLabel": "Fil d'Ariane"
+},
+
+"LanguageSwitcher": {
+  "label": "Choisir la langue",
+  "french": "Français",
+  "english": "English",
+  "creole": "Kreyòl"
+}
+
 }

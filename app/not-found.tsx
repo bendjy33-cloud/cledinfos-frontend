@@ -1,6 +1,9 @@
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const t = await getTranslations("NotFound");
+
   return (
     <main className="max-w-4xl mx-auto px-6 py-24 text-center">
 
@@ -9,18 +12,18 @@ export default function NotFound() {
       </h1>
 
       <h2 className="text-4xl font-bold mt-6">
-        Page introuvable
+        {t("title")}
       </h2>
 
       <p className="text-gray-600 mt-4 mb-10">
-        Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+        {t("description")}
       </p>
 
       <Link
         href="/"
         className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg"
       >
-        Retour à l'accueil
+        {t("button")}
       </Link>
 
     </main>

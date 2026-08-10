@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function CookieBanner() {
+  const t = useTranslations("CookieBanner");
+
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -26,36 +29,40 @@ export default function CookieBanner() {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-5 left-5 right-5 lg:left-auto lg:w-[480px] bg-white shadow-2xl rounded-2xl border p-6 z-[9999]">
-
-      <h3 className="text-xl font-bold mb-3">
-        🍪 Cookies
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cookie-title"
+      className="fixed bottom-5 left-5 right-5 lg:left-auto lg:w-[480px] bg-white shadow-2xl rounded-2xl border p-6 z-[9999]"
+    >
+      <h3
+        id="cookie-title"
+        className="text-xl font-bold mb-3"
+      >
+        🍪 {t("title")}
       </h3>
 
       <p className="text-gray-600 leading-7">
-        Clé d'Infos utilise des cookies afin d'améliorer votre
-        expérience, mesurer l'audience et personnaliser certains
-        contenus.
+        {t("description")}
       </p>
 
       <div className="flex gap-3 mt-6">
-
         <button
+          type="button"
           onClick={accept}
-          className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl"
+          className="flex-1 bg-red-600 hover:bg-red-700 transition-colors duration-200 text-white py-3 rounded-xl"
         >
-          Accepter
+          {t("accept")}
         </button>
 
         <button
+          type="button"
           onClick={reject}
-          className="flex-1 border py-3 rounded-xl hover:bg-gray-100"
+          className="flex-1 border py-3 rounded-xl hover:bg-gray-100 transition-colors duration-200"
         >
-          Refuser
+          {t("reject")}
         </button>
-
       </div>
-
     </div>
   );
 }

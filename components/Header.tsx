@@ -1,10 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import {getTranslations} from "next-intl/server";
 import { getCategories, getSettings } from "@/lib/api";
 import MobileMenu from "./MobileMenu";
-{/* import ThemeToggle from "./ThemeToggle"; */}
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default async function Header() {
+
+  const t = await getTranslations("menu");
+
   const categories = await getCategories();
   const settings = await getSettings();
 
@@ -13,7 +17,7 @@ export default async function Header() {
   return (
     <header className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
+
         <Link href="/" className="flex items-center gap-3">
 
           {logoUrl ? (
@@ -34,11 +38,10 @@ export default async function Header() {
 
         </Link>
 
-        {/* Desktop Menu */}
         <nav className="hidden lg:flex items-center gap-6">
 
           <Link href="/" className="hover:text-red-400 transition">
-            Accueil
+            {t("home")}
           </Link>
 
           {categories.map((category: any) => (
@@ -55,49 +58,49 @@ export default async function Header() {
             href="/about"
             className="hover:text-red-400 transition"
           >
-            À propos
+            {t("about")}
           </Link>
 
           <Link
             href="/contact"
             className="hover:text-red-400 transition"
           >
-            Contact
+            {t("contact")}
           </Link>
 
         </nav>
 
-        {/* Search */}
-       <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
+           
 
-        <form
-          action="/search"
-          method="GET"
-          className="flex items-center"
-        >
-          <input
-            type="text"
-            name="q"
-            placeholder="Rechercher..."
-            className="w-64 px-4 py-2 bg-white text-black placeholder:text-gray-500 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
+          <form
+            action="/search"
+            method="GET"
+            className="flex items-center"
+          >
+            <input
+              type="text"
+              name="q"
+              placeholder={t("search")}
+              className="w-64 px-4 py-2 bg-white text-black placeholder:text-gray-500 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
 
-          <button
+           <button
             type="submit"
+            aria-label={t("search")}
             className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-lg transition"
           >
             🔍
           </button>
-        </form>
+          </form>
 
-         {/* <ThemeToggle /> */}
+          <LanguageSwitcher />
+
+        </div>
+
+        <MobileMenu categories={categories} />
 
       </div>
-
-      <MobileMenu categories={categories} />
-
-      </div>
-
     </header>
   );
-}
+} 

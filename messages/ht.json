@@ -1,5 +1,428 @@
 {
   "site": {
     "name": "Clé d'Infos"
+  },
+
+  "menu": {
+    "home": "Akèy",
+    "about": "Konsènan",
+    "contact": "Kontak",
+    "search": "Chèche..."
+  },
+
+  "home": {
+    "featured": "An Premye",
+    "latest": "Dènye Atik",
+    "viewAll": "Gade tout nouvèl yo"
+  },
+
+   "footer": {
+    "contact": "Kontak",
+    "links": "Lyen itil",
+    "about": "Konsènan",
+    "privacy": "Règleman sou vi prive",
+    "cookies": "Règleman sou bonbon (Cookies)",
+    "terms": "Kondisyon itilizasyon",
+    "copyright": "Tout dwa rezève.",
+    "defaultCountry": "Ayiti",
+     "description": "Clé d'Infos se yon medya dijital ki angaje pou pote enfòmasyon ki klè, serye ak rapid bay piblik la."
+  },
+
+  "newsletter": {
+    "title": "Bilten",
+    "heading": "Pa rate okenn nouvèl",
+    "description": "Resevwa dènye enfòmasyon Clé d'Infos dirèkteman nan bwat imel ou.",
+    "placeholder": "Adrès imel ou",
+    "button": "Mwen abòne",
+    "sending": "Ap voye...",
+    "success": "Mèsi paske ou abòne!",
+    "error": "Yon erè rive. Tanpri eseye ankò.",
+    "footer": "Lè ou abòne, ou dakò pou resevwa bilten Clé d'Infos yo."
+  },
+
+  "TrendingPosts": {
+    "title": "Tandans",
+    "views": "vizit"
+  },
+
+  "BreakingNews": {
+    "label": "DÈNYE ENFÒMASYON"
+  },
+
+  "FeaturedSection": {
+    "title": "Nouvèl vedèt"
+  },
+
+  "Hero": {
+    "readArticle": "Li atik la"
+  },
+
+  "PostCard": {
+    "views": "vizit"
+  },
+
+  "AuthorBox": {
+    "aboutAuthor": "Konsènan otè a",
+    "publishedOn": "Pibliye le"
+  },
+
+  "Comments": {
+    "title": "Kòmantè",
+    "empty": "Pa gen kòmantè pou kounye a.",
+    "leaveComment": "Kite yon kòmantè",
+    "success": "Kòmantè ou a ap tann validasyon.",
+    "error": "Erè",
+    "name": "Non ou",
+    "email": "Imèl ou",
+    "comment": "Kòmantè ou",
+    "sending": "Ap voye...",
+    "send": "Voye"
+  },
+
+   "SearchBar": {
+    "placeholder": "Rechèch...",
+    "button": "Chèche"
+  },
+
+   "Pagination": {
+    "previous": "Anvan",
+    "next": "Pwochen"
+  },
+
+  "MostRead": {
+    "title": "Sa ki plis li yo"
+  },
+
+  "CookieBanner": {
+    "title": "Cookies",
+    "description": "Clé d'Infos itilize cookies pou amelyore eksperyans ou, mezire odyans lan epi pèsonalize kèk kontni.",
+    "accept": "Aksepte",
+    "reject": "Refize"
+  },
+
+   "MobileMenu": {
+    "menu": "Meni",
+    "search": "Rechèch...",
+    "home": "Akèy",
+    "about": "Konsènan nou",
+    "contact": "Kontak"
+  },
+
+  "TableOfContents": {
+    "title": "Sa ki ladan"
+  },
+
+  "ActualitesPage": {
+    "title": "Tout nouvèl yo",
+    "breadcrumb": "Nouvèl",
+    "description": "Dekouvri tout nouvèl Clé d'Infos yo : politik, ekonomi, espò, kilti ak plis ankò."
+  },
+
+  "PostPage": {
+    "views": "vizit",
+    "tags": "Mo kle",
+    "share": "Pataje atik sa a",
+    "related": "Atik ki sanble"
+  },
+
+ "AuthorsPage": {
+  "title": "Otè nou yo"
+},
+
+  "AuthorPage": {
+    "articlesBy": "Atik {name}",
+    "metaTitle": "{name} | Clé d'Infos",
+    "metaDescription": "Dekouvri atik {name} pibliye sou Clé d'Infos."
+  },
+
+  "SearchPage": {
+    "title": "Rechèch",
+    "breadcrumb": "Rechèch",
+    "placeholder": "Antre yon mo kle pou chèche atik yo.",
+    "results": "{count} rezilta pou \"{query}\"",
+    "noResults": "Pa jwenn okenn rezilta",
+    "tryAgain": "Eseye ak yon lòt mo kle.",
+    "metaTitle": "Rechèch | Clé d'Infos",
+    "metaDescription": "Chèche atik sou Clé d'Infos."
+  },
+
+"CategoryPage": {
+  "metaTitle": "{category} - Clé d'Infos",
+  "noPosts": "Pa gen atik ki disponib.",
+  "metaDescription": "Dekouvri tout nouvèl ki nan kategori {category} sou Clé d'Infos.",
+  "metaOgDescription": "Dènye nouvèl konsènan {category}."
+},
+
+"TagPage": {
+  "metaTitle": "#{tag} | Clé d'Infos",
+  "metaDescription": "Dekouvri tout atik ki gen etikèt {tag}.",
+  "noPosts": "Pa gen okenn atik pou etikèt sa a."
+},
+
+"TagsPage": {
+  "title": "Etikèt",
+  "metaTitle": "Etikèt | Clé d'Infos",
+  "metaDescription": "Dekouvri tout etikèt ki disponib sou Clé d'Infos.",
+  "noTags": "Pa gen okenn etikèt disponib."
+},
+
+"ContactPage": {
+  "title": "Kontakte Nou",
+  "subtitle": "Ou gen yon kesyon oswa yon enfòmasyon pou pataje? Ekip nou an ap reponn ou pi vit posib.",
+  "name": "Non",
+  "email": "Imèl",
+  "subject": "Sijè",
+  "message": "Mesaj ou...",
+  "send": "Voye",
+  "sending": "Ap voye...",
+  "success": "Mesaj la voye avèk siksè.",
+  "error": "Gen yon erè ki rive.",
+  "serverError": "Pa kapab kontakte sèvè a.",
+  "metaTitle": "Kontak | Clé d'Infos",
+  "metaDescription": "Kontakte ekip Clé d'Infos pou nenpòt kesyon, sijesyon, patenarya oswa demann enfòmasyon.",
+  "metaOgDescription": "Kontakte ekip Clé d'Infos."
+},
+
+ "AboutPage": {
+
+    "metaTitle": "Konsènan Clé d’Infos | Clé d’Infos",
+    "metaDescription": "Dekouvri idantite, misyon ak vizyon Clé d’Infos.",
+
+    "heroTitle": "Konsènan Clé d’Infos",
+
+    "heroDescription": "Clé d’Infos se yon medya dijital ki angaje pou bay enfòmasyon ki klè, serye ak rapid. Dekouvri idantite nou, misyon nou ak vizyon nou.",
+
+
+    "who": {
+      "title": "Kilès nou ye?",
+      "description": "Clé d’Infos se yon medya dijital ki bay enfòmasyon nasyonal ak entènasyonal bay piblik la."
+    },
+
+
+    "mission": {
+      "title": "Misyon nou",
+      "quote": "Bay enfòmasyon ki serye, rapid epi aksesib pou tout moun.",
+
+      "item1Title": "Enfòmasyon serye",
+      "item1": "Nou verifye sous nou yo pou bay lektè yo bon jan enfòmasyon.",
+
+      "item2Title": "Rapidite",
+      "item2": "Nou pote nouvèl yo bay piblik la nan pi bon delè.",
+
+      "item3Title": "Transparans",
+      "item3": "Nou travay avèk onètete ak transparans."
+    },
+
+
+    "vision": {
+      "title": "Vizyon nou",
+      "intro": "Nou vle vin yon referans nan medya dijital la.",
+
+      "item1Title": "Inovasyon",
+      "item1": "Nou itilize teknoloji pou amelyore eksperyans lektè yo.",
+
+      "item2Title": "Aksè",
+      "item2": "Nou rann enfòmasyon disponib pou tout moun.",
+
+      "item3Title": "Enpak",
+      "item3": "Nou vle enfliyanse pozitivman kominote a."
+    },
+
+
+    "values": {
+      "title": "Valè nou",
+
+      "integrity": "Entegrite",
+      "integrityText": "Nou chèche verite epi nou bay enfòmasyon yo avèk onètete.",
+
+      "objectivity": "Objektif",
+      "objectivityText": "Nou trete enfòmasyon yo avèk netralite, ekilib epi san patipri.",
+
+      "responsibility": "Responsablite",
+      "responsibilityText": "Nou konsyan de enpak pawòl ak imaj nou yo, epi nou respekte etik jounalis.",
+
+      "respect": "Respè",
+      "respectText": "Nou respekte lektè nou yo, sous nou yo ak verite a."
+    },
+
+
+    "stats": {
+      "title": "Clé d’Infos an chif",
+
+      "articles": "Atik",
+      "categories": "Kategori",
+      "news": "Nouvèl",
+      "verified": "Verifye"
+    },
+
+
+    "team": {
+      "title": "Ekip nou an",
+      "description": "Men moun ki dèyè Clé d’Infos.",
+
+      "ceo": "Direktè Jeneral",
+
+      "developer": "Devlopè",
+
+      "assistant": "Asistan",
+
+      "designer": "Designer"
+    }
+
+  },
+
+"cookies": {
+    "metaTitle": "Politik Cookies | Clé d’Infos",
+    "metaDescription": "Aprann kijan Clé d’Infos itilize cookies.",
+
+    "title": "Politik Cookies",
+
+    "intro": "Clé d’Infos itilize cookies pou amelyore eksperyans navigasyon ou epi bay kèk sèvis.",
+
+    "whatTitle": "Kisa cookies ye?",
+    "whatText": "Cookies yo se ti fichye ki sove sou aparèy ou lè ou vizite sit nou an.",
+
+    "whyTitle": "Poukisa nou itilize cookies?",
+
+    "items": {
+      "performance": "Amelyore pèfòmans sit la.",
+      "analytics": "Mezire vizit sit la ak Google Analytics.",
+      "preferences": "Sonje kèk preferans itilizatè yo.",
+      "content": "Montre kontni ki adapte ak itilizatè yo."
+    },
+
+    "manageTitle": "Jesyon cookies",
+    "manageText": "Ou kapab aksepte, refize oswa efase cookies nan paramèt navigatè ou.",
+
+    "updateTitle": "Chanjman nan politik sa a",
+    "updateText": "Nou kapab mete politik sa a ajou pou respekte chanjman legal oswa teknik."
+  },
+
+    "privacy": {
+
+    "metaTitle": "Politik Konfidansyalite | Clé d’Infos",
+    "metaDescription": "Aprann kijan Clé d’Infos pwoteje done pèsonèl ou.",
+
+    "title": "Politik Konfidansyalite",
+
+    "intro": "Nan Clé d’Infos, nou bay pwoteksyon vi prive ou anpil enpòtans.",
+
+    "collectTitle": "Enfòmasyon nou kolekte",
+    "collectText": "Nou kapab kolekte kèk enfòmasyon tankou non ou, imèl ou ak done navigasyon lè ou itilize sit nou an.",
+
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Sit nou an itilize cookies pou amelyore eksperyans ou, mezire vizit yo epi adapte kèk kontni.",
+
+    "analyticsTitle": "Google Analytics",
+    "analyticsText": "Nou itilize Google Analytics pou analize trafik sit la epi amelyore sèvis nou yo.",
+
+    "adsTitle": "Piblisite",
+    "adsText": "Nan lavni, sit la kapab itilize Google AdSense pou montre piblisite pèsonalize.",
+
+    "protectionTitle": "Pwoteksyon done",
+    "protectionText": "Nou pran mezi rezonab pou pwoteje enfòmasyon ou kont aksè san otorizasyon.",
+
+    "contactTitle": "Kontakte nou",
+    "contactText": "Pou nenpòt kesyon sou politik sa a, itilize paj Kontak sit la."
+  },
+
+  "terms": {
+
+    "metaTitle": "Kondisyon Itilizasyon | Clé d’Infos",
+    "metaDescription": "Li kondisyon itilizasyon Clé d’Infos.",
+
+    "title": "Kondisyon Itilizasyon",
+
+    "intro": "Byenveni sou Clé d’Infos. Lè ou itilize sit sa a, ou aksepte kondisyon itilizasyon sa yo.",
+
+    "useTitle": "Itilizasyon sit la",
+    "useText": "Enfòmasyon ki pibliye sou Clé d’Infos yo fèt pou enfòme piblik la. Yo pa dwe itilize pou aktivite ilegal.",
+
+    "intellectualTitle": "Pwopriyete entelektyèl",
+    "intellectualText": "Tèks, imaj, logo ak lòt kontni ki sou sit la pwoteje pa lwa sou pwopriyete entelektyèl. Repwodiksyon san otorizasyon entèdi.",
+
+    "responsibilityTitle": "Responsablite",
+    "responsibilityText": "Clé d’Infos fè efò pou bay enfòmasyon ki fyab, men li pa garanti pa gen okenn erè oswa omisyon.",
+
+    "externalTitle": "Lyen ekstèn",
+    "externalText": "Sit nou an kapab genyen lyen ki mennen sou lòt sit. Nou pa responsab kontni oswa politik sit sa yo.",
+
+    "modificationTitle": "Chanjman kondisyon yo",
+    "modificationText": "Kondisyon sa yo kapab chanje nenpòt moman selon evolisyon sit la oswa lalwa.",
+
+    "contactTitle": "Kontak",
+    "contactText": "Pou nenpòt kesyon sou kondisyon sa yo, itilize paj Kontak nou an."
+  },
+
+   "faq": {
+
+    "metaTitle": "FAQ | Clé d’Infos",
+    "metaDescription": "Kesyon moun poze souvan sou Clé d’Infos.",
+
+    "title": "Kesyon yo poze souvan",
+
+    "description": "Jwenn repons ak kesyon itilizatè yo poze pi souvan.",
+
+    "items": [
+      {
+        "question": "Kisa Clé d'Infos ye?",
+        "answer": "Clé d'Infos se yon medya dijital ki pibliye nouvèl nasyonal ak entènasyonal."
+      },
+      {
+        "question": "Èske enfòmasyon yo verifye?",
+        "answer": "Wi. Nou verifye tout enfòmasyon yo anvan nou pibliye yo."
+      },
+      {
+        "question": "Èske mwen ka pataje atik yo?",
+        "answer": "Wi. Ou ka pataje atik nou yo sou Facebook, WhatsApp oswa X."
+      },
+      {
+        "question": "Kijan mwen ka kontakte redaksyon an?",
+        "answer": "Ou ka itilize paj Kontak la pou ekri nou."
+      },
+      {
+        "question": "Kijan mwen ka resevwa dènye nouvèl yo?",
+        "answer": "Abòne ak newsletter nou an gratis."
+      }
+    ]
+  },
+
+   "news": {
+    "metaTitle": "Tout nouvèl yo | Clé d’Infos",
+    "metaDescription": "Dekouvri tout nouvèl nasyonal ak entènasyonal sou Clé d’Infos.",
+
+    "title": "Tout nouvèl yo"
+  },
+
+  "Layout": {
+  "defaultTitle": "Clé d'Infos - National and International News",
+  "description": "Latest news from Haiti and around the world."
+},
+
+  "NotFound": {
+    "title": "Paj la pa jwenn",
+    "description": "Padon, paj w ap chèche a pa egziste oswa li deplase.",
+    "button": "Retounen sou paj dakèy"
+  },
+
+  "ErrorPage": {
+    "title": "Gen yon erè ki rive",
+    "button": "Eseye ankò"
+  },
+
+  "BackToTop": {
+  "label": "Retounen anlè"
+ },
+
+ "Breadcrumb": {
+  "home": "Akèy",
+  "ariaLabel": "Fil navigasyon"
+},
+
+  "LanguageSwitcher": {
+    "label": "Chwazi lang",
+    "french": " Français",
+    "english": " English",
+    "creole": " Kreyòl"
   }
 }

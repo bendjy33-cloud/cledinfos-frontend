@@ -1,11 +1,16 @@
-import Link from "next/link";
-import {FaFacebook,FaInstagram,FaYoutube,FaXTwitter,} from "react-icons/fa6";
+import {Link} from "@/i18n/navigation";
+import {getTranslations} from "next-intl/server";
+import {FaFacebook,FaInstagram,FaYoutube,FaXTwitter,} 
+from "react-icons/fa6";
+
 
 type Props = {
   settings: any;
 };
 
-export default function Footer({ settings }: Props) {
+export default async function Footer({ settings }: Props) {
+
+  const t = await getTranslations("footer");
 
 
   return (
@@ -25,8 +30,7 @@ export default function Footer({ settings }: Props) {
 
 
           <p className="mt-5 text-gray-400 leading-7">
-            {settings.about ||
-              "Clé d'Infos est un média numérique engagé à apporter une information claire, fiable et rapide au public."}
+              {t("description")}
           </p>
 
 
@@ -39,7 +43,7 @@ export default function Footer({ settings }: Props) {
         <div>
 
           <h3 className="text-xl text-white font-bold mb-5">
-            Contact
+            {t("contact")}
           </h3>
 
 
@@ -62,8 +66,7 @@ export default function Footer({ settings }: Props) {
 
             <p>
               📍{" "}
-              {settings.address ||
-                "Haïti"}
+              {settings.address || t("defaultCountry")}
             </p>
 
 
@@ -80,7 +83,7 @@ export default function Footer({ settings }: Props) {
         <div>
 
           <h3 className="text-xl text-white font-bold mb-5">
-            Liens utiles
+            {t("links")}
           </h3>
 
 
@@ -89,31 +92,31 @@ export default function Footer({ settings }: Props) {
 
             <Link href="/about"
               className="block hover:text-red-500">
-              À propos
+             {t("about")}
             </Link>
 
 
             <Link href="/contact"
               className="block hover:text-red-500">
-              Contact
+              {t("contact")}
             </Link>
 
 
             <Link href="/privacy"
               className="block hover:text-red-500">
-              Politique de confidentialité
+             {t("privacy")}
             </Link>
 
 
             <Link href="/cookies"
               className="block hover:text-red-500">
-              Politique cookies
+              {t("cookies")}
             </Link>
 
 
             <Link href="/terms"
               className="block hover:text-red-500">
-              Conditions d'utilisation
+              {t("terms")}
             </Link>
 
 
@@ -195,9 +198,9 @@ export default function Footer({ settings }: Props) {
 
       <div className="border-t border-gray-800 py-6 text-center text-sm">
 
-        © {new Date().getFullYear()}{" "}
-        {settings.site_name || "Clé d'Infos"}.
-        Tous droits réservés.
+      © {new Date().getFullYear()}{" "}
+      {settings.site_name || "Clé d'Infos"}.{" "}
+      {t("copyright")}
 
       </div>
 

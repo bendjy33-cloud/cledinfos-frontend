@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 
 type Comment = {
@@ -16,6 +17,8 @@ export default function Comments({
 }: {
   slug: string;
 }) {
+
+  const t = useTranslations("Comments");
 
   const API = process.env.NEXT_PUBLIC_API_URL;
 
@@ -106,7 +109,7 @@ export default function Comments({
     if(res.ok){
 
       setMessage(
-        "Votre commentaire est en attente de validation."
+        t("success")
       );
 
       setName("");
@@ -118,7 +121,7 @@ export default function Comments({
     }else{
 
       setMessage(
-        data.message || "Erreur"
+        data.message || t("error")
       );
 
     }
@@ -138,7 +141,7 @@ export default function Comments({
 
 
       <h2 className="text-3xl font-bold mb-8">
-        💬 Commentaires ({comments.length})
+        💬 {t("title")} ({comments.length})
       </h2>
 
 
@@ -147,7 +150,7 @@ export default function Comments({
 
 
         {comments.map((item)=>(
-          
+
           <div
             key={item.id}
             className="bg-gray-100 rounded-xl p-5"
@@ -179,7 +182,7 @@ export default function Comments({
         {comments.length === 0 && (
 
           <p className="text-gray-500">
-            Aucun commentaire pour le moment.
+            {t("empty")}
           </p>
 
         )}
@@ -192,7 +195,7 @@ export default function Comments({
 
 
       <h3 className="text-2xl font-bold mb-5">
-        Laisser un commentaire
+        {t("leaveComment")}
       </h3>
 
 
@@ -221,7 +224,7 @@ export default function Comments({
           required
           value={name}
           onChange={(e)=>setName(e.target.value)}
-          placeholder="Votre nom"
+          placeholder={t("name")}
           className="w-full border rounded-lg p-3"
         />
 
@@ -231,7 +234,7 @@ export default function Comments({
           type="email"
           value={email}
           onChange={(e)=>setEmail(e.target.value)}
-          placeholder="Votre email"
+          placeholder={t("email")}
           className="w-full border rounded-lg p-3"
         />
 
@@ -240,7 +243,7 @@ export default function Comments({
           required
           value={comment}
           onChange={(e)=>setComment(e.target.value)}
-          placeholder="Votre commentaire"
+          placeholder={t("comment")}
           rows={5}
           className="w-full border rounded-lg p-3"
         />
@@ -251,7 +254,7 @@ export default function Comments({
           className="bg-red-600 text-white px-6 py-3 rounded-lg"
         >
 
-          {loading ? "Envoi..." : "Envoyer"}
+          {loading ? t("sending") : t("send")}
 
         </button>
 

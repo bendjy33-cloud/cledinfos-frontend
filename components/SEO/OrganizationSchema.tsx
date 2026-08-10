@@ -3,43 +3,48 @@ export default function OrganizationSchema({
 }: {
   settings: any;
 }) {
-
   const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ||
     "http://localhost:3000";
-
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
 
-    "name": settings.site_name,
+    name: settings.site_name || "Clé d'Infos",
 
-    "url": SITE_URL,
+    url: SITE_URL,
 
-    "logo": {
+    logo: {
       "@type": "ImageObject",
-      "url": settings.logo
-        ? `${process.env.NEXT_PUBLIC_API_URL?.replace("/api","")}/storage/${settings.logo}`
-        : `${SITE_URL}/icon-512.png`
+      url:
+        settings.logo_url ||
+        `${SITE_URL}/icon-512.png`,
     },
 
-    "contactPoint": {
+    description: settings.description,
+
+    contactPoint: {
       "@type": "ContactPoint",
-      "email": settings.email,
-      "telephone": settings.phone,
-      "contactType": "customer service"
+      email: settings.email,
+      telephone: settings.phone,
+      contactType: "customer service",
     },
 
-    "sameAs": [
+    address: settings.address
+      ? {
+          "@type": "PostalAddress",
+          streetAddress: settings.address,
+        }
+      : undefined,
+
+    sameAs: [
       settings.facebook,
       settings.instagram,
       settings.youtube,
-      settings.twitter
-    ].filter(Boolean)
-
+      settings.twitter,
+    ].filter(Boolean),
   };
-
 
   return (
     <script

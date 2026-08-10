@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function BackToTop() {
+
+  const t = useTranslations("BackToTop");
+
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -12,22 +16,27 @@ export default function BackToTop() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+
   }, []);
+
 
   function scrollTop() {
     window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+      top:0,
+      behavior:"smooth",
     });
   }
 
+
   if (!visible) return null;
+
 
   return (
     <button
       onClick={scrollTop}
-      aria-label="Retour en haut"
+      aria-label={t("label")}
       className="fixed bottom-6 right-6 z-50 bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full shadow-xl transition-all duration-300"
     >
       ↑
