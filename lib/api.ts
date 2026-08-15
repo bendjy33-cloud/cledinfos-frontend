@@ -99,14 +99,10 @@ export async function getLatestPosts() {
 // CATEGORIES
 
 export async function getCategories() {
+  const data: any = await apiFetch("/categories");
 
-  const data: any = await apiFetch(
-    `/categories`
-  );
-
-  return data.data;
+  return data.data ?? data;
 }
-
 
 export async function getPostsByCategory(
   slug: string
@@ -256,19 +252,17 @@ export async function getAuthor(slug: string) {
   return data.data ?? data;
 }
 
-export async function getBreakingNews(){
-
+export async function getBreakingNews(locale: string) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/breaking-news`,
+    `${process.env.NEXT_PUBLIC_API_URL}/breaking-news?locale=${locale}`,
     {
-      next:{
-        revalidate:60,
+      next: {
+        revalidate: 60,
       },
     }
   );
 
   return res.json();
-
 }
 
 export async function getTrendingPosts(){

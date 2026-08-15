@@ -119,11 +119,12 @@
   },
 
   "PostPage": {
-    "views": "vizit",
-    "tags": "Mo kle",
-    "share": "Pataje atik sa a",
-    "related": "Atik ki sanble"
-  },
+  "home": "Akèy",
+  "views": "vizit",
+  "tags": "Mo kle",
+  "share": "Pataje atik sa a",
+  "related": "Atik ki sanble"
+},
 
  "AuthorsPage": {
   "title": "Otè nou yo"

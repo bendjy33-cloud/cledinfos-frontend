@@ -118,17 +118,18 @@
     "description": "Discover all Clé d'Infos news: politics, economy, sports, culture and more."
   },
 
-  "PostPage": {
-    "views": "views",
-    "tags": "Tags",
-    "share": "Share this article",
-    "related": "Related articles"
+ "PostPage": {
+  "home": "Home",
+  "views": "views",
+  "tags": "Keywords",
+  "share": "Share this article",
+  "related": "Related articles"
   },
 
  "AuthorsPage": {
   "title": "Our Authors"
-},
-
+  },
+ 
   "AuthorPage": {
     "articlesBy": "Articles by {name}",
     "metaTitle": "{name} | Clé d'Infos",

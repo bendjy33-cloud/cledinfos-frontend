@@ -37,7 +37,7 @@ export default function TrendingPosts({
 
               <Image
                 src={post.image}
-                alt={post.title}
+                alt={post.title || "Article"}
                 fill
                 unoptimized
                 className="object-cover"
@@ -65,6 +65,7 @@ export default function TrendingPosts({
         ))}
 
       </div>
+
 
     </section>
   );

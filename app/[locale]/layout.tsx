@@ -89,7 +89,7 @@ export default async function RootLayout({
   const settings = await getSettings();
 
 
-  const breakingResponse = await getBreakingNews();
+ const breakingResponse = await getBreakingNews(locale);
 
   const breakingNews =
     breakingResponse.data ?? [];

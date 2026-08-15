@@ -119,15 +119,16 @@
   },
 
   "PostPage": {
+    "home": "Accueil",
     "views": "vues",
-    "tags": "Tags",
+    "tags": "Mots-clés",
     "share": "Partager cet article",
     "related": "Articles similaires"
   },
 
-  "AuthorsPage": {
-  "title": "Nos Auteurs"
-},
+    "AuthorsPage": {
+    "title": "Nos Auteurs"
+  },
 
   "AuthorPage": {
     "articlesBy": "Articles de {name}",

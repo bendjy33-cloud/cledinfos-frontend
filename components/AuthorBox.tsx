@@ -27,6 +27,10 @@ export default function AuthorBox({
   const t = useTranslations("AuthorBox");
   const format = useFormatter();
 
+  if (!author) {
+  return null;
+}
+
   const authorPhoto = 
   author.photo_url || 
   author.photo ||

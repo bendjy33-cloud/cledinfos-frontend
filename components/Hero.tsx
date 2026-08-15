@@ -8,46 +8,37 @@ type Props = {
 };
 
 export default function Hero({ post }: Props) {
-
   const t = useTranslations("Hero");
 
-
   if (!post) return null;
-
 
   return (
     <section className="relative h-[500px] rounded-2xl overflow-hidden mb-10">
 
       <Image
         src={post.image}
-        alt={post.title}
+        alt={post.title || "Featured article"}
         fill
         priority
         unoptimized
         className="object-cover"
       />
 
-
       <div className="absolute inset-0 bg-black/60 flex items-end">
-
 
         <div className="p-8 text-white">
 
-
           <span className="bg-red-600 px-3 py-1 rounded text-sm">
-            {post.category.name}
+            {post.category?.name || ""}
           </span>
-
 
           <h1 className="text-5xl font-bold mt-4">
             {post.title}
           </h1>
 
-
           <p className="mt-4 max-w-2xl text-lg">
             {post.meta_description}
           </p>
-
 
           <Link
             href={`/posts/${post.slug}`}
@@ -56,12 +47,9 @@ export default function Hero({ post }: Props) {
             {t("readArticle")} →
           </Link>
 
-
         </div>
 
-
       </div>
-
 
     </section>
   );
