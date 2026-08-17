@@ -253,16 +253,9 @@ export async function getAuthor(slug: string) {
 }
 
 export async function getBreakingNews(locale: string) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/breaking-news?locale=${locale}`,
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
+  return apiFetch(
+    `/breaking-news?locale=${locale}`
   );
-
-  return res.json();
 }
 
 export async function getTrendingPosts(){
