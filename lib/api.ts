@@ -252,8 +252,23 @@ export async function getAuthor(slug: string) {
   return data.data ?? data;
 }
 
-export async function getBreakingNews(locale: string) {
-  return apiFetch(
+type BreakingNewsResponse = {
+  data: BreakingNewsItem[];
+};
+
+type BreakingNewsItem = {
+  id: number;
+  title: string;
+  link?: string | null;
+  active?: boolean;
+  starts_at?: string | null;
+  ends_at?: string | null;
+};
+
+export async function getBreakingNews(
+  locale: string
+): Promise<BreakingNewsResponse> {
+  return apiFetch<BreakingNewsResponse>(
     `/breaking-news?locale=${locale}`
   );
 }
