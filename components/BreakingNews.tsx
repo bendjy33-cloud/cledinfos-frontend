@@ -22,27 +22,52 @@ export default function BreakingNews({
 
   return (
     <div
-      className="bg-red-600 text-white overflow-hidden"
+      className="w-full bg-red-600 text-white overflow-hidden"
       aria-label={t("label")}
     >
-      <div className="flex whitespace-nowrap animate-marquee py-2">
-        <span className="font-bold mx-8">
+      <div
+        className="
+          flex
+          w-max
+          whitespace-nowrap
+          animate-marquee
+          py-2
+          text-sm
+          sm:text-base
+        "
+      >
+        {/* LABEL */}
+        <span className="font-bold mx-4 sm:mx-8 shrink-0">
           🚨 {t("label")}:
         </span>
 
+        {/* NEWS */}
         {news.map((item) =>
           item.link ? (
             <Link
               key={item.id}
               href={item.link}
-              className="mx-20 font-semibold hover:underline"
+              className="
+                mx-8
+                sm:mx-12
+                lg:mx-20
+                font-semibold
+                hover:underline
+                shrink-0
+              "
             >
               {item.title}
             </Link>
           ) : (
             <span
               key={item.id}
-              className="mx-20 font-semibold"
+              className="
+                mx-8
+                sm:mx-12
+                lg:mx-20
+                font-semibold
+                shrink-0
+              "
             >
               {item.title}
             </span>

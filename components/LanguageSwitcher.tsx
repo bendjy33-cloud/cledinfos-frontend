@@ -12,23 +12,28 @@
 
   const [open, setOpen] = useState(false); 
 
-  const locales = [
-    { 
-      code: "fr",
-      label: t("french"), 
-      flag: "🇫🇷", 
-    }, 
-    { 
-      code: "en", 
-      label: t("english"), 
-      flag: "🇺🇸", 
-    }, 
-    { 
-      code: "ht", 
-      label: t("creole"), 
-      flag: "🇭🇹", 
-    }, 
-  ]; 
+ const locales = [
+  {
+    code: "fr",
+    label: t("french"),
+    flag: "🇫🇷",
+  },
+  {
+    code: "en",
+    label: t("english"),
+    flag: "🇺🇸",
+  },
+  {
+    code: "ht",
+    label: t("creole"),
+    flag: "🇭🇹",
+  },
+  {
+    code: "es",
+    label: t("spanish"),
+    flag: "🇪🇸",
+  },
+];
   function changeLocale(newLocale: string) {
     if (newLocale === locale) {
        setOpen(false); 

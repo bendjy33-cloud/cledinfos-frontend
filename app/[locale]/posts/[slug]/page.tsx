@@ -472,28 +472,15 @@ export default async function PostPage({
 
         {/* IMAGE */}
 
-        <div className="relative w-full h-[520px] rounded-2xl overflow-hidden">
-
+        <div className="relative w-full h-[520px] rounded-2xl overflow-hidden bg-gray-100 dark:bg-slate-800">
           <Image
-            src={
-              post.image ||
-              "/placeholder.jpg"
-            }
-
-            alt={
-              post.title ||
-              "Article"
-            }
-
+            src={post.image || "/placeholder.jpg"}
+            alt={post.title || "Article"}
             fill
-
             priority
-
             unoptimized
-
-            className="object-cover"
+            className="object-contain"
           />
-
         </div>
 
       </section>

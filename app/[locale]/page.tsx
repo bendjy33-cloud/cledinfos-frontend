@@ -13,88 +13,158 @@ export default async function HomePage() {
 
   const home = await getHomeData();
 
+  // ========================================
+  // LOCALIZE POST
+  // ========================================
+
   const getLocalizedPost = (post: any) => {
     if (!post) return post;
 
+    // -------------------------
+    // TITLE
+    // -------------------------
+
     const title =
-      locale === "en"
-        ? post.title_en ?? post.title_fr ?? post.title_ht
-        : locale === "ht"
-          ? post.title_ht ?? post.title_fr ?? post.title_en
-          : post.title_fr ?? post.title_en ?? post.title_ht;
+      locale === "es"
+        ? post.title_es ??
+          post.title_en ??
+          post.title_fr ??
+          post.title_ht
+        : locale === "en"
+          ? post.title_en ??
+            post.title_fr ??
+            post.title_ht
+          : locale === "ht"
+            ? post.title_ht ??
+              post.title_fr ??
+              post.title_en
+            : post.title_fr ??
+              post.title_en ??
+              post.title_ht;
+
+    // -------------------------
+    // META DESCRIPTION
+    // -------------------------
 
     const meta_description =
-      locale === "en"
-        ? post.meta_description_en ??
+      locale === "es"
+        ? post.meta_description_es ??
+          post.meta_description_en ??
           post.meta_description_fr ??
           post.meta_description_ht
-        : locale === "ht"
-          ? post.meta_description_ht ??
+        : locale === "en"
+          ? post.meta_description_en ??
             post.meta_description_fr ??
-            post.meta_description_en
-          : post.meta_description_fr ??
-            post.meta_description_en ??
-            post.meta_description_ht;
+            post.meta_description_ht
+          : locale === "ht"
+            ? post.meta_description_ht ??
+              post.meta_description_fr ??
+              post.meta_description_en
+            : post.meta_description_fr ??
+              post.meta_description_en ??
+              post.meta_description_ht;
+
+    // -------------------------
+    // CONTENT
+    // -------------------------
 
     const content =
-      locale === "en"
-        ? post.content_en ??
+      locale === "es"
+        ? post.content_es ??
+          post.content_en ??
           post.content_fr ??
           post.content_ht
-        : locale === "ht"
-          ? post.content_ht ??
+        : locale === "en"
+          ? post.content_en ??
             post.content_fr ??
-            post.content_en
-          : post.content_fr ??
-            post.content_en ??
-            post.content_ht;
+            post.content_ht
+          : locale === "ht"
+            ? post.content_ht ??
+              post.content_fr ??
+              post.content_en
+            : post.content_fr ??
+              post.content_en ??
+              post.content_ht;
+
+    // -------------------------
+    // KEYWORDS
+    // -------------------------
 
     const keywords =
-      locale === "en"
-        ? post.keywords_en ??
+      locale === "es"
+        ? post.keywords_es ??
+          post.keywords_en ??
           post.keywords_fr ??
           post.keywords_ht
-        : locale === "ht"
-          ? post.keywords_ht ??
+        : locale === "en"
+          ? post.keywords_en ??
             post.keywords_fr ??
-            post.keywords_en
-          : post.keywords_fr ??
-            post.keywords_en ??
-            post.keywords_ht;
+            post.keywords_ht
+          : locale === "ht"
+            ? post.keywords_ht ??
+              post.keywords_fr ??
+              post.keywords_en
+            : post.keywords_fr ??
+              post.keywords_en ??
+              post.keywords_ht;
+
+    // -------------------------
+    // CATEGORY
+    // -------------------------
 
     const category = post.category
       ? {
           ...post.category,
+
           name:
-            locale === "en"
-              ? post.category.name_en ??
+            locale === "es"
+              ? post.category.name_es ??
+                post.category.name_en ??
                 post.category.name_fr ??
                 post.category.name_ht
-              : locale === "ht"
-                ? post.category.name_ht ??
+              : locale === "en"
+                ? post.category.name_en ??
                   post.category.name_fr ??
-                  post.category.name_en
-                : post.category.name_fr ??
-                  post.category.name_en ??
-                  post.category.name_ht,
+                  post.category.name_ht
+                : locale === "ht"
+                  ? post.category.name_ht ??
+                    post.category.name_fr ??
+                    post.category.name_en
+                  : post.category.name_fr ??
+                    post.category.name_en ??
+                    post.category.name_ht,
         }
       : null;
 
     return {
       ...post,
+
       title: title ?? "",
       meta_description: meta_description ?? "",
       content: content ?? "",
       keywords: keywords ?? "",
+
       category,
     };
   };
 
+  // ========================================
+  // HERO
+  // ========================================
+
   const hero = getLocalizedPost(home.hero);
+
+  // ========================================
+  // FEATURED
+  // ========================================
 
   const featured = (home.featured ?? []).map(
     (post: any) => getLocalizedPost(post)
   );
+
+  // ========================================
+  // LATEST
+  // ========================================
 
   const latestRaw = home.latest?.data ?? home.latest ?? [];
 
@@ -102,74 +172,140 @@ export default async function HomePage() {
     (post: any) => getLocalizedPost(post)
   );
 
+  // ========================================
+  // TRENDING
+  // ========================================
+
   const trending = (home.trending ?? []).map(
     (post: any) => getLocalizedPost(post)
   );
 
+  // ========================================
+  // ADS
+  // ========================================
+
   const ads = await getAds("sidebar");
 
+  // ========================================
+  // PAGE
+  // ========================================
+
   return (
-    <main className="max-w-7xl mx-auto px-6 py-8">
+    <main className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-6 sm:py-8">
+
+      {/* ========================================
+          HERO
+      ======================================== */}
 
       {hero && <Hero post={hero} />}
 
-      <div className="grid lg:grid-cols-3 gap-10">
+
+      {/* ========================================
+          MAIN CONTENT + SIDEBAR
+      ======================================== */}
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+
+        {/* ========================================
+            MAIN CONTENT
+        ======================================== */}
 
         <section className="lg:col-span-2">
 
+          {/* ========================================
+              FEATURED POSTS
+          ======================================== */}
+
           {featured.length > 0 && (
             <>
-              <h2 className="text-3xl font-bold mb-6">
+
+              <h2 className="text-2xl sm:text-3xl font-bold mb-5 md:mb-6">
                 {t("featured")}
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-14">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-14">
+
                 {featured.map((post: any) => (
                   <PostCard
                     key={post.id}
                     post={post}
                   />
                 ))}
+
               </div>
+
             </>
           )}
 
-          <h2 className="text-3xl font-bold mb-6">
+
+          {/* ========================================
+              LATEST POSTS
+          ======================================== */}
+
+          <h2 className="text-2xl sm:text-3xl font-bold mb-5 md:mb-6">
             {t("latest")}
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+
             {latest.map((post: any) => (
               <PostCard
                 key={post.id}
                 post={post}
               />
             ))}
+
           </div>
 
-          <div className="flex justify-center mt-10">
+
+          {/* ========================================
+              VIEW ALL BUTTON
+          ======================================== */}
+
+          <div className="flex justify-center mt-8 md:mt-10">
+
             <Link
               href="/actualites"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition"
+              className="bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition text-sm sm:text-base"
             >
               {t("viewAll")} →
             </Link>
+
           </div>
 
         </section>
 
-        <aside>
 
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow p-6 sticky top-24">
+        {/* ========================================
+            SIDEBAR
+        ======================================== */}
+
+        <aside className="w-full">
+
+          {/* Trending */}
+
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow p-4 sm:p-5 md:p-6">
+
             <TrendingPosts posts={trending} />
+
           </div>
 
-          <div className="mt-10">
+
+          {/* Ads */}
+
+          <div className="mt-8 md:mt-10">
+
             <Ads ads={ads} />
+
           </div>
 
-          <div className="mt-8">
+
+          {/* Newsletter */}
+
+          <div className="mt-6 md:mt-8">
+
             <Newsletter />
+
           </div>
 
         </aside>

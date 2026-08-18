@@ -22,6 +22,7 @@
     "about": "About",
     "privacy": "Privacy Policy",
     "cookies": "Cookies Policy",
+    "social": "Follow us",
     "terms": "Terms of Use",
     "defaultCountry": "Haiti",
     "copyright": "All rights reserved.",
@@ -407,10 +408,11 @@
 },
 
 "LanguageSwitcher": {
-  "label": "Choose language",
+  "label": "Choisir la langue",
   "french": "Français",
   "english": "English",
-  "creole": "Kreyòl"
+  "creole": "Kreyòl",
+  "spanish": "Español"
 }
 }
 

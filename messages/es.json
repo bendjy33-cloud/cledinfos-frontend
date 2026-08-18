@@ -1,0 +1,413 @@
+{
+  "site": {
+    "name": "Clé d'Infos"
+  },
+
+  "menu": {
+    "home": "Inicio",
+    "about": "Sobre nosotros",
+    "contact": "Contacto",
+    "search": "Buscar..."
+  },
+
+  "home": {
+    "featured": "Destacados",
+    "latest": "Últimos artículos",
+    "viewAll": "Ver todas las noticias"
+  },
+
+  "footer": {
+    "contact": "Contacto",
+    "links": "Enlaces útiles",
+    "about": "Sobre nosotros",
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies",
+    "social": "Síguenos",
+    "terms": "Términos de uso",
+    "defaultCountry": "Haití",
+    "copyright": "Todos los derechos reservados.",
+    "description": "Clé d'Infos es una plataforma de medios digitales comprometida con proporcionar información clara, confiable y oportuna al público."
+  },
+
+  "newsletter": {
+    "title": "Boletín informativo",
+    "heading": "No te pierdas ninguna noticia",
+    "description": "Recibe las últimas noticias de Clé d'Infos directamente en tu correo electrónico.",
+    "placeholder": "Tu dirección de correo electrónico",
+    "button": "Suscribirse",
+    "sending": "Enviando...",
+    "success": "¡Gracias por suscribirte!",
+    "error": "Ocurrió un error. Por favor, inténtalo de nuevo.",
+    "footer": "Al suscribirte, aceptas recibir los boletines de Clé d'Infos."
+  },
+
+  "TrendingPosts": {
+    "title": "Tendencias",
+    "views": "visualizaciones"
+  },
+
+  "BreakingNews": {
+    "label": "ÚLTIMA HORA"
+  },
+
+  "FeaturedSection": {
+    "title": "Noticias destacadas"
+  },
+
+  "Hero": {
+    "readArticle": "Leer artículo"
+  },
+
+  "PostCard": {
+    "views": "visualizaciones"
+  },
+
+  "AuthorBox": {
+    "aboutAuthor": "Sobre el autor",
+    "publishedOn": "Publicado el"
+  },
+
+  "Comments": {
+    "title": "Comentarios",
+    "empty": "Aún no hay comentarios.",
+    "leaveComment": "Dejar un comentario",
+    "success": "Tu comentario está esperando aprobación.",
+    "error": "Error",
+    "name": "Tu nombre",
+    "email": "Tu correo electrónico",
+    "comment": "Tu comentario",
+    "sending": "Enviando...",
+    "send": "Enviar"
+  },
+
+  "SearchBar": {
+    "placeholder": "Buscar...",
+    "button": "Buscar"
+  },
+
+  "Pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+
+  "MostRead": {
+    "title": "Más leídos"
+  },
+
+  "CookieBanner": {
+    "title": "Cookies",
+    "description": "Clé d'Infos utiliza cookies para mejorar tu experiencia, medir la audiencia y personalizar algunos contenidos.",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
+  },
+
+  "MobileMenu": {
+    "menu": "Menú",
+    "search": "Buscar...",
+    "home": "Inicio",
+    "about": "Sobre nosotros",
+    "contact": "Contacto"
+  },
+
+  "TableOfContents": {
+    "title": "Índice"
+  },
+
+  "ActualitesPage": {
+    "title": "Todas las noticias",
+    "breadcrumb": "Noticias",
+    "description": "Descubre todas las noticias de Clé d'Infos: política, economía, deportes, cultura y mucho más."
+  },
+
+  "PostPage": {
+    "home": "Inicio",
+    "views": "visualizaciones",
+    "tags": "Palabras clave",
+    "share": "Compartir este artículo",
+    "related": "Artículos relacionados"
+  },
+
+  "AuthorsPage": {
+    "title": "Nuestros autores"
+  },
+
+  "AuthorPage": {
+    "articlesBy": "Artículos de {name}",
+    "metaTitle": "{name} | Clé d'Infos",
+    "metaDescription": "Descubre los artículos escritos por {name} en Clé d'Infos."
+  },
+
+  "SearchPage": {
+    "title": "Buscar",
+    "breadcrumb": "Buscar",
+    "placeholder": "Introduce una palabra clave para buscar artículos.",
+    "results": "{count} resultado(s) para \"{query}\"",
+    "noResults": "No se encontraron resultados",
+    "tryAgain": "Prueba con otra palabra clave.",
+    "metaTitle": "Buscar | Clé d'Infos",
+    "metaDescription": "Busca artículos en Clé d'Infos."
+  },
+
+  "CategoryPage": {
+    "metaTitle": "{category} - Clé d'Infos",
+    "noPosts": "No se encontraron artículos.",
+    "metaDescription": "Descubre todas las noticias de la categoría {category} en Clé d'Infos.",
+    "metaOgDescription": "Últimas noticias sobre {category}."
+  },
+
+  "TagPage": {
+    "metaTitle": "#{tag} | Clé d'Infos",
+    "metaDescription": "Descubre todos los artículos relacionados con la etiqueta {tag}.",
+    "noPosts": "No se encontraron artículos para esta etiqueta."
+  },
+
+  "TagsPage": {
+    "title": "Etiquetas",
+    "metaTitle": "Etiquetas | Clé d'Infos",
+    "metaDescription": "Explora todas las etiquetas disponibles en Clé d'Infos.",
+    "noTags": "No hay etiquetas disponibles."
+  },
+
+  "ContactPage": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes alguna pregunta o información que compartir? Nuestro equipo te responderá lo antes posible.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "message": "Tu mensaje...",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "success": "Mensaje enviado correctamente.",
+    "error": "Ocurrió un error.",
+    "serverError": "No se pudo contactar con el servidor.",
+    "metaTitle": "Contacto | Clé d'Infos",
+    "metaDescription": "Contacta con el equipo de Clé d'Infos para cualquier pregunta, sugerencia, colaboración o solicitud de información.",
+    "metaOgDescription": "Contacta con el equipo de Clé d'Infos."
+  },
+
+  "AboutPage": {
+    "metaTitle": "Sobre nosotros | Clé d'Infos",
+    "metaDescription": "Descubre Clé d'Infos, nuestra misión, nuestros valores y nuestro equipo.",
+    "heroTitle": "Sobre Clé d'Infos",
+    "heroDescription": "Clé d'Infos es un medio de comunicación digital comprometido con ofrecer información clara, confiable y oportuna. Conoce más sobre nuestra identidad, misión y visión.",
+
+    "who": {
+      "title": "¿Quiénes somos?",
+      "description": "Clé d'Infos es una plataforma de medios digitales moderna, independiente y dinámica. Impulsados por periodistas y creadores de contenido apasionados, creemos firmemente en el poder de la información de calidad. En un mundo saturado de rumores y noticias falsas, queremos ser la clave que abra la puerta a la verdad, proporcionando cada día información verificada, objetiva y útil."
+    },
+
+    "mission": {
+      "title": "Nuestra misión 🎯",
+      "quote": "\"Iluminar las mentes mediante información de alto valor.\"",
+
+      "item1Title": "Informar y educar:",
+      "item1": "Ofrecer noticias locales e internacionales, cubriendo también la educación, la tecnología, la cultura y la economía.",
+
+      "item2Title": "Combatir la desinformación:",
+      "item2": "Investigar los rumores falsos y verificar cuidadosamente los hechos para garantizar que solo se publique información precisa.",
+
+      "item3Title": "Dar voz a los ciudadanos:",
+      "item3": "Proporcionar una plataforma donde las personas puedan compartir sus realidades, desafíos y aspiraciones."
+    },
+
+    "vision": {
+      "title": "Nuestra visión",
+      "intro": "Nuestra ambición para el futuro es:",
+
+      "item1Title": "Convertirnos en una referencia líder:",
+      "item1": "Establecernos como una fuente confiable a la que las personas recurran naturalmente para obtener información auténtica.",
+
+      "item2Title": "Construir una sociedad mejor informada:",
+      "item2": "Promover ciudadanos informados y responsables, capaces de tomar las mejores decisiones para su futuro.",
+
+      "item3Title": "Innovar en la difusión de noticias:",
+      "item3": "Utilizar tecnologías modernas y formatos digitales para hacer que la información sea más accesible, interactiva y atractiva."
+    },
+
+    "values": {
+      "title": "Nuestros valores",
+
+      "integrity": "Integridad",
+      "integrityText": "Buscamos la verdad y la comunicamos con honestidad.",
+
+      "objectivity": "Objetividad",
+      "objectivityText": "Ofrecemos información de manera neutral, equilibrada e imparcial.",
+
+      "responsibility": "Responsabilidad",
+      "responsibilityText": "Comprendemos el impacto de nuestras palabras e imágenes y seguimos estrictamente la ética periodística.",
+
+      "respect": "Respeto",
+      "respectText": "Respetamos a nuestros lectores, nuestras fuentes y los hechos."
+    },
+
+    "stats": {
+      "title": "Clé d'Infos en cifras",
+      "articles": "Artículos publicados",
+      "categories": "Categorías",
+      "news": "Actualizaciones de noticias",
+      "verified": "Información verificada"
+    },
+
+    "team": {
+      "title": "Nuestro equipo",
+      "description": "Un equipo apasionado que trabaja cada día para ofrecer información confiable y de calidad.",
+      "ceo": "CEO || PRESENTADOR",
+      "developer": "Especialista en TI || Desarrollador web",
+      "assistant": "Asistente de video || Fotógrafo",
+      "designer": "Diseñador"
+    }
+  },
+
+  "cookies": {
+    "metaTitle": "Política de cookies | Clé d’Infos",
+    "metaDescription": "Descubre cómo Clé d’Infos utiliza las cookies.",
+
+    "title": "Política de cookies",
+
+    "intro": "Clé d’Infos utiliza cookies para mejorar tu experiencia de navegación y proporcionar determinados servicios.",
+
+    "whatTitle": "¿Qué son las cookies?",
+    "whatText": "Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando visitas nuestro sitio web.",
+
+    "whyTitle": "¿Por qué utilizamos cookies?",
+
+    "items": {
+      "performance": "Mejorar el rendimiento del sitio web.",
+      "analytics": "Medir la audiencia mediante Google Analytics.",
+      "preferences": "Recordar las preferencias de los usuarios.",
+      "content": "Proporcionar contenido relevante."
+    },
+
+    "manageTitle": "Gestión de cookies",
+    "manageText": "Puedes aceptar, rechazar o eliminar las cookies desde la configuración de tu navegador.",
+
+    "updateTitle": "Cambios en esta política",
+    "updateText": "Esta política puede actualizarse para cumplir con cambios legales o técnicos."
+  },
+
+  "privacy": {
+    "metaTitle": "Política de privacidad | Clé d’Infos",
+    "metaDescription": "Descubre cómo Clé d’Infos protege tu información personal.",
+
+    "title": "Política de privacidad",
+
+    "intro": "En Clé d’Infos, nos tomamos muy en serio tu privacidad y la protección de tus datos personales.",
+
+    "collectTitle": "Información recopilada",
+    "collectText": "Podemos recopilar información como tu nombre, dirección de correo electrónico y datos de navegación cuando utilizas nuestro sitio web.",
+
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Nuestro sitio web utiliza cookies para mejorar tu experiencia, medir la audiencia y personalizar el contenido.",
+
+    "analyticsTitle": "Google Analytics",
+    "analyticsText": "Utilizamos Google Analytics para analizar el tráfico del sitio web y mejorar nuestros servicios.",
+
+    "adsTitle": "Publicidad",
+    "adsText": "En el futuro, nuestro sitio web podrá utilizar Google AdSense para mostrar anuncios personalizados.",
+
+    "protectionTitle": "Protección de datos",
+    "protectionText": "Implementamos medidas razonables para proteger tu información contra accesos no autorizados.",
+
+    "contactTitle": "Contáctanos",
+    "contactText": "Para cualquier pregunta relacionada con esta política, utiliza la página de Contacto."
+  },
+
+  "terms": {
+    "metaTitle": "Términos de uso | Clé d’Infos",
+    "metaDescription": "Lee los términos de uso de Clé d’Infos.",
+
+    "title": "Términos de uso",
+
+    "intro": "Bienvenido a Clé d’Infos. Al utilizar este sitio web, aceptas estos términos de uso.",
+
+    "useTitle": "Uso del sitio web",
+    "useText": "La información publicada en Clé d’Infos tiene como objetivo informar al público. No debe utilizarse con fines ilegales.",
+
+    "intellectualTitle": "Propiedad intelectual",
+    "intellectualText": "Los textos, imágenes, logotipos y demás contenidos publicados en este sitio web están protegidos por las leyes de propiedad intelectual.",
+
+    "responsibilityTitle": "Responsabilidad",
+    "responsibilityText": "Clé d’Infos trabaja para proporcionar información confiable, pero no garantiza la ausencia total de errores.",
+
+    "externalTitle": "Enlaces externos",
+    "externalText": "Nuestro sitio web puede contener enlaces a otros sitios web. No somos responsables de su contenido ni de sus políticas.",
+
+    "modificationTitle": "Cambios en los términos",
+    "modificationText": "Estos términos pueden modificarse en cualquier momento debido a cambios en el sitio web o en la legislación.",
+
+    "contactTitle": "Contacto",
+    "contactText": "Para cualquier pregunta relacionada con estos términos, utiliza nuestra página de Contacto."
+  },
+
+  "faq": {
+    "metaTitle": "Preguntas frecuentes | Clé d’Infos",
+    "metaDescription": "Preguntas frecuentes sobre Clé d’Infos.",
+
+    "title": "Preguntas frecuentes",
+
+    "description": "Encuentra respuestas a las preguntas más frecuentes.",
+
+    "items": [
+      {
+        "question": "¿Qué es Clé d'Infos?",
+        "answer": "Clé d'Infos es una plataforma de medios digitales que publica noticias nacionales e internacionales."
+      },
+      {
+        "question": "¿La información está verificada?",
+        "answer": "Sí. Toda la información se verifica antes de su publicación."
+      },
+      {
+        "question": "¿Puedo compartir los artículos?",
+        "answer": "Sí. Puedes compartir nuestros artículos a través de Facebook, WhatsApp o X."
+      },
+      {
+        "question": "¿Cómo puedo contactar con la redacción?",
+        "answer": "Puedes utilizar nuestra página de Contacto para enviarnos un mensaje."
+      },
+      {
+        "question": "¿Cómo puedo recibir las últimas noticias?",
+        "answer": "Suscríbete gratuitamente a nuestro boletín informativo."
+      }
+    ]
+  },
+
+  "news": {
+    "metaTitle": "Todas las noticias | Clé d’Infos",
+    "metaDescription": "Descubre todas las noticias nacionales e internacionales en Clé d’Infos.",
+
+    "title": "Todas las noticias"
+  },
+
+  "Layout": {
+    "defaultTitle": "Clé d'Infos - Noticias nacionales e internacionales",
+    "description": "Últimas noticias de Haití y del mundo."
+  },
+
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido trasladada.",
+    "button": "Volver al inicio"
+  },
+
+  "ErrorPage": {
+    "title": "Algo salió mal",
+    "button": "Intentar de nuevo"
+  },
+
+  "BackToTop": {
+    "label": "Volver arriba"
+  },
+
+  "Breadcrumb": {
+    "home": "Inicio",
+    "ariaLabel": "Ruta de navegación"
+  },
+
+  "LanguageSwitcher": {
+    "label": "Elegir idioma",
+    "french": "Français",
+    "english": "English",
+    "creole": "Kreyòl",
+    "spanish": "Español"
+  }
+}

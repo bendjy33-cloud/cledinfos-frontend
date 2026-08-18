@@ -14,45 +14,54 @@ export default function PostCard({ post }: Props) {
   return (
     <Link
       href={`/posts/${post.slug}`}
-      className="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow hover:shadow-xl transition duration-300"
+      className="block bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow hover:shadow-xl transition duration-300"
     >
-      <div className="relative h-56 w-full">
-        <Image
-          src={post.image}
-          alt={post.title || "Article"}
-          fill
-          unoptimized
-          className="object-cover"
-        />
-      </div>
 
-      <div className="p-5">
-        <span className="text-sm text-red-600 font-semibold">
+      {/* Image */}
+      <div className="relative h-48 sm:h-52 md:h-56 w-full bg-gray-100 dark:bg-slate-800">
+          <Image
+            src={post.image || "/placeholder.jpg"}
+            alt={post.title || "Article"}
+            fill
+            unoptimized
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-contain"
+          />
+        </div>
+
+      {/* Content */}
+      <div className="p-4 sm:p-5">
+
+        <span className="text-xs sm:text-sm text-red-600 font-semibold line-clamp-1">
           {post.category?.name || ""}
         </span>
 
-        <h2 className="text-xl font-bold mt-2 mb-2 dark:text-white">
+        <h2 className="text-lg sm:text-xl font-bold mt-2 mb-2 dark:text-white line-clamp-3">
           {post.title}
         </h2>
 
-        <p className="text-gray-600 dark:text-gray-300 line-clamp-3">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 line-clamp-3">
           {post.meta_description}
         </p>
 
-        <div className="flex justify-between mt-4 text-sm text-gray-500">
-          <span>
+        <div className="flex flex-col sm:flex-row justify-between gap-2 mt-4 text-xs sm:text-sm text-gray-500">
+
+          <span className="whitespace-nowrap">
             👁 {post.views} {t("views")}
           </span>
 
-          <span>
+          <span className="whitespace-nowrap">
             {format.dateTime(new Date(post.published_at), {
               year: "numeric",
               month: "short",
               day: "numeric",
             })}
           </span>
+
         </div>
+
       </div>
+
     </Link>
   );
 }

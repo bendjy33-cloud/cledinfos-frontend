@@ -10,9 +10,9 @@ type Props = {
   }>;
 };
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
 
@@ -24,9 +24,7 @@ export async function generateMetadata(
 
   const t = await getTranslations("CategoryPage");
 
-  const title = category
-    ? category.name
-    : slug;
+  const title = category?.name || decodedSlug;
 
   return {
     title: t("metaTitle", {
@@ -59,53 +57,41 @@ export default async function CategoryPage({
   params,
 }: Props) {
   const t = await getTranslations("CategoryPage");
-
   const locale = await getLocale();
 
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
 
-  const posts = await getPostsByCategory(slug);
-
-  /*
-   * Get all categories so we can always find
-   * the category name even when there are no posts.
-   */
+  const posts = await getPostsByCategory(decodedSlug);
   const categories = await getCategories();
 
   const category = categories.find(
-    (item: any) => item.slug === slug
+    (item: any) => item.slug === decodedSlug
   );
 
-  /*
-   * Select the category name according to
-   * the current language.
-   */
   const categoryName =
     locale === "en"
       ? category?.name_en ??
         category?.name_fr ??
         category?.name_ht ??
-        slug
+        decodedSlug
       : locale === "ht"
         ? category?.name_ht ??
           category?.name_fr ??
           category?.name_en ??
-          slug
+          decodedSlug
         : category?.name_fr ??
           category?.name_en ??
           category?.name_ht ??
-          slug;
+          decodedSlug;
 
-  /*
-   * Also localize the category inside posts
-   * before sending them to PostCard.
-   */
   const localizedPosts = posts.map((post: any) => {
     if (!post) return post;
 
     const localizedCategory = post.category
       ? {
           ...post.category,
+
           name:
             locale === "en"
               ? post.category.name_en ??
@@ -121,14 +107,42 @@ export default async function CategoryPage({
         }
       : null;
 
+    const title =
+      locale === "en"
+        ? post.title_en ??
+          post.title_fr ??
+          post.title_ht
+        : locale === "ht"
+          ? post.title_ht ??
+            post.title_fr ??
+            post.title_en
+          : post.title_fr ??
+            post.title_en ??
+            post.title_ht;
+
+    const metaDescription =
+      locale === "en"
+        ? post.meta_description_en ??
+          post.meta_description_fr ??
+          post.meta_description_ht
+        : locale === "ht"
+          ? post.meta_description_ht ??
+            post.meta_description_fr ??
+            post.meta_description_en
+          : post.meta_description_fr ??
+            post.meta_description_en ??
+            post.meta_description_ht;
+
     return {
       ...post,
+      title: title ?? "",
+      meta_description: metaDescription ?? "",
       category: localizedCategory,
     };
   });
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-8">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10">
 
       <Breadcrumb
         items={[
@@ -138,22 +152,24 @@ export default async function CategoryPage({
         ]}
       />
 
-      <h1 className="text-4xl font-bold mb-8">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">
         {categoryName}
       </h1>
 
       {localizedPosts.length === 0 ? (
-        <p className="text-gray-500">
+        <p className="text-gray-500 text-sm sm:text-base">
           {t("noPosts")}
         </p>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+
           {localizedPosts.map((post: any) => (
             <PostCard
               key={post.id}
               post={post}
             />
           ))}
+
         </div>
       )}
 

@@ -17,29 +17,24 @@ import { getSettings, getBreakingNews } from "@/lib/api";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import CookieBanner from "@/components/CookieBanner";
-import ThemeProvider from "@/components/ThemeProvider";
 import BreakingNews from "@/components/BreakingNews";
 import OrganizationSchema from "@/components/SEO/OrganizationSchema";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-
   const { locale } = await params;
 
   const t = await getTranslations({
@@ -56,72 +51,49 @@ export async function generateMetadata({
   };
 }
 
-
-
 export default async function RootLayout({
-
   children,
-
   params,
-
 }: {
-
   children: React.ReactNode;
 
   params: Promise<{
     locale: string;
   }>;
-
 }) {
-
-
   const { locale } = await params;
-
 
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-
   const messages = await getMessages();
-
 
   const settings = await getSettings();
 
-
- const breakingResponse = await getBreakingNews(locale);
+  const breakingResponse = await getBreakingNews(locale);
 
   const breakingNews =
     breakingResponse.data ?? [];
 
-
-
   return (
-
     <html
       lang={locale}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
-
-
       <body
         className="
           min-h-screen
           flex
           flex-col
           antialiased
+          overflow-x-hidden
         "
       >
-
-
         <NextIntlClientProvider messages={messages}>
 
-
           <OrganizationSchema settings={settings} />
-
-
-          {/* <ThemeProvider> */}
 
           <BreakingNews news={breakingNews} />
 
@@ -137,21 +109,12 @@ export default async function RootLayout({
 
           <CookieBanner />
 
-        {/* </ThemeProvider> */}
-
-
           <GoogleAnalytics
             gaId="G-JEC19CYXG1"
           />
 
-
         </NextIntlClientProvider>
-
-
       </body>
-
-
     </html>
-
   );
 }

@@ -250,7 +250,7 @@ export async function generateMetadata(): Promise<Metadata> {
           {t("team.title")}</h2>
         <p className="text-center">{t("team.description")}</p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-6 text-center">
 
@@ -285,25 +285,6 @@ export async function generateMetadata(): Promise<Metadata> {
             </h3>
 
             <p>{t("team.developer")}</p>
-
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-6 text-center">
-
-            <Image
-              src="/team-placeholder.jpeg"
-              alt="Storly MARSEILLE"
-              width={150}
-              height={150}
-              className="rounded-full mx-auto border-4 border-red-600 object-cover"
-            />
-
-            <h3 className="text-xl font-bold mt-5">
-              Storly MARSEILLE
-            </h3>
-
-            <p>{t("team.assistant")}</p>
-
 
           </div>
 

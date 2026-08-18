@@ -22,6 +22,7 @@
     "about": "Konsènan",
     "privacy": "Règleman sou vi prive",
     "cookies": "Règleman sou bonbon (Cookies)",
+    "social": "Swiv nou",
     "terms": "Kondisyon itilizasyon",
     "copyright": "Tout dwa rezève.",
     "defaultCountry": "Ayiti",
@@ -420,10 +421,11 @@
   "ariaLabel": "Fil navigasyon"
 },
 
-  "LanguageSwitcher": {
-    "label": "Chwazi lang",
-    "french": " Français",
-    "english": " English",
-    "creole": " Kreyòl"
-  }
+ "LanguageSwitcher": {
+  "label": "Chwazi lang",
+  "french": "Français",
+  "english": "English",
+  "creole": "Kreyòl",
+  "spanish": "Español"
+}
 }
