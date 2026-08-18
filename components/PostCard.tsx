@@ -18,16 +18,16 @@ export default function PostCard({ post }: Props) {
     >
 
       {/* Image */}
-      <div className="relative h-48 sm:h-52 md:h-56 w-full bg-gray-100 dark:bg-slate-800">
-          <Image
-            src={post.image || "/placeholder.jpg"}
-            alt={post.title || "Article"}
-            fill
-            unoptimized
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-contain"
-          />
-        </div>
+     <div className="relative w-full aspect-[16/9] bg-gray-100 dark:bg-slate-800">
+        <Image
+          src={post.image || "/placeholder.jpg"}
+          alt={post.title || "Article"}
+          fill
+          unoptimized
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-contain"
+        />
+      </div>
 
       {/* Content */}
       <div className="p-4 sm:p-5">

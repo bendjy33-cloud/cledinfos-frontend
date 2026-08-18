@@ -121,19 +121,25 @@ export default async function Header() {
 
             const categoryName =
               locale === "es"
-                ? category.name_es ||
-                  category.name_en ||
-                  category.name_fr
-
+                ? category.name_es ??
+                  category.name_fr ??
+                  category.name_en ??
+                  category.name_ht ??
+                  category.name
                 : locale === "en"
-                  ? category.name_en ||
-                    category.name_fr
-
+                  ? category.name_en ??
+                    category.name_fr ??
+                    category.name_ht ??
+                    category.name
                   : locale === "ht"
-                    ? category.name_ht ||
-                      category.name_fr
-
-                    : category.name_fr;
+                    ? category.name_ht ??
+                      category.name_fr ??
+                      category.name_en ??
+                      category.name
+                    : category.name_fr ??
+                      category.name_en ??
+                      category.name_ht ??
+                      category.name;
 
             return (
               <Link
