@@ -5,6 +5,8 @@ import {
   FaInstagram,
   FaYoutube,
   FaXTwitter,
+  FaTiktok,
+  FaWhatsapp,
 } from "react-icons/fa6";
 
 type Props = {
@@ -131,18 +133,9 @@ export default async function Footer({ settings }: Props) {
                 href={settings.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  text-sm
-                  sm:text-base
-                  text-gray-300
-                  hover:text-blue-500
-                  transition
-                "
+                className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-blue-500 transition"
               >
-                <FaFacebook className="text-xl sm:text-2xl shrink-0" />
+                <FaFacebook className="text-xl sm:text-2xl shrink-0 text-[#1877F2]" />
                 <span>Facebook</span>
               </a>
             )}
@@ -152,18 +145,9 @@ export default async function Footer({ settings }: Props) {
                 href={settings.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  text-sm
-                  sm:text-base
-                  text-gray-300
-                  hover:text-pink-500
-                  transition
-                "
+                className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-pink-500 transition"
               >
-                <FaInstagram className="text-xl sm:text-2xl shrink-0" />
+                <FaInstagram className="text-xl sm:text-2xl shrink-0 text-[#E4405F]" />
                 <span>Instagram</span>
               </a>
             )}
@@ -173,18 +157,9 @@ export default async function Footer({ settings }: Props) {
                 href={settings.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  text-sm
-                  sm:text-base
-                  text-gray-300
-                  hover:text-red-500
-                  transition
-                "
+                className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-red-500 transition"
               >
-                <FaYoutube className="text-xl sm:text-2xl shrink-0" />
+                <FaYoutube className="text-xl sm:text-2xl shrink-0 text-[#FF0000]" />
                 <span>YouTube</span>
               </a>
             )}
@@ -194,19 +169,34 @@ export default async function Footer({ settings }: Props) {
                 href={settings.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  text-sm
-                  sm:text-base
-                  text-gray-300
-                  hover:text-white
-                  transition
-                "
+                className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-gray-400 transition"
               >
-                <FaXTwitter className="text-xl sm:text-2xl shrink-0" />
+                <FaXTwitter className="text-xl sm:text-2xl shrink-0 text-white" />
                 <span>X</span>
+              </a>
+            )}
+
+            {settings.tiktok && (
+              <a
+                href={settings.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-gray-200 transition"
+              >
+                <FaTiktok className="text-xl sm:text-2xl shrink-0 text-[#00F2EA]" />
+                <span>TikTok</span>
+              </a>
+            )}
+
+            {settings.whatsapp && (
+              <a
+                href={settings.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-green-400 transition"
+              >
+                <FaWhatsapp className="text-xl sm:text-2xl shrink-0 text-[#25D366]" />
+                <span>WhatsApp</span>
               </a>
             )}
 
