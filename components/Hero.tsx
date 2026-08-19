@@ -13,7 +13,19 @@ export default async function Hero({ post }: Props) {
   if (!post) return null;
 
   return (
-    <section className="relative h-[380px] sm:h-[430px] md:h-[480px] lg:h-[500px] rounded-xl sm:rounded-2xl overflow-hidden mb-8 md:mb-10">
+    <section className="relative w-full
+    aspect-[16/10]
+    sm:aspect-[16/9]
+    md:aspect-auto
+    md:h-[480px]
+    lg:h-[500px]
+    rounded-xl
+    sm:rounded-2xl
+    overflow-hidden
+    mb-8
+    md:mb-10
+  "
+>
 
       <Image
         src={post.image}
@@ -22,7 +34,7 @@ export default async function Hero({ post }: Props) {
         priority
         unoptimized
         sizes="100vw"
-        className="object-cover"
+        className="object-contain"
       />
 
       <div className="absolute inset-0 bg-black/60 flex items-end">
