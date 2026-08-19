@@ -101,13 +101,14 @@
     "reject": "Refuser"
   },
 
-    "MobileMenu": {
-    "menu": "Menu",
-    "search": "Rechercher...",
-    "home": "Accueil",
-    "about": "À propos",
-    "contact": "Contact"
-  },
+ "MobileMenu": {
+  "menu": "Menu",
+  "close": "Fermer",
+  "search": "Rechercher...",
+  "home": "Accueil",
+  "about": "À propos",
+  "contact": "Contact"
+},
 
   "TableOfContents": {
     "title": "Sommaire"

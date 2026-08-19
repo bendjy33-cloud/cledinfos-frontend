@@ -101,13 +101,14 @@
     "reject": "Rechazar"
   },
 
-  "MobileMenu": {
-    "menu": "Menú",
-    "search": "Buscar...",
-    "home": "Inicio",
-    "about": "Sobre nosotros",
-    "contact": "Contacto"
-  },
+"MobileMenu": {
+  "menu": "Menú",
+  "close": "Cerrar",
+  "search": "Buscar...",
+  "home": "Inicio",
+  "about": "Sobre nosotros",
+  "contact": "Contacto"
+},
 
   "TableOfContents": {
     "title": "Índice"

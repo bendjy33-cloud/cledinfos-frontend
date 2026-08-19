@@ -101,13 +101,14 @@
     "reject": "Refize"
   },
 
-   "MobileMenu": {
-    "menu": "Meni",
-    "search": "Rechèch...",
-    "home": "Akèy",
-    "about": "Konsènan nou",
-    "contact": "Kontak"
-  },
+"MobileMenu": {
+  "menu": "Meni",
+  "close": "Fèmen",
+  "search": "Chèche...",
+  "home": "Akèy",
+  "about": "Sou nou",
+  "contact": "Kontak"
+},
 
   "TableOfContents": {
     "title": "Sa ki ladan"

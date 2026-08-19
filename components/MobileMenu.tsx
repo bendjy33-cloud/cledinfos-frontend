@@ -31,6 +31,7 @@ export default function MobileMenu({ categories }: Props) {
           category.name_es ||
           category.name_en ||
           category.name_fr ||
+          category.name_ht ||
           ""
         );
 
@@ -38,6 +39,7 @@ export default function MobileMenu({ categories }: Props) {
         return (
           category.name_en ||
           category.name_fr ||
+          category.name_ht ||
           ""
         );
 
@@ -45,135 +47,146 @@ export default function MobileMenu({ categories }: Props) {
         return (
           category.name_ht ||
           category.name_fr ||
+          category.name_en ||
           ""
         );
 
       case "fr":
       default:
-        return category.name_fr || "";
+        return (
+          category.name_fr ||
+          category.name_en ||
+          category.name_ht ||
+          ""
+        );
     }
   }
 
   return (
-    <>
+    <div className="relative z-[110]">
+
       {/* ========================= */}
       {/* MENU BUTTON */}
       {/* ========================= */}
 
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen((prev) => !prev)}
         className="
-          lg:hidden
+          relative
+          z-[120]
           flex
           items-center
           justify-center
           p-2
           rounded-lg
+          text-white
           hover:bg-slate-800
+          active:bg-slate-700
           transition
+          cursor-pointer
+          pointer-events-auto
         "
-        aria-label={t("menu")}
+        aria-label={open ? t("close") : t("menu")}
         aria-expanded={open}
       >
         {open ? (
-          <X className="w-7 h-7 sm:w-8 sm:h-8" />
+          <X className="w-8 h-8" strokeWidth={2.5} />
         ) : (
-          <Menu className="w-7 h-7 sm:w-8 sm:h-8" />
+          <Menu className="w-8 h-8" strokeWidth={2.5} />
         )}
       </button>
 
 
       {/* ========================= */}
-      {/* MOBILE / TABLET MENU */}
+      {/* MOBILE MENU */}
       {/* ========================= */}
 
       {open && (
         <div
           className="
             absolute
-            left-0
+            right-0
             top-full
-            w-full
-            max-h-[calc(100vh-64px)]
-            overflow-y-auto
+            mt-2
+            w-[calc(100vw-24px)]
+            max-w-md
+            overflow-hidden
+            rounded-xl
             bg-slate-900
-            border-t
+            text-white
+            border
             border-slate-700
             shadow-2xl
-            z-50
+            z-[110]
           "
         >
 
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="max-h-[calc(100vh-80px)] overflow-y-auto">
 
-            {/* ========================= */}
             {/* SEARCH */}
-            {/* ========================= */}
 
-            <form
-              action="/search"
-              method="GET"
-              className="flex w-full mb-4 sm:mb-5"
-            >
-              <input
-                type="text"
-                name="q"
-                placeholder={t("search")}
-                className="
-                  flex-1
-                  min-w-0
-                  px-3
-                  sm:px-4
-                  py-2.5
-                  sm:py-3
-                  bg-white
-                  text-black
-                  placeholder:text-gray-500
-                  border
-                  border-gray-300
-                  rounded-l-lg
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-red-500
-                "
-              />
+            <div className="p-4 border-b border-slate-700">
 
-              <button
-                type="submit"
-                aria-label={t("search")}
-                className="
-                  shrink-0
-                  bg-red-600
-                  hover:bg-red-700
-                  px-4
-                  sm:px-5
-                  py-2.5
-                  sm:py-3
-                  rounded-r-lg
-                  transition
-                "
+              <form
+                action="/search"
+                method="GET"
+                className="flex w-full"
               >
-                🔍
-              </button>
-            </form>
+                <input
+                  type="text"
+                  name="q"
+                  placeholder={t("search")}
+                  className="
+                    flex-1
+                    min-w-0
+                    px-3
+                    py-2.5
+                    bg-white
+                    text-black
+                    placeholder:text-gray-500
+                    rounded-l-lg
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-red-500
+                  "
+                />
+
+                <button
+                  type="submit"
+                  aria-label={t("search")}
+                  className="
+                    shrink-0
+                    bg-red-600
+                    hover:bg-red-700
+                    px-4
+                    rounded-r-lg
+                    transition
+                    cursor-pointer
+                  "
+                >
+                  🔍
+                </button>
+              </form>
+
+            </div>
 
 
-            {/* ========================= */}
             {/* NAVIGATION */}
-            {/* ========================= */}
 
             <nav className="flex flex-col">
 
-              {/* Home */}
+              {/* HOME */}
+
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
                 className="
-                  py-3
-                  sm:py-3.5
+                  px-4
+                  py-3.5
                   border-b
                   border-slate-700
+                  hover:bg-slate-800
                   hover:text-red-400
                   transition
                 "
@@ -182,17 +195,19 @@ export default function MobileMenu({ categories }: Props) {
               </Link>
 
 
-              {/* Categories */}
+              {/* CATEGORIES */}
+
               {categories.map((category) => (
                 <Link
                   key={category.id}
                   href={`/categories/${category.slug}`}
                   onClick={() => setOpen(false)}
                   className="
-                    py-3
-                    sm:py-3.5
+                    px-4
+                    py-3.5
                     border-b
                     border-slate-700
+                    hover:bg-slate-800
                     hover:text-red-400
                     transition
                   "
@@ -202,15 +217,17 @@ export default function MobileMenu({ categories }: Props) {
               ))}
 
 
-              {/* About */}
+              {/* ABOUT */}
+
               <Link
                 href="/about"
                 onClick={() => setOpen(false)}
                 className="
-                  py-3
-                  sm:py-3.5
+                  px-4
+                  py-3.5
                   border-b
                   border-slate-700
+                  hover:bg-slate-800
                   hover:text-red-400
                   transition
                 "
@@ -219,15 +236,15 @@ export default function MobileMenu({ categories }: Props) {
               </Link>
 
 
-              {/* Contact */}
+              {/* CONTACT */}
+
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}
                 className="
-                  py-3
-                  sm:py-3.5
-                  border-b
-                  border-slate-700
+                  px-4
+                  py-3.5
+                  hover:bg-slate-800
                   hover:text-red-400
                   transition
                 "
@@ -240,6 +257,7 @@ export default function MobileMenu({ categories }: Props) {
           </div>
         </div>
       )}
-    </>
+
+    </div>
   );
 }

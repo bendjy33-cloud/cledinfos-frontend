@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
+
 import { getCategories, getSettings } from "@/lib/api";
+
 import MobileMenu from "./MobileMenu";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -12,15 +14,77 @@ export default async function Header() {
   const categories = await getCategories();
   const settings = await getSettings();
 
+  /*
+   * Logo
+   * Prefer logo_url, then logo as fallback.
+   */
   const logoUrl =
-  settings?.logo ||
-  settings?.logo_url ||
-  null;
+    settings?.logo_url ||
+    settings?.logo ||
+    null;
+
+  /*
+   * Get translated category name
+   */
+  function getCategoryName(category: any) {
+    switch (locale) {
+      case "es":
+        return (
+          category?.name_es ||
+          category?.name_en ||
+          category?.name_fr ||
+          category?.name_ht ||
+          category?.name ||
+          ""
+        );
+
+      case "en":
+        return (
+          category?.name_en ||
+          category?.name_fr ||
+          category?.name_ht ||
+          category?.name ||
+          ""
+        );
+
+      case "ht":
+        return (
+          category?.name_ht ||
+          category?.name_fr ||
+          category?.name_en ||
+          category?.name ||
+          ""
+        );
+
+      case "fr":
+      default:
+        return (
+          category?.name_fr ||
+          category?.name_en ||
+          category?.name_ht ||
+          category?.name ||
+          ""
+        );
+    }
+  }
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+    <header
+      className="
+        sticky
+        top-0
+        z-[9999]
+        w-full
+        bg-slate-900
+        text-white
+        shadow-lg
+        isolate
+      "
+    >
       <div
         className="
+          relative
+          z-[9999]
           max-w-7xl
           mx-auto
           flex
@@ -37,17 +101,20 @@ export default async function Header() {
         "
       >
 
-        {/* ========================= */}
+        {/* ================================================== */}
         {/* LOGO */}
-        {/* ========================= */}
+        {/* ================================================== */}
 
         <Link
           href="/"
           className="
+            relative
+            z-[10000]
             flex
             items-center
             min-w-0
             shrink
+            cursor-pointer
           "
         >
           {logoUrl ? (
@@ -62,13 +129,16 @@ export default async function Header() {
                 h-8
                 w-auto
                 max-w-[125px]
+                object-contain
+
                 sm:h-9
                 sm:max-w-[150px]
+
                 md:h-10
                 md:max-w-[170px]
+
                 lg:h-12
                 lg:max-w-[180px]
-                object-contain
               "
             />
           ) : (
@@ -92,11 +162,20 @@ export default async function Header() {
         </Link>
 
 
-        {/* ========================= */}
+        {/* ================================================== */}
         {/* DESKTOP NAVIGATION */}
-        {/* ========================= */}
+        {/* ================================================== */}
 
-        <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6">
+        <nav
+          className="
+            hidden
+            lg:flex
+            items-center
+            gap-3
+            xl:gap-5
+            2xl:gap-6
+          "
+        >
 
           {/* HOME */}
 
@@ -108,6 +187,7 @@ export default async function Header() {
               xl:text-base
               hover:text-red-400
               transition
+              cursor-pointer
             "
           >
             {t("home")}
@@ -116,31 +196,8 @@ export default async function Header() {
 
           {/* CATEGORIES */}
 
-          {categories.map((category: any) => {
-
-            const categoryName =
-              locale === "es"
-                ? category.name_es ??
-                  category.name_fr ??
-                  category.name_en ??
-                  category.name_ht ??
-                  category.name
-                : locale === "en"
-                  ? category.name_en ??
-                    category.name_fr ??
-                    category.name_ht ??
-                    category.name
-                  : locale === "ht"
-                    ? category.name_ht ??
-                      category.name_fr ??
-                      category.name_en ??
-                      category.name
-                    : category.name_fr ??
-                      category.name_en ??
-                      category.name_ht ??
-                      category.name;
-
-            return (
+          {Array.isArray(categories) &&
+            categories.map((category: any) => (
               <Link
                 key={category.id}
                 href={`/categories/${category.slug}`}
@@ -150,12 +207,12 @@ export default async function Header() {
                   xl:text-base
                   hover:text-red-400
                   transition
+                  cursor-pointer
                 "
               >
-                {categoryName}
+                {getCategoryName(category)}
               </Link>
-            );
-          })}
+            ))}
 
 
           {/* ABOUT */}
@@ -168,6 +225,7 @@ export default async function Header() {
               xl:text-base
               hover:text-red-400
               transition
+              cursor-pointer
             "
           >
             {t("about")}
@@ -184,6 +242,7 @@ export default async function Header() {
               xl:text-base
               hover:text-red-400
               transition
+              cursor-pointer
             "
           >
             {t("contact")}
@@ -192,11 +251,22 @@ export default async function Header() {
         </nav>
 
 
-        {/* ========================= */}
+        {/* ================================================== */}
         {/* DESKTOP SEARCH + LANGUAGE */}
-        {/* ========================= */}
+        {/* ================================================== */}
 
-        <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
+        <div
+          className="
+            hidden
+            lg:flex
+            items-center
+            gap-2
+            xl:gap-3
+            shrink-0
+          "
+        >
+
+          {/* SEARCH */}
 
           <form
             action="/search"
@@ -238,23 +308,41 @@ export default async function Header() {
                 py-2
                 rounded-r-lg
                 transition
+                cursor-pointer
               "
             >
               🔍
             </button>
           </form>
 
+
+          {/* LANGUAGE SWITCHER */}
+
           <LanguageSwitcher />
 
         </div>
 
 
-        {/* ========================= */}
-        {/* MOBILE + TABLET MENU */}
-        {/* ========================= */}
+        {/* ================================================== */}
+        {/* MOBILE / TABLET MENU */}
+        {/* ================================================== */}
 
-        <div className="lg:hidden shrink-0">
-          <MobileMenu categories={categories} />
+        <div
+          className="
+            relative
+            z-[10000]
+            shrink-0
+            lg:hidden
+            pointer-events-auto
+          "
+        >
+          <MobileMenu
+            categories={
+              Array.isArray(categories)
+                ? categories
+                : []
+            }
+          />
         </div>
 
       </div>
