@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Post } from "@/types/post";
 
 type Props = {
   post: Post;
 };
 
-export default function Hero({ post }: Props) {
-  const t = useTranslations("Hero");
+export default async function Hero({ post }: Props) {
+  const t = await getTranslations("Hero");
 
   if (!post) return null;
 
@@ -29,17 +29,21 @@ export default function Hero({ post }: Props) {
 
         <div className="w-full p-5 sm:p-6 md:p-8 text-white">
 
-          <span className="inline-block bg-red-600 px-3 py-1 rounded text-xs sm:text-sm">
-            {post.category?.name || ""}
-          </span>
+          {post.category?.name && (
+            <span className="inline-block bg-red-600 px-3 py-1 rounded text-xs sm:text-sm">
+              {post.category.name}
+            </span>
+          )}
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 md:mt-4 leading-tight line-clamp-3">
             {post.title}
           </h1>
 
-          <p className="mt-3 md:mt-4 max-w-2xl text-sm sm:text-base md:text-lg line-clamp-3">
-            {post.meta_description}
-          </p>
+          {post.meta_description && (
+            <p className="mt-3 md:mt-4 max-w-2xl text-sm sm:text-base md:text-lg line-clamp-3">
+              {post.meta_description}
+            </p>
+          )}
 
           <Link
             href={`/posts/${post.slug}`}

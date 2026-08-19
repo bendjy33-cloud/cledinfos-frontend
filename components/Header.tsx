@@ -12,7 +12,10 @@ export default async function Header() {
   const categories = await getCategories();
   const settings = await getSettings();
 
-  const logoUrl = settings.logo_url ?? null;
+  const logoUrl =
+  settings?.logo ||
+  settings?.logo_url ||
+  null;
 
   return (
     <header className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
@@ -50,7 +53,7 @@ export default async function Header() {
           {logoUrl ? (
             <Image
               src={logoUrl}
-              alt={settings.site_name || "Clé d'Infos"}
+              alt={settings?.site_name || "Clé d'Infos"}
               width={180}
               height={60}
               priority
@@ -59,16 +62,12 @@ export default async function Header() {
                 h-8
                 w-auto
                 max-w-[125px]
-
                 sm:h-9
                 sm:max-w-[150px]
-
                 md:h-10
                 md:max-w-[170px]
-
                 lg:h-12
                 lg:max-w-[180px]
-
                 object-contain
               "
             />
@@ -87,7 +86,7 @@ export default async function Header() {
                 md:max-w-none
               "
             >
-              {settings.site_name || "Clé d'Infos"}
+              {settings?.site_name || "Clé d'Infos"}
             </span>
           )}
         </Link>
