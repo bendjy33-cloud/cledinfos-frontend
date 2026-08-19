@@ -255,7 +255,7 @@ export async function generateMetadata(): Promise<Metadata> {
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-6 text-center">
 
             <Image
-              src="/team-placeholder.jpeg"
+              src="/team-placeholder3.jpeg"
               alt="Claude Bernard FRANÇOIS"
               width={150}
               height={150}
@@ -291,7 +291,7 @@ export async function generateMetadata(): Promise<Metadata> {
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-6 text-center">
 
             <Image
-              src="/team-placeholder.jpeg"
+              src="/team-placeholder2.jpeg"
               alt="Zacharie MORLAN"
               width={150}
               height={150}
