@@ -63,7 +63,7 @@ export default function MobileMenu({ categories }: Props) {
   }
 
   return (
-    <div className="relative z-[110]">
+    <div className="relative z-[9999]">
 
       {/* ========================= */}
       {/* MENU BUTTON */}
@@ -74,10 +74,12 @@ export default function MobileMenu({ categories }: Props) {
         onClick={() => setOpen((prev) => !prev)}
         className="
           relative
-          z-[120]
+          z-[10000]
           flex
           items-center
           justify-center
+          w-11
+          h-11
           p-2
           rounded-lg
           text-white
@@ -85,15 +87,23 @@ export default function MobileMenu({ categories }: Props) {
           active:bg-slate-700
           transition
           cursor-pointer
+          touch-manipulation
           pointer-events-auto
+          select-none
         "
         aria-label={open ? t("close") : t("menu")}
         aria-expanded={open}
       >
         {open ? (
-          <X className="w-8 h-8" strokeWidth={2.5} />
+          <X
+            className="w-7 h-7 pointer-events-none"
+            strokeWidth={2.5}
+          />
         ) : (
-          <Menu className="w-8 h-8" strokeWidth={2.5} />
+          <Menu
+            className="w-7 h-7 pointer-events-none"
+            strokeWidth={2.5}
+          />
         )}
       </button>
 
@@ -105,12 +115,12 @@ export default function MobileMenu({ categories }: Props) {
       {open && (
         <div
           className="
-            absolute
-            right-0
-            top-full
-            mt-2
-            w-[calc(100vw-24px)]
-            max-w-md
+            fixed
+            top-[70px]
+            left-3
+            right-3
+            z-[9999]
+            max-h-[calc(100vh-82px)]
             overflow-hidden
             rounded-xl
             bg-slate-900
@@ -118,11 +128,10 @@ export default function MobileMenu({ categories }: Props) {
             border
             border-slate-700
             shadow-2xl
-            z-[110]
           "
         >
 
-          <div className="max-h-[calc(100vh-80px)] overflow-y-auto">
+          <div className="max-h-[calc(100vh-82px)] overflow-y-auto overscroll-contain">
 
             {/* SEARCH */}
 
@@ -133,6 +142,7 @@ export default function MobileMenu({ categories }: Props) {
                 method="GET"
                 className="flex w-full"
               >
+
                 <input
                   type="text"
                   name="q"
@@ -159,14 +169,17 @@ export default function MobileMenu({ categories }: Props) {
                     shrink-0
                     bg-red-600
                     hover:bg-red-700
+                    active:bg-red-800
                     px-4
                     rounded-r-lg
                     transition
                     cursor-pointer
+                    touch-manipulation
                   "
                 >
                   🔍
                 </button>
+
               </form>
 
             </div>
@@ -187,8 +200,10 @@ export default function MobileMenu({ categories }: Props) {
                   border-b
                   border-slate-700
                   hover:bg-slate-800
+                  active:bg-slate-800
                   hover:text-red-400
                   transition
+                  touch-manipulation
                 "
               >
                 🏠 {t("home")}
@@ -208,8 +223,10 @@ export default function MobileMenu({ categories }: Props) {
                     border-b
                     border-slate-700
                     hover:bg-slate-800
+                    active:bg-slate-800
                     hover:text-red-400
                     transition
+                    touch-manipulation
                   "
                 >
                   {getCategoryName(category)}
@@ -228,8 +245,10 @@ export default function MobileMenu({ categories }: Props) {
                   border-b
                   border-slate-700
                   hover:bg-slate-800
+                  active:bg-slate-800
                   hover:text-red-400
                   transition
+                  touch-manipulation
                 "
               >
                 {t("about")}
@@ -245,8 +264,10 @@ export default function MobileMenu({ categories }: Props) {
                   px-4
                   py-3.5
                   hover:bg-slate-800
+                  active:bg-slate-800
                   hover:text-red-400
                   transition
+                  touch-manipulation
                 "
               >
                 {t("contact")}

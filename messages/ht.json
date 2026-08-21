@@ -245,8 +245,20 @@
       "responsibilityText": "Nou konsyan de enpak pawòl ak imaj nou yo, epi nou respekte etik jounalis.",
 
       "respect": "Respè",
-      "respectText": "Nou respekte lektè nou yo, sous nou yo ak verite a."
-    },
+      "respectText": "Nou respekte lektè nou yo, sous nou yo ak verite a.",
+      
+      "commitment": "Angajman",
+      "commitmentText": "Nou angaje nou pou chèche ekselans epi reyalize misyon ak objektif nou yo.",
+
+      "teamwork": "Travay an ekip",
+      "teamworkText": "Nou kwè nan kolaborasyon, respè ak mete fòs nou ansanm pou jwenn pi bon rezilta.",
+
+      "empathy": "Anpati",
+      "empathyText": "Nou koute, konprann epi pran an konsiderasyon bezwen lòt moun, pandan nou toujou aji avèk sansiblite ak respè.",
+
+      "transparency": "Transparans",
+      "transparencyText": "Nou bay kominikasyon ki klè, onèt ak transparan anpil enpòtans pou ranfòse konfyans kominote nou an."
+  },
 
 
     "stats": {
@@ -428,7 +440,12 @@
   "english": "English",
   "creole": "Kreyòl",
   "spanish": "Español"
-}
+},
+ "HomeBanner": {
+    "title": "Kle a pou pi bon enfòmasyon ak fòmasyon",
+    "description": "Sous ou pou nouvèl, enfòmasyon ak edikasyon.",
+    "imageAlt": "Clé d'Infos - Nouvèl, enfòmasyon ak edikasyon"
+  }
 
 
 }

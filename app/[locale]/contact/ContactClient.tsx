@@ -40,7 +40,7 @@ export default function ContactClient() {
       const data = await res.json();
 
       if (res.ok) {
-        setSuccess(data.message || t("success"));
+      setSuccess(t("success"));
 
         setForm({
           name: "",
@@ -49,7 +49,7 @@ export default function ContactClient() {
           message: "",
         });
       } else {
-        setError(data.message || t("error"));
+        setError(t("error"));
       }
     } catch {
       setError(t("serverError"));

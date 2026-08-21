@@ -173,7 +173,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
 
-            <div className="text-5xl mb-4">❤️</div>
+            <div className="text-5xl mb-4">💡</div>
 
            <h3 className="text-2xl font-bold mb-3">
               {t("values.respect")}
@@ -184,6 +184,59 @@ export async function generateMetadata(): Promise<Metadata> {
             </p>
 
           </div>
+
+        
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+              <div className="text-5xl mb-4">🤝</div>
+
+              <h3 className="text-2xl font-bold mb-3">
+                {t("values.commitment")}
+              </h3>
+
+              <p className="text-gray-600">
+                {t("values.commitmentText")}
+              </p>
+            </div>
+
+        
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+              <div className="text-5xl mb-4">👥</div>
+
+              <h3 className="text-2xl font-bold mb-3">
+                {t("values.teamwork")}
+              </h3>
+
+              <p className="text-gray-600">
+                {t("values.teamworkText")}
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+              <div className="text-5xl mb-4">❤️</div>
+
+              <h3 className="text-2xl font-bold mb-3">
+                {t("values.empathy")}
+              </h3>
+
+              <p className="text-gray-600">
+                {t("values.empathyText")}
+              </p>
+            </div>
+
+          
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+              <div className="text-5xl mb-4">🔎</div>
+
+              <h3 className="text-2xl font-bold mb-3">
+                {t("values.transparency")}
+              </h3>
+
+              <p className="text-gray-600">
+                {t("values.transparencyText")}
+              </p>
+            </div>
+
+
 
         </div>
 
@@ -201,7 +254,7 @@ export async function generateMetadata(): Promise<Metadata> {
           <div className="bg-red-600 text-white rounded-2xl p-8 text-center">
 
             <h3 className="text-5xl font-bold">
-              500+
+              10+
             </h3>
          
             <p>{t("stats.articles")}</p>
@@ -291,7 +344,7 @@ export async function generateMetadata(): Promise<Metadata> {
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-6 text-center">
 
             <Image
-              src="/team-placeholder2.jpeg"
+              src="/team-placeholder4.jpeg"
               alt="Zacharie MORLAN"
               width={150}
               height={150}

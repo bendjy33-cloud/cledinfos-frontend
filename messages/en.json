@@ -239,7 +239,19 @@
     "responsibilityText": "We understand the impact of our words and images and strictly follow journalistic ethics.",
 
     "respect": "Respect",
-    "respectText": "Respect for our readers, our sources and the facts."
+    "respectText": "Respect for our readers, our sources and the facts.",
+
+    "commitment": "Commitment",
+    "commitmentText": "We are committed to excellence and to fulfilling our mission and achieving our goals.",
+
+    "teamwork": "Teamwork",
+    "teamworkText": "We believe in collaboration, respect, and joining our efforts to achieve better results.",
+
+    "empathy": "Empathy",
+    "empathyText": "We listen to, understand, and value the needs of others, always acting with sensitivity and respect.",
+
+    "transparency": "Transparency",
+"transparencyText": "We prioritize clear, honest, and transparent communication to strengthen the trust of our community."
   },
 
   "stats": {
@@ -414,6 +426,12 @@
   "english": "English",
   "creole": "Kreyòl",
   "spanish": "Español"
-}
+},
+
+"HomeBanner": {
+    "title": "The key to better information and learning",
+    "description": "Your source for news, information and education.",
+    "imageAlt": "Clé d'Infos - News, information and education"
+  }
 }
 

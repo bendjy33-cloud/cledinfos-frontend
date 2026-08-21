@@ -73,18 +73,15 @@ export default async function Header() {
       className="
         sticky
         top-0
-        z-[9999]
         w-full
+        z-50
         bg-slate-900
         text-white
         shadow-lg
-        isolate
       "
     >
       <div
         className="
-          relative
-          z-[9999]
           max-w-7xl
           mx-auto
           flex
@@ -108,8 +105,6 @@ export default async function Header() {
         <Link
           href="/"
           className="
-            relative
-            z-[10000]
             flex
             items-center
             min-w-0
@@ -177,8 +172,6 @@ export default async function Header() {
           "
         >
 
-          {/* HOME */}
-
           <Link
             href="/"
             className="
@@ -193,8 +186,6 @@ export default async function Header() {
             {t("home")}
           </Link>
 
-
-          {/* CATEGORIES */}
 
           {Array.isArray(categories) &&
             categories.map((category: any) => (
@@ -215,8 +206,6 @@ export default async function Header() {
             ))}
 
 
-          {/* ABOUT */}
-
           <Link
             href="/about"
             className="
@@ -231,8 +220,6 @@ export default async function Header() {
             {t("about")}
           </Link>
 
-
-          {/* CONTACT */}
 
           <Link
             href="/contact"
@@ -265,8 +252,6 @@ export default async function Header() {
             shrink-0
           "
         >
-
-          {/* SEARCH */}
 
           <form
             action="/search"
@@ -316,8 +301,6 @@ export default async function Header() {
           </form>
 
 
-          {/* LANGUAGE SWITCHER */}
-
           <LanguageSwitcher />
 
         </div>
@@ -329,8 +312,6 @@ export default async function Header() {
 
         <div
           className="
-            relative
-            z-[10000]
             shrink-0
             lg:hidden
             pointer-events-auto

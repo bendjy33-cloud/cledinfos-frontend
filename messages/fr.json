@@ -239,7 +239,20 @@
     "responsibilityText": "Nous sommes conscients de l'impact de nos mots et de nos images, et nous respectons scrupuleusement l'éthique journalistique.",
 
     "respect": "Respect",
-    "respectText": "Respect de nos lecteurs, de nos sources et des faits."
+    "respectText": "Respect de nos lecteurs, de nos sources et des faits.",
+    
+    "commitment": "Engagement",
+    "commitmentText": "Nous nous engageons à atteindre l’excellence et à accomplir notre mission et nos objectifs.",
+
+    "teamwork": "Travail en équipe",
+    "teamworkText": "Nous croyons en la collaboration, le respect et l’union des efforts pour obtenir de meilleurs résultats.",
+
+    "empathy": "Empathie",
+    "empathyText": "Nous écoutons, comprenons et valorisons les besoins des autres, en agissant toujours avec sensibilité et respect.",
+
+    "transparency": "Transparence",
+    "transparencyText": "Nous privilégions une communication claire, honnête et transparente afin de renforcer la confiance de notre communauté."
+  
   },
 
   "stats": {
@@ -414,6 +427,12 @@
   "english": "English",
   "creole": "Kreyòl",
   "spanish": "Español"
-}
+},
+
+  "HomeBanner": {
+    "title": "La clé pour mieux informer et se former",
+    "description": "Votre source d'information, d'éducation et d'actualité.",
+    "imageAlt": "Clé d'Infos - Actualités, information et éducation"
+  }
 
 }

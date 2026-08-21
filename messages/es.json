@@ -238,8 +238,20 @@
       "responsibilityText": "Comprendemos el impacto de nuestras palabras e imágenes y seguimos estrictamente la ética periodística.",
 
       "respect": "Respeto",
-      "respectText": "Respetamos a nuestros lectores, nuestras fuentes y los hechos."
-    },
+      "respectText": "Respetamos a nuestros lectores, nuestras fuentes y los hechos.",
+
+      "commitment": "Compromiso",
+      "commitmentText": "Nos comprometemos con la excelencia y con el cumplimiento de nuestra misión y nuestros objetivos.",
+
+      "teamwork": "Trabajo en equipo",
+      "teamworkText": "Creemos en la colaboración, el respeto y la unión de esfuerzos para alcanzar mejores resultados.",
+
+      "empathy": "Empatía",
+      "empathyText": "Escuchamos, comprendemos y valoramos las necesidades de los demás, actuando siempre con sensibilidad y respeto.",
+
+      "transparency": "Transparencia",
+      "transparencyText": "Priorizamos una comunicación clara, honesta y transparente para fortalecer la confianza de nuestra comunidad."
+  },
 
     "stats": {
       "title": "Clé d'Infos en cifras",
@@ -410,6 +422,12 @@
     "english": "English",
     "creole": "Kreyòl",
     "spanish": "Español"
+  },
+
+  "HomeBanner": {
+    "title": "La clave para informar y formar mejor",
+    "description": "Tu fuente de noticias, información y educación.",
+    "imageAlt": "Clé d'Infos - Noticias, información y educación"
   }
 
 
