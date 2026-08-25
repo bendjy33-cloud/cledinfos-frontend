@@ -9,11 +9,13 @@ export default function HomeBanner({ src }: Props) {
   const t = useTranslations("HomeBanner");
 
   return (
-    <section className="w-full mb-8 md:mb-10">
+    <section className="w-full mb-6 md:mb-8">
 
       <div
         className="
           w-full
+          max-w-5xl
+          mx-auto
           overflow-hidden
           rounded-xl
           shadow-md
@@ -36,7 +38,7 @@ export default function HomeBanner({ src }: Props) {
             object-contain
             block
           "
-          sizes="100vw"
+          sizes="(max-width: 1024px) 100vw, 1024px"
         />
 
       </div>

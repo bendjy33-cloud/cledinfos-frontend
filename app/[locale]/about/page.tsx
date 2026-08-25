@@ -326,7 +326,7 @@ export async function generateMetadata(): Promise<Metadata> {
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-6 text-center">
 
             <Image
-              src="/team-placeholder.jpeg"
+              src="/team-placeholder5.jpeg"
               alt="Marc-Rock Bendjy JEAN"
               width={150}
               height={150}

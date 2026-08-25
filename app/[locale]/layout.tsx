@@ -97,13 +97,14 @@ export default async function RootLayout({
 
           <OrganizationSchema settings={settings} />
 
+        <div className="fixed top-0 left-0 right-0 z-[9999] w-full">
           <BreakingNews news={breakingNews} />
-
           <Header />
+        </div>
 
-          <main className="flex-1">
-            {children}
-          </main>
+        <main className="flex-1 pt-[112px]">
+          {children}
+        </main>
 
           <Footer settings={settings} />
 

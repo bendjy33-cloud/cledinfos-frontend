@@ -264,9 +264,8 @@
     "team": {
       "title": "Nuestro equipo",
       "description": "Un equipo apasionado que trabaja cada día para ofrecer información confiable y de calidad.",
-      "ceo": "CEO || PRESENTADOR",
+      "ceo": "Doctor / Comunicador || Presentador || Periodista || Farmacólogo",
       "developer": "Especialista en TI || Desarrollador web",
-      "assistant": "Asistente de video || Fotógrafo",
       "designer": "Diseñador"
     }
   },

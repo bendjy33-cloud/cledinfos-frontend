@@ -171,6 +171,8 @@ export default async function HomePage() {
       <div
         className="
           mb-8
+          mx-auto
+          max-w-5xl
           bg-white
           dark:bg-slate-900
           rounded-xl
