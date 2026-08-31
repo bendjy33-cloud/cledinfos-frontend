@@ -45,58 +45,117 @@ const ORGANIZATION = {
 function localizePost(post: any, locale: string) {
   if (!post) return post;
 
+  // TITLE
   const title =
     locale === "en"
       ? post.title_en ??
         post.title_fr ??
-        post.title_ht
+        post.title_ht ??
+        post.title_es
       : locale === "ht"
         ? post.title_ht ??
           post.title_fr ??
-          post.title_en
-        : post.title_fr ??
           post.title_en ??
-          post.title_ht;
+          post.title_es
+        : locale === "es"
+          ? post.title_es ??
+            post.title_fr ??
+            post.title_en ??
+            post.title_ht
+          : post.title_fr ??
+            post.title_en ??
+            post.title_ht ??
+            post.title_es;
 
+  // SUBTITLE
+  const subtitle =
+    locale === "en"
+      ? post.subtitle_en ??
+        post.subtitle_fr ??
+        post.subtitle_ht ??
+        post.subtitle_es
+      : locale === "ht"
+        ? post.subtitle_ht ??
+          post.subtitle_fr ??
+          post.subtitle_en ??
+          post.subtitle_es
+        : locale === "es"
+          ? post.subtitle_es ??
+            post.subtitle_fr ??
+            post.subtitle_en ??
+            post.subtitle_ht
+          : post.subtitle_fr ??
+            post.subtitle_en ??
+            post.subtitle_ht ??
+            post.subtitle_es;
+
+  // CONTENT
   const content =
     locale === "en"
       ? post.content_en ??
         post.content_fr ??
-        post.content_ht
+        post.content_ht ??
+        post.content_es
       : locale === "ht"
         ? post.content_ht ??
           post.content_fr ??
-          post.content_en
-        : post.content_fr ??
           post.content_en ??
-          post.content_ht;
+          post.content_es
+        : locale === "es"
+          ? post.content_es ??
+            post.content_fr ??
+            post.content_en ??
+            post.content_ht
+          : post.content_fr ??
+            post.content_en ??
+            post.content_ht ??
+            post.content_es;
 
+  // META DESCRIPTION
   const meta_description =
     locale === "en"
       ? post.meta_description_en ??
         post.meta_description_fr ??
-        post.meta_description_ht
+        post.meta_description_ht ??
+        post.meta_description_es
       : locale === "ht"
         ? post.meta_description_ht ??
           post.meta_description_fr ??
-          post.meta_description_en
-        : post.meta_description_fr ??
           post.meta_description_en ??
-          post.meta_description_ht;
+          post.meta_description_es
+        : locale === "es"
+          ? post.meta_description_es ??
+            post.meta_description_fr ??
+            post.meta_description_en ??
+            post.meta_description_ht
+          : post.meta_description_fr ??
+            post.meta_description_en ??
+            post.meta_description_ht ??
+            post.meta_description_es;
 
+  // KEYWORDS
   const keywords =
     locale === "en"
       ? post.keywords_en ??
         post.keywords_fr ??
-        post.keywords_ht
+        post.keywords_ht ??
+        post.keywords_es
       : locale === "ht"
         ? post.keywords_ht ??
           post.keywords_fr ??
-          post.keywords_en
-        : post.keywords_fr ??
           post.keywords_en ??
-          post.keywords_ht;
+          post.keywords_es
+        : locale === "es"
+          ? post.keywords_es ??
+            post.keywords_fr ??
+            post.keywords_en ??
+            post.keywords_ht
+          : post.keywords_fr ??
+            post.keywords_en ??
+            post.keywords_ht ??
+            post.keywords_es;
 
+  // CATEGORY
   const category = post.category
     ? {
         ...post.category,
@@ -105,14 +164,22 @@ function localizePost(post: any, locale: string) {
           locale === "en"
             ? post.category.name_en ??
               post.category.name_fr ??
-              post.category.name_ht
+              post.category.name_ht ??
+              post.category.name_es
             : locale === "ht"
               ? post.category.name_ht ??
                 post.category.name_fr ??
-                post.category.name_en
-              : post.category.name_fr ??
                 post.category.name_en ??
-                post.category.name_ht,
+                post.category.name_es
+              : locale === "es"
+                ? post.category.name_es ??
+                  post.category.name_fr ??
+                  post.category.name_en ??
+                  post.category.name_ht
+                : post.category.name_fr ??
+                  post.category.name_en ??
+                  post.category.name_ht ??
+                  post.category.name_es,
       }
     : null;
 
@@ -120,8 +187,13 @@ function localizePost(post: any, locale: string) {
     ...post,
 
     title: title ?? "",
+
+    subtitle: subtitle ?? "",
+
     content: content ?? "",
+
     meta_description: meta_description ?? "",
+
     keywords: keywords ?? "",
 
     category,
@@ -205,6 +277,7 @@ export async function generateMetadata({
             `${SITE_URL}/placeholder.jpg`,
 
           width: 1200,
+
           height: 630,
 
           alt:
@@ -305,6 +378,7 @@ export default async function PostPage({
     fr: "fr-FR",
     en: "en-US",
     ht: "fr-HT",
+    es: "es-ES",
   };
 
   /*
@@ -343,6 +417,7 @@ export default async function PostPage({
           `${SITE_URL}/placeholder.jpg`,
 
         width: 1200,
+
         height: 630,
       },
     ],
@@ -406,21 +481,25 @@ export default async function PostPage({
 
       {/* BREADCRUMB */}
 
-    <Breadcrumb
-          items={[
-            ...(post.category?.name
-              ? [
-                  {
-                    label: post.category.name,
-                    href: `/categories/${post.category.slug}`,
-                  },
-                ]
-              : []),
-            {
-              label: post.title,
-            },
-          ]}
+      <Breadcrumb
+        items={[
+          ...(post.category?.name
+            ? [
+                {
+                  label:
+                    post.category.name,
 
+                  href:
+                    `/categories/${post.category.slug}`,
+                },
+              ]
+            : []),
+
+          {
+            label:
+              post.title,
+          },
+        ]}
       />
 
       {/* ARTICLE HEADER */}
@@ -430,24 +509,63 @@ export default async function PostPage({
         {/* CATEGORY */}
 
         {post.category?.name && (
-          <span className="inline-block bg-red-600 text-white px-3 py-1 rounded-full text-sm">
-
+          <span
+            className="
+              inline-block
+              bg-red-600
+              text-white
+              px-3
+              py-1
+              rounded-full
+              text-sm
+            "
+          >
             {post.category.name}
-
           </span>
         )}
 
         {/* TITLE */}
 
-        <h1 className="text-5xl font-bold leading-tight mt-5 mb-5">
-
+        <h1
+          className="
+            text-5xl
+            font-bold
+            leading-tight
+            mt-5
+            mb-3
+          "
+        >
           {post.title}
-
         </h1>
+
+        {/* SUBTITLE */}
+
+        {post.subtitle && (
+          <p
+            className="
+              text-xl
+              sm:text-2xl
+              text-gray-600
+              dark:text-gray-300
+              leading-relaxed
+              mb-5
+            "
+          >
+            {post.subtitle}
+          </p>
+        )}
 
         {/* META */}
 
-        <div className="flex flex-wrap gap-6 text-gray-500 mb-8">
+        <div
+          className="
+            flex
+            flex-wrap
+            gap-6
+            text-gray-500
+            mb-8
+          "
+        >
 
           <span>
             👁️{" "}
@@ -472,16 +590,32 @@ export default async function PostPage({
 
         {/* IMAGE */}
 
-     <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-slate-800">
-        <Image
-          src={post.image || "/placeholder.jpg"}
-          alt={post.title || "Article"}
-          fill
-          priority
-          unoptimized
-          className="object-contain"
-        />
-      </div>
+        <div
+          className="
+            relative
+            w-full
+            aspect-video
+            rounded-2xl
+            overflow-hidden
+            bg-gray-100
+            dark:bg-slate-800
+          "
+        >
+          <Image
+            src={
+              post.image ||
+              "/placeholder.jpg"
+            }
+            alt={
+              post.title ||
+              "Article"
+            }
+            fill
+            priority
+            unoptimized
+            className="object-contain"
+          />
+        </div>
 
       </section>
 
@@ -499,7 +633,6 @@ export default async function PostPage({
           prose-img:rounded-xl
           prose-headings:scroll-mt-28
         "
-
         dangerouslySetInnerHTML={{
           __html:
             post.content ||
@@ -519,13 +652,23 @@ export default async function PostPage({
         post.tags.length > 0 && (
           <section className="mt-10">
 
-            <h3 className="text-2xl font-bold mb-4">
-
+            <h3
+              className="
+                text-2xl
+                font-bold
+                mb-4
+              "
+            >
               {t("tags")}
-
             </h3>
 
-            <div className="flex flex-wrap gap-3">
+            <div
+              className="
+                flex
+                flex-wrap
+                gap-3
+              "
+            >
 
               {post.tags.map(
                 (tag: any) => (
@@ -533,7 +676,8 @@ export default async function PostPage({
                     key={tag.id}
                     href={`/tags/${tag.slug}`}
                     className="
-                      px-4 py-2
+                      px-4
+                      py-2
                       rounded-full
                       bg-gray-100
                       text-gray-700
@@ -554,33 +698,48 @@ export default async function PostPage({
 
       {/* SHARE */}
 
-      <section className="mt-12 border-t pt-8">
+      <section
+        className="
+          mt-12
+          border-t
+          pt-8
+        "
+      >
 
-        <h3 className="text-2xl font-bold mb-5">
-
+        <h3
+          className="
+            text-2xl
+            font-bold
+            mb-5
+          "
+        >
           {t("share")}
-
         </h3>
 
-        <div className="flex flex-wrap gap-4">
+        <div
+          className="
+            flex
+            flex-wrap
+            gap-4
+          "
+        >
 
           {/* FACEBOOK */}
 
           <a
             target="_blank"
             rel="noopener noreferrer"
-
             href={
               `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                 `${SITE_URL}/${locale}/posts/${post.slug}`
               )}`
             }
-
             className="
               bg-blue-600
               hover:bg-blue-700
               text-white
-              px-5 py-3
+              px-5
+              py-3
               rounded-lg
             "
           >
@@ -592,18 +751,17 @@ export default async function PostPage({
           <a
             target="_blank"
             rel="noopener noreferrer"
-
             href={
               `https://wa.me/?text=${encodeURIComponent(
                 `${SITE_URL}/${locale}/posts/${post.slug}`
               )}`
             }
-
             className="
               bg-green-600
               hover:bg-green-700
               text-white
-              px-5 py-3
+              px-5
+              py-3
               rounded-lg
             "
           >
@@ -615,18 +773,17 @@ export default async function PostPage({
           <a
             target="_blank"
             rel="noopener noreferrer"
-
             href={
               `https://twitter.com/intent/tweet?url=${encodeURIComponent(
                 `${SITE_URL}/${locale}/posts/${post.slug}`
               )}`
             }
-
             className="
               bg-black
               hover:bg-gray-800
               text-white
-              px-5 py-3
+              px-5
+              py-3
               rounded-lg
             "
           >
@@ -643,7 +800,6 @@ export default async function PostPage({
         author={
           post.author
         }
-
         published_at={
           post.published_at
         }
@@ -654,10 +810,14 @@ export default async function PostPage({
       {related.length > 0 && (
         <section className="mt-20">
 
-          <h2 className="text-4xl font-bold mb-8">
-
+          <h2
+            className="
+              text-4xl
+              font-bold
+              mb-8
+            "
+          >
             {t("related")}
-
           </h2>
 
           <div

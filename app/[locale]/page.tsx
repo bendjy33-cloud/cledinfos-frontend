@@ -230,7 +230,18 @@ export default async function HomePage() {
               </div>
 
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+              {/* FEATURED GRID */}
+
+              <div
+                className="
+                  grid
+                  grid-cols-1
+                  sm:grid-cols-2
+                  lg:grid-cols-3
+                  gap-5
+                  md:gap-6
+                "
+              >
 
                 {featured.map((post: any) => (
                   <PostCard
@@ -331,11 +342,11 @@ export default async function HomePage() {
             className="
               mt-8
               bg-white
-              dark:bg-slate-6000
+              dark:bg-slate-900
               rounded-xl
               border
-              border-gray-300
-              dark:border-slate-6000
+              border-gray-100
+              dark:border-slate-800
               shadow-md
               p-4
             "
