@@ -173,6 +173,8 @@ export default async function HomePage() {
         py-6
         sm:py-8
         bg-[var(--background)]
+        text-gray-900
+        dark:text-white
       "
     >
 
@@ -233,7 +235,15 @@ export default async function HomePage() {
 
               <div className="mb-5 md:mb-6">
 
-                <h2 className="text-2xl sm:text-3xl font-bold">
+                <h2
+                  className="
+                    text-2xl
+                    sm:text-3xl
+                    font-bold
+                    text-gray-900
+                    dark:text-white
+                  "
+                >
                   {t("featured")}
                 </h2>
 
@@ -338,6 +348,8 @@ export default async function HomePage() {
               p-4
               sm:p-5
               md:p-6
+              text-gray-900
+              dark:text-white
             "
           >
 
@@ -361,6 +373,8 @@ export default async function HomePage() {
               dark:border-slate-800
               shadow-md
               p-4
+              text-gray-900
+              dark:text-white
             "
           >
 

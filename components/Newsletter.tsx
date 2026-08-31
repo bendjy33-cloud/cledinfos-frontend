@@ -54,8 +54,12 @@ export default function Newsletter() {
         shadow-xl
       "
     >
-      {/* HEADER */}
+      {/* ========================================
+          HEADER
+      ======================================== */}
+
       <div className="mb-5">
+
         <p
           className="
             text-xs
@@ -92,9 +96,14 @@ export default function Newsletter() {
         >
           {t("description")}
         </p>
+
       </div>
 
-      {/* SUCCESS MESSAGE */}
+
+      {/* ========================================
+          SUCCESS MESSAGE
+      ======================================== */}
+
       {message && (
         <div
           className="
@@ -115,7 +124,11 @@ export default function Newsletter() {
         </div>
       )}
 
-      {/* ERROR MESSAGE */}
+
+      {/* ========================================
+          ERROR MESSAGE
+      ======================================== */}
+
       {error && (
         <div
           className="
@@ -136,11 +149,16 @@ export default function Newsletter() {
         </div>
       )}
 
-      {/* FORM */}
+
+      {/* ========================================
+          FORM
+      ======================================== */}
+
       <form
         onSubmit={handleSubmit}
         className="space-y-4"
       >
+
         <input
           type="email"
           required
@@ -165,6 +183,7 @@ export default function Newsletter() {
           "
         />
 
+
         <button
           type="submit"
           disabled={loading}
@@ -186,9 +205,14 @@ export default function Newsletter() {
             ? t("sending")
             : `📩 ${t("button")}`}
         </button>
+
       </form>
 
-      {/* FOOTER */}
+
+      {/* ========================================
+          FOOTER
+      ======================================== */}
+
       <p
         className="
           mt-4
@@ -199,6 +223,7 @@ export default function Newsletter() {
       >
         {t("footer")}
       </p>
+
     </section>
   );
 }

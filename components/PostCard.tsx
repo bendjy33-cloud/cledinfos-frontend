@@ -77,7 +77,15 @@ export default function PostCard({ post }: Props) {
             FULLY VISIBLE — NO CROP
         ======================================== */}
 
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className="
+            absolute
+            inset-0
+            flex
+            items-center
+            justify-center
+          "
+        >
 
           <Image
             src={post.image || "/placeholder.jpg"}

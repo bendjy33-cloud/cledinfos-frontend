@@ -187,13 +187,9 @@ function localizePost(post: any, locale: string) {
     ...post,
 
     title: title ?? "",
-
     subtitle: subtitle ?? "",
-
     content: content ?? "",
-
     meta_description: meta_description ?? "",
-
     keywords: keywords ?? "",
 
     category,
@@ -461,13 +457,25 @@ export default async function PostPage({
   */
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
+    <main
+      className="
+        max-w-6xl
+        mx-auto
+        px-4
+        sm:px-6
+        py-6
+        sm:py-10
+        text-gray-900
+        dark:text-white
+      "
+    >
 
       {/* VIEW COUNTER */}
 
       <ViewCounter
         slug={post.slug}
       />
+
 
       {/* JSON-LD */}
 
@@ -478,6 +486,7 @@ export default async function PostPage({
             JSON.stringify(jsonLd),
         }}
       />
+
 
       {/* BREADCRUMB */}
 
@@ -502,6 +511,7 @@ export default async function PostPage({
         ]}
       />
 
+
       {/* ARTICLE HEADER */}
 
       <section className="mb-12">
@@ -524,19 +534,24 @@ export default async function PostPage({
           </span>
         )}
 
+
         {/* TITLE */}
 
         <h1
           className="
-            text-5xl
+            text-4xl
+            sm:text-5xl
             font-bold
             leading-tight
             mt-5
             mb-3
+            text-gray-900
+            dark:text-white
           "
         >
           {post.title}
         </h1>
+
 
         {/* SUBTITLE */}
 
@@ -555,6 +570,7 @@ export default async function PostPage({
           </p>
         )}
 
+
         {/* META */}
 
         <div
@@ -563,6 +579,7 @@ export default async function PostPage({
             flex-wrap
             gap-6
             text-gray-500
+            dark:text-gray-400
             mb-8
           "
         >
@@ -587,6 +604,7 @@ export default async function PostPage({
           </span>
 
         </div>
+
 
         {/* IMAGE */}
 
@@ -619,9 +637,11 @@ export default async function PostPage({
 
       </section>
 
+
       {/* TABLE OF CONTENTS */}
 
       <TableOfContents />
+
 
       {/* ARTICLE CONTENT */}
 
@@ -632,6 +652,9 @@ export default async function PostPage({
           max-w-none
           prose-img:rounded-xl
           prose-headings:scroll-mt-28
+          text-gray-900
+          dark:text-gray-200
+          dark:prose-invert
         "
         dangerouslySetInnerHTML={{
           __html:
@@ -640,11 +663,13 @@ export default async function PostPage({
         }}
       />
 
+
       {/* COMMENTS */}
 
       <Comments
         slug={post.slug}
       />
+
 
       {/* TAGS */}
 
@@ -657,10 +682,13 @@ export default async function PostPage({
                 text-2xl
                 font-bold
                 mb-4
+                text-gray-900
+                dark:text-white
               "
             >
               {t("tags")}
             </h3>
+
 
             <div
               className="
@@ -681,6 +709,8 @@ export default async function PostPage({
                       rounded-full
                       bg-gray-100
                       text-gray-700
+                      dark:bg-slate-800
+                      dark:text-gray-200
                       hover:bg-red-600
                       hover:text-white
                       transition
@@ -696,12 +726,15 @@ export default async function PostPage({
           </section>
         )}
 
+
       {/* SHARE */}
 
       <section
         className="
           mt-12
           border-t
+          border-gray-200
+          dark:border-slate-700
           pt-8
         "
       >
@@ -711,10 +744,13 @@ export default async function PostPage({
             text-2xl
             font-bold
             mb-5
+            text-gray-900
+            dark:text-white
           "
         >
           {t("share")}
         </h3>
+
 
         <div
           className="
@@ -746,6 +782,7 @@ export default async function PostPage({
             Facebook
           </a>
 
+
           {/* WHATSAPP */}
 
           <a
@@ -767,6 +804,7 @@ export default async function PostPage({
           >
             WhatsApp
           </a>
+
 
           {/* X */}
 
@@ -794,6 +832,7 @@ export default async function PostPage({
 
       </section>
 
+
       {/* AUTHOR */}
 
       <AuthorBox
@@ -805,6 +844,7 @@ export default async function PostPage({
         }
       />
 
+
       {/* RELATED POSTS */}
 
       {related.length > 0 && (
@@ -812,13 +852,17 @@ export default async function PostPage({
 
           <h2
             className="
-              text-4xl
+              text-3xl
+              sm:text-4xl
               font-bold
               mb-8
+              text-gray-900
+              dark:text-white
             "
           >
             {t("related")}
           </h2>
+
 
           <div
             className="
