@@ -545,8 +545,8 @@ export default async function PostPage({
             className="
               text-xl
               sm:text-2xl
-              text-gray-600
-              dark:text-gray-300
+              text-gray-900
+              dark:text-gray-200
               leading-relaxed
               mb-5
             "
