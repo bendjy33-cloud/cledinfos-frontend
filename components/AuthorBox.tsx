@@ -23,59 +23,80 @@ export default function AuthorBox({
   author,
   published_at,
 }: Props) {
-
   const t = useTranslations("AuthorBox");
   const format = useFormatter();
 
   if (!author) {
-  return null;
-}
+    return null;
+  }
 
-  const authorPhoto = 
-  author.photo_url || 
-  author.photo ||
-  "/avatar.png";
-
+  const authorPhoto =
+    author.photo_url ||
+    author.photo ||
+    "/avatar.png";
 
   return (
     <section className="mt-12 rounded-2xl border bg-gray-50 p-6">
 
+      {/* TITLE */}
 
       <h3 className="text-2xl font-bold mb-6">
         {t("aboutAuthor")}
       </h3>
 
+      {/* AUTHOR */}
 
       <div className="flex flex-col md:flex-row gap-6">
 
+        {/* AUTHOR PHOTO */}
 
         <div className="shrink-0">
 
-          <div className="relative w-28 h-28 rounded-full overflow-hidden border">
-
+          <div
+            className="
+              relative
+              w-28
+              h-28
+              rounded-full
+              overflow-hidden
+              border
+              bg-gray-100
+              flex
+              items-center
+              justify-center
+            "
+          >
             <Image
-              src={author.photo || "/avatar.png"}
+              src={authorPhoto}
               alt={author.name}
               fill
               unoptimized
-              className="object-cover"
+              sizes="112px"
+              className="object-contain"
             />
-
           </div>
 
         </div>
 
+        {/* AUTHOR INFORMATION */}
 
         <div className="flex-1">
 
+          {/* NAME */}
 
           <Link
             href={`/authors/${author.slug}`}
-            className="text-2xl font-bold hover:text-red-600 transition"
+            className="
+              text-2xl
+              font-bold
+              hover:text-red-600
+              transition
+            "
           >
             {author.name}
           </Link>
 
+          {/* JOB TITLE */}
 
           {author.job_title && (
             <p className="text-red-600 font-medium mt-1">
@@ -83,16 +104,22 @@ export default function AuthorBox({
             </p>
           )}
 
+          {/* PUBLISHED DATE */}
 
           <p className="text-gray-500 mt-3">
             {t("publishedOn")}{" "}
-            {format.dateTime(new Date(published_at), {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+
+            {format.dateTime(
+              new Date(published_at),
+              {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              }
+            )}
           </p>
 
+          {/* BIO */}
 
           {author.bio && (
             <p className="mt-5 text-gray-700 leading-7">
@@ -100,20 +127,23 @@ export default function AuthorBox({
             </p>
           )}
 
+          {/* SOCIAL LINKS */}
 
-          <div className="flex gap-4 mt-6">
+          <div className="flex flex-wrap gap-4 mt-6">
 
             {author.facebook && (
               <a
                 href={author.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
+                className="
+                  text-blue-600
+                  hover:underline
+                "
               >
                 Facebook
               </a>
             )}
-
 
             {author.twitter && (
               <a
@@ -126,13 +156,15 @@ export default function AuthorBox({
               </a>
             )}
 
-
             {author.linkedin && (
               <a
                 href={author.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-700 hover:underline"
+                className="
+                  text-blue-700
+                  hover:underline
+                "
               >
                 LinkedIn
               </a>
@@ -140,12 +172,9 @@ export default function AuthorBox({
 
           </div>
 
-
         </div>
 
-
       </div>
-
 
     </section>
   );
