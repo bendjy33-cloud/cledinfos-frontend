@@ -27,26 +27,16 @@ if (!API) {
   throw new Error("NEXT_PUBLIC_API_URL is not defined");
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | API FETCH
-|--------------------------------------------------------------------------
-|
-| GET requests:
-| - use short cache
-| - avoid waiting for Render on every navigation
-|
-| POST / PUT / PATCH / DELETE:
-| - always no-store
-|
 |--------------------------------------------------------------------------
 */
 
 async function apiFetch<T>(
   endpoint: string,
   options?: RequestInit,
-  revalidate = 30
+  revalidate = 5
 ): Promise<T> {
 
   const method =
@@ -61,7 +51,6 @@ async function apiFetch<T>(
     "application/json"
   );
 
-
   /*
   |--------------------------------------------------------------------------
   | GET
@@ -74,7 +63,6 @@ async function apiFetch<T>(
       `${API}${endpoint}`,
       {
         ...options,
-
         headers,
 
         next: {
@@ -86,7 +74,6 @@ async function apiFetch<T>(
     return handleResponse<T>(res);
   }
 
-
   /*
   |--------------------------------------------------------------------------
   | POST / PUT / PATCH / DELETE
@@ -97,9 +84,7 @@ async function apiFetch<T>(
     `${API}${endpoint}`,
     {
       ...options,
-
       headers,
-
       cache: "no-store",
     }
   );
@@ -121,19 +106,14 @@ async function handleResponse<T>(
   let data: any = null;
 
   try {
-
     data = await res.json();
-
   } catch {
-
     throw new Error(
       "Le serveur a retourné une réponse invalide."
     );
   }
 
-
   if (!res.ok) {
-
     throw new Error(
       data?.message ||
       data?.errors?.email?.[0] ||
@@ -141,7 +121,6 @@ async function handleResponse<T>(
       "Une erreur est survenue"
     );
   }
-
 
   return data;
 }
@@ -160,7 +139,7 @@ export async function getPosts(
   return apiFetch<PostsResponse>(
     `/posts?page=${page}`,
     undefined,
-    30
+    5
   );
 }
 
@@ -172,7 +151,7 @@ export async function getPost(
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -186,7 +165,7 @@ export async function getRelatedPosts(
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}/related`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -198,7 +177,7 @@ export async function getFeaturedPosts() {
   const data: any = await apiFetch(
     `/featured-posts`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -210,7 +189,7 @@ export async function getMostReadPosts() {
   const data: any = await apiFetch(
     `/most-read`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -222,7 +201,7 @@ export async function getLatestPosts() {
   const data: any = await apiFetch(
     `/posts`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -240,7 +219,7 @@ export async function getCategories() {
   const data: any = await apiFetch(
     "/categories",
     undefined,
-    300
+    5
   );
 
   return data.data ?? data;
@@ -254,7 +233,7 @@ export async function getPostsByCategory(
   const data: any = await apiFetch(
     `/categories/${encodeURIComponent(slug)}/posts`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -274,7 +253,7 @@ export async function searchPosts(
   const data: any = await apiFetch(
     `/search?q=${encodeURIComponent(query)}`,
     undefined,
-    10
+    2
   );
 
   return data.data ?? data;
@@ -294,7 +273,7 @@ export async function getHomeData(
   const data: any = await apiFetch(
     `/home?page=${page}`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -312,7 +291,7 @@ export async function getSettings() {
   const data: any = await apiFetch(
     `/settings`,
     undefined,
-    300
+    5
   );
 
   return data.data ?? data;
@@ -360,7 +339,6 @@ export async function incrementPostView(
     `${API}/posts/${encodeURIComponent(slug)}/view`,
     {
       method: "POST",
-
       cache: "no-store",
 
       headers: {
@@ -369,14 +347,11 @@ export async function incrementPostView(
     }
   );
 
-
   if (!res.ok) {
-
     throw new Error(
       "Failed to increment view"
     );
   }
-
 
   return res.json();
 }
@@ -393,7 +368,7 @@ export async function getTags() {
   const data: any = await apiFetch(
     `/tags`,
     undefined,
-    300
+    5
   );
 
   return data.data ?? data;
@@ -407,7 +382,7 @@ export async function getTag(
   const data: any = await apiFetch(
     `/tags/${encodeURIComponent(slug)}`,
     undefined,
-    300
+    5
   );
 
   return data.data ?? data;
@@ -425,7 +400,7 @@ export async function getAuthors() {
   const data: any = await apiFetch(
     `/authors`,
     undefined,
-    300
+    5
   );
 
   return data.data ?? data;
@@ -439,7 +414,7 @@ export async function getAuthor(
   const data: any = await apiFetch(
     `/authors/${encodeURIComponent(slug)}`,
     undefined,
-    300
+    5
   );
 
   return data.data ?? data;
@@ -459,7 +434,7 @@ export async function getBreakingNews(
   return apiFetch<BreakingNewsResponse>(
     `/breaking-news?locale=${encodeURIComponent(locale)}`,
     undefined,
-    15
+    2
   );
 }
 
@@ -475,7 +450,7 @@ export async function getTrendingPosts() {
   const data: any = await apiFetch(
     `/trending`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -496,11 +471,10 @@ export async function getAds(
     ? `/ads?position=${encodeURIComponent(position)}`
     : "/ads";
 
-
   const data: any = await apiFetch(
     url,
     undefined,
-    60
+    5
   );
 
   return data.data ?? [];

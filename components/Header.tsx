@@ -11,8 +11,14 @@ export default async function Header() {
   const t = await getTranslations("menu");
   const locale = await getLocale();
 
-  const categories = await getCategories();
-  const settings = await getSettings();
+  /*
+   * Fetch categories and settings in parallel.
+   * This avoids waiting for one API request before starting the other.
+   */
+  const [categories, settings] = await Promise.all([
+    getCategories(),
+    getSettings(),
+  ]);
 
   /*
    * Logo
@@ -155,7 +161,6 @@ export default async function Header() {
           )}
         </Link>
 
-
         {/* ================================================== */}
         {/* DESKTOP NAVIGATION */}
         {/* ================================================== */}
@@ -189,7 +194,6 @@ export default async function Header() {
             {t("home")}
           </Link>
 
-
           {/* CATEGORIES */}
 
           {Array.isArray(categories) &&
@@ -210,7 +214,6 @@ export default async function Header() {
               </Link>
             ))}
 
-
           {/* ABOUT */}
 
           <Link
@@ -226,7 +229,6 @@ export default async function Header() {
           >
             {t("about")}
           </Link>
-
 
           {/* CONTACT */}
 
@@ -245,7 +247,6 @@ export default async function Header() {
           </Link>
 
         </nav>
-
 
         {/* ================================================== */}
         {/* DESKTOP SEARCH + LANGUAGE */}
@@ -319,7 +320,6 @@ export default async function Header() {
             </button>
           </form>
 
-
           {/* LANGUAGE */}
 
           <div className="shrink-0">
@@ -327,7 +327,6 @@ export default async function Header() {
           </div>
 
         </div>
-
 
         {/* ================================================== */}
         {/* MOBILE / TABLET MENU */}
