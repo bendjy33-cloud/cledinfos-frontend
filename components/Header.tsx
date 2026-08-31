@@ -43,6 +43,7 @@ export default async function Header() {
           category?.name_en ||
           category?.name_fr ||
           category?.name_ht ||
+          category?.name_es ||
           category?.name ||
           ""
         );
@@ -52,6 +53,7 @@ export default async function Header() {
           category?.name_ht ||
           category?.name_fr ||
           category?.name_en ||
+          category?.name_es ||
           category?.name ||
           ""
         );
@@ -62,6 +64,7 @@ export default async function Header() {
           category?.name_fr ||
           category?.name_en ||
           category?.name_ht ||
+          category?.name_es ||
           category?.name ||
           ""
         );
@@ -86,8 +89,7 @@ export default async function Header() {
           mx-auto
           flex
           items-center
-          justify-between
-          gap-3
+          gap-5
           px-3
           sm:px-4
           md:px-6
@@ -107,9 +109,9 @@ export default async function Header() {
           className="
             flex
             items-center
-            min-w-0
-            shrink
+            shrink-0
             cursor-pointer
+            mr-2
           "
         >
           {logoUrl ? (
@@ -145,10 +147,7 @@ export default async function Header() {
                 lg:text-3xl
                 font-extrabold
                 text-red-500
-                truncate
-                max-w-[160px]
-                sm:max-w-[200px]
-                md:max-w-none
+                whitespace-nowrap
               "
             >
               {settings?.site_name || "Clé d'Infos"}
@@ -167,10 +166,14 @@ export default async function Header() {
             lg:flex
             items-center
             gap-3
-            xl:gap-5
-            2xl:gap-6
+            xl:gap-4
+            2xl:gap-5
+            whitespace-nowrap
+            shrink-0
           "
         >
+
+          {/* HOME */}
 
           <Link
             href="/"
@@ -186,6 +189,8 @@ export default async function Header() {
             {t("home")}
           </Link>
 
+
+          {/* CATEGORIES */}
 
           {Array.isArray(categories) &&
             categories.map((category: any) => (
@@ -206,6 +211,8 @@ export default async function Header() {
             ))}
 
 
+          {/* ABOUT */}
+
           <Link
             href="/about"
             className="
@@ -220,6 +227,8 @@ export default async function Header() {
             {t("about")}
           </Link>
 
+
+          {/* CONTACT */}
 
           <Link
             href="/contact"
@@ -247,25 +256,34 @@ export default async function Header() {
             hidden
             lg:flex
             items-center
-            gap-2
-            xl:gap-3
+            gap-4
+            xl:gap-5
             shrink-0
+            ml-auto
           "
         >
+
+          {/* SEARCH */}
 
           <form
             action="/search"
             method="GET"
-            className="flex items-center"
+            className="
+              flex
+              items-center
+              shrink-0
+              ml-2
+              xl:ml-4
+            "
           >
             <input
               type="text"
               name="q"
               placeholder={t("search")}
               className="
-                w-36
-                xl:w-52
-                2xl:w-60
+                w-28
+                xl:w-40
+                2xl:w-48
                 px-3
                 xl:px-4
                 py-2
@@ -294,6 +312,7 @@ export default async function Header() {
                 rounded-r-lg
                 transition
                 cursor-pointer
+                shrink-0
               "
             >
               🔍
@@ -301,7 +320,11 @@ export default async function Header() {
           </form>
 
 
-          <LanguageSwitcher />
+          {/* LANGUAGE */}
+
+          <div className="shrink-0">
+            <LanguageSwitcher />
+          </div>
 
         </div>
 
@@ -312,6 +335,7 @@ export default async function Header() {
 
         <div
           className="
+            ml-auto
             shrink-0
             lg:hidden
             pointer-events-auto

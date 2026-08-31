@@ -3,6 +3,24 @@ type PostsResponse = {
   meta?: any;
 };
 
+type NewsletterResponse = {
+  message?: string;
+  success?: boolean;
+};
+
+type BreakingNewsResponse = {
+  data: BreakingNewsItem[];
+};
+
+type BreakingNewsItem = {
+  id: number;
+  title: string;
+  link?: string | null;
+  active?: boolean;
+  starts_at?: string | null;
+  ends_at?: string | null;
+};
+
 const API = process.env.NEXT_PUBLIC_API_URL;
 
 if (!API) {
@@ -22,44 +40,62 @@ async function apiFetch<T>(
 ): Promise<T> {
   const method = options?.method?.toUpperCase() ?? "GET";
 
-  const headers = new Headers(options?.headers);
-  headers.set("Accept", "application/json");
+  const headers = new Headers(
+    options?.headers
+  );
+
+  headers.set(
+    "Accept",
+    "application/json"
+  );
+
+  let res: Response;
+
+  /*
+  |--------------------------------------------------------------------------
+  | GET REQUESTS
+  |--------------------------------------------------------------------------
+  */
 
   if (method === "GET") {
-    const res = await fetch(`${API}${endpoint}`, {
-      ...options,
-      headers,
-      next: {
-        revalidate,
-      },
-    });
+    res = await fetch(
+      `${API}${endpoint}`,
+      {
+        ...options,
 
-    let data: any = null;
+        headers,
 
-    try {
-      data = await res.json();
-    } catch {
-      throw new Error(
-        "Le serveur a retourné une réponse invalide."
-      );
-    }
-
-    if (!res.ok) {
-      throw new Error(
-        data?.message ||
-          data?.errors?.email?.[0] ||
-          "Une erreur est survenue"
-      );
-    }
-
-    return data;
+        next: {
+          revalidate,
+        },
+      }
+    );
   }
 
-  const res = await fetch(`${API}${endpoint}`, {
-    ...options,
-    headers,
-    cache: "no-store",
-  });
+  /*
+  |--------------------------------------------------------------------------
+  | POST / PUT / PATCH / DELETE
+  |--------------------------------------------------------------------------
+  */
+
+  else {
+    res = await fetch(
+      `${API}${endpoint}`,
+      {
+        ...options,
+
+        headers,
+
+        cache: "no-store",
+      }
+    );
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | RESPONSE
+  |--------------------------------------------------------------------------
+  */
 
   let data: any = null;
 
@@ -71,10 +107,17 @@ async function apiFetch<T>(
     );
   }
 
+  /*
+  |--------------------------------------------------------------------------
+  | ERROR
+  |--------------------------------------------------------------------------
+  */
+
   if (!res.ok) {
     throw new Error(
       data?.message ||
         data?.errors?.email?.[0] ||
+        data?.errors?.message?.[0] ||
         "Une erreur est survenue"
     );
   }
@@ -250,12 +293,6 @@ export async function getSettings() {
 |--------------------------------------------------------------------------
 */
 
-type NewsletterResponse = {
-  message?: string;
-  success?: boolean;
-};
-
-
 export async function subscribeNewsletter(
   email: string
 ): Promise<NewsletterResponse> {
@@ -265,7 +302,8 @@ export async function subscribeNewsletter(
       method: "POST",
 
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type":
+          "application/json",
       },
 
       body: JSON.stringify({
@@ -289,10 +327,12 @@ export async function incrementPostView(
     `${API}/posts/${encodeURIComponent(slug)}/view`,
     {
       method: "POST",
+
       cache: "no-store",
 
       headers: {
-        Accept: "application/json",
+        Accept:
+          "application/json",
       },
     }
   );
@@ -372,21 +412,6 @@ export async function getAuthor(
 | BREAKING NEWS
 |--------------------------------------------------------------------------
 */
-
-type BreakingNewsResponse = {
-  data: BreakingNewsItem[];
-};
-
-
-type BreakingNewsItem = {
-  id: number;
-  title: string;
-  link?: string | null;
-  active?: boolean;
-  starts_at?: string | null;
-  ends_at?: string | null;
-};
-
 
 export async function getBreakingNews(
   locale: string
