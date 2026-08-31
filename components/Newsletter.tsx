@@ -32,7 +32,7 @@ export default function Newsletter() {
 
       setMessage(t("success"));
       setEmail("");
-    } catch (err: any) {
+    } catch {
       setError(t("error"));
     } finally {
       setLoading(false);
@@ -40,41 +40,107 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="rounded-2xl border bg-gradient-to-br from-red-600 to-red-700 p-5 sm:p-6 text-white shadow-xl">
-
+    <section
+      className="
+        rounded-2xl
+        border
+        border-red-500
+        bg-gradient-to-br
+        from-red-600
+        to-red-700
+        p-5
+        sm:p-6
+        text-white
+        shadow-xl
+      "
+    >
+      {/* HEADER */}
       <div className="mb-5">
-
-        <p className="text-xs sm:text-sm uppercase tracking-widest text-red-100">
+        <p
+          className="
+            text-xs
+            sm:text-sm
+            uppercase
+            tracking-widest
+            text-white
+            font-semibold
+          "
+        >
           {t("title")}
         </p>
 
-        <h2 className="mt-2 text-xl sm:text-2xl font-bold">
+        <h2
+          className="
+            mt-2
+            text-xl
+            sm:text-2xl
+            font-bold
+            text-white
+          "
+        >
           {t("heading")}
         </h2>
 
-        <p className="mt-3 text-sm sm:text-base text-red-100 leading-7">
+        <p
+          className="
+            mt-3
+            text-sm
+            sm:text-base
+            text-white
+            leading-7
+          "
+        >
           {t("description")}
         </p>
-
       </div>
 
+      {/* SUCCESS MESSAGE */}
       {message && (
-        <div className="mb-4 rounded-lg bg-green-500/20 border border-green-300 px-4 py-3 text-sm sm:text-base text-green-100">
+        <div
+          className="
+            mb-4
+            rounded-lg
+            bg-green-500/30
+            border
+            border-green-200
+            px-4
+            py-3
+            text-sm
+            sm:text-base
+            text-white
+            font-medium
+          "
+        >
           ✅ {message}
         </div>
       )}
 
+      {/* ERROR MESSAGE */}
       {error && (
-        <div className="mb-4 rounded-lg bg-red-900/40 border border-red-300 px-4 py-3 text-sm sm:text-base text-red-100">
+        <div
+          className="
+            mb-4
+            rounded-lg
+            bg-black/30
+            border
+            border-white/50
+            px-4
+            py-3
+            text-sm
+            sm:text-base
+            text-white
+            font-medium
+          "
+        >
           ❌ {error}
         </div>
       )}
 
+      {/* FORM */}
       <form
         onSubmit={handleSubmit}
         className="space-y-4"
       >
-
         <input
           type="email"
           required
@@ -83,25 +149,56 @@ export default function Newsletter() {
           value={email}
           disabled={loading}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-xl bg-white px-4 sm:px-5 py-3 sm:py-4 text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-white/50"
+          className="
+            w-full
+            rounded-xl
+            bg-white
+            px-4
+            sm:px-5
+            py-3
+            sm:py-4
+            text-gray-900
+            placeholder:text-gray-500
+            outline-none
+            focus:ring-2
+            focus:ring-white
+          "
         />
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-xl bg-black py-3 sm:py-4 font-semibold text-white transition hover:bg-gray-900 disabled:opacity-60"
+          className="
+            w-full
+            rounded-xl
+            bg-black
+            py-3
+            sm:py-4
+            font-semibold
+            text-white
+            transition
+            hover:bg-gray-900
+            disabled:opacity-60
+            disabled:cursor-not-allowed
+          "
         >
           {loading
             ? t("sending")
             : `📩 ${t("button")}`}
         </button>
-
       </form>
 
-      <p className="mt-4 text-xs text-red-100">
+      {/* FOOTER */}
+      <p
+        className="
+          mt-4
+          text-xs
+          text-white
+          leading-5
+        "
+      >
         {t("footer")}
       </p>
-
     </section>
   );
 }

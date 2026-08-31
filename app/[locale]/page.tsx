@@ -162,7 +162,19 @@ export default async function HomePage() {
   // ========================================
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-6 sm:py-8">
+    <main
+      className="
+        w-full
+        max-w-7xl
+        mx-auto
+        px-4
+        sm:px-5
+        md:px-6
+        py-6
+        sm:py-8
+        bg-[var(--background)]
+      "
+    >
 
       {/* ========================================
           HOME BANNER

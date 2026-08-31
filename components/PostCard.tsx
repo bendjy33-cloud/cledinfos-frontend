@@ -17,12 +17,12 @@ export default function PostCard({ post }: Props) {
       className="
         block
         bg-white
-        dark:bg-slate-900
+        dark:bg-[#111827]
         rounded-xl
         overflow-hidden
         border
         border-gray-100
-        dark:border-slate-800
+        dark:border-gray-700
         shadow-md
         hover:shadow-xl
         transition
@@ -41,11 +41,12 @@ export default function PostCard({ post }: Props) {
           aspect-[16/9]
           overflow-hidden
           bg-gray-100
-          dark:bg-slate-800
+          dark:bg-[#1f2937]
         "
       >
 
         {/* Blurred Background */}
+
         <Image
           src={post.image || "/placeholder.jpg"}
           alt=""
@@ -62,6 +63,7 @@ export default function PostCard({ post }: Props) {
         />
 
         {/* Soft Overlay */}
+
         <div
           className="
             absolute
@@ -76,6 +78,7 @@ export default function PostCard({ post }: Props) {
         ======================================== */}
 
         <div className="absolute inset-0 flex items-center justify-center">
+
           <Image
             src={post.image || "/placeholder.jpg"}
             alt={post.title || "Article"}
@@ -86,10 +89,9 @@ export default function PostCard({ post }: Props) {
               (max-width: 1024px) 50vw,
               33vw
             "
-            className="
-              object-contain
-            "
+            className="object-contain"
           />
+
         </div>
 
       </div>
@@ -102,11 +104,13 @@ export default function PostCard({ post }: Props) {
       <div className="p-4 sm:p-5">
 
         {/* Category */}
+
         <span
           className="
             text-xs
             sm:text-sm
             text-red-600
+            dark:text-red-400
             font-semibold
             line-clamp-1
           "
@@ -116,6 +120,7 @@ export default function PostCard({ post }: Props) {
 
 
         {/* Title */}
+
         <h2
           className="
             text-lg
@@ -123,6 +128,7 @@ export default function PostCard({ post }: Props) {
             font-bold
             mt-2
             mb-2
+            text-gray-900
             dark:text-white
             line-clamp-3
           "
@@ -132,6 +138,7 @@ export default function PostCard({ post }: Props) {
 
 
         {/* Description */}
+
         <p
           className="
             text-sm
@@ -146,6 +153,7 @@ export default function PostCard({ post }: Props) {
 
 
         {/* Meta */}
+
         <div
           className="
             flex
@@ -157,6 +165,7 @@ export default function PostCard({ post }: Props) {
             text-xs
             sm:text-sm
             text-gray-500
+            dark:text-gray-400
           "
         >
 
@@ -165,11 +174,14 @@ export default function PostCard({ post }: Props) {
           </span>
 
           <span className="whitespace-nowrap">
-            {format.dateTime(new Date(post.published_at), {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
+            {format.dateTime(
+              new Date(post.published_at),
+              {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              }
+            )}
           </span>
 
         </div>
