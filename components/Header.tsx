@@ -2,33 +2,62 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { getCategories, getSettings } from "@/lib/api";
+import {
+  getCategories,
+  getSettings,
+} from "@/lib/api";
 
 import MobileMenu from "./MobileMenu";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default async function Header() {
+
   const t = await getTranslations("menu");
+
   const locale = await getLocale();
 
-  const categories = await getCategories();
-  const settings = await getSettings();
 
   /*
-   * Logo
-   * Prefer logo_url, then logo as fallback.
-   */
+  |--------------------------------------------------------------------------
+  | LOAD HEADER DATA IN PARALLEL
+  |--------------------------------------------------------------------------
+  */
+
+  const [
+    categories,
+    settings,
+  ] = await Promise.all([
+    getCategories(),
+    getSettings(),
+  ]);
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | LOGO
+  |--------------------------------------------------------------------------
+  */
+
   const logoUrl =
     settings?.logo_url ||
     settings?.logo ||
     null;
 
+
   /*
-   * Get translated category name
-   */
-  function getCategoryName(category: any) {
+  |--------------------------------------------------------------------------
+  | CATEGORY TRANSLATION
+  |--------------------------------------------------------------------------
+  */
+
+  function getCategoryName(
+    category: any
+  ) {
+
     switch (locale) {
+
       case "es":
+
         return (
           category?.name_es ||
           category?.name_en ||
@@ -37,8 +66,10 @@ export default async function Header() {
           category?.name ||
           ""
         );
+
 
       case "en":
+
         return (
           category?.name_en ||
           category?.name_fr ||
@@ -47,8 +78,10 @@ export default async function Header() {
           category?.name ||
           ""
         );
+
 
       case "ht":
+
         return (
           category?.name_ht ||
           category?.name_fr ||
@@ -58,8 +91,11 @@ export default async function Header() {
           ""
         );
 
+
       case "fr":
+
       default:
+
         return (
           category?.name_fr ||
           category?.name_en ||
@@ -71,7 +107,9 @@ export default async function Header() {
     }
   }
 
+
   return (
+
     <header
       className="
         sticky
@@ -83,13 +121,14 @@ export default async function Header() {
         shadow-lg
       "
     >
+
       <div
         className="
           max-w-7xl
           mx-auto
           flex
           items-center
-          gap-5
+          gap-6
           px-3
           sm:px-4
           md:px-6
@@ -100,9 +139,8 @@ export default async function Header() {
         "
       >
 
-        {/* ================================================== */}
+
         {/* LOGO */}
-        {/* ================================================== */}
 
         <Link
           href="/"
@@ -114,10 +152,15 @@ export default async function Header() {
             mr-2
           "
         >
+
           {logoUrl ? (
+
             <Image
               src={logoUrl}
-              alt={settings?.site_name || "Clé d'Infos"}
+              alt={
+                settings?.site_name ||
+                "Clé d'Infos"
+              }
               width={180}
               height={60}
               priority
@@ -138,7 +181,9 @@ export default async function Header() {
                 lg:max-w-[180px]
               "
             />
+
           ) : (
+
             <span
               className="
                 text-lg
@@ -150,15 +195,16 @@ export default async function Header() {
                 whitespace-nowrap
               "
             >
-              {settings?.site_name || "Clé d'Infos"}
+              {settings?.site_name ||
+                "Clé d'Infos"}
             </span>
+
           )}
+
         </Link>
 
 
-        {/* ================================================== */}
         {/* DESKTOP NAVIGATION */}
-        {/* ================================================== */}
 
         <nav
           className="
@@ -168,12 +214,10 @@ export default async function Header() {
             gap-3
             xl:gap-4
             2xl:gap-5
-            whitespace-nowrap
-            shrink-0
+            flex-1
+            min-w-0
           "
         >
-
-          {/* HOME */}
 
           <Link
             href="/"
@@ -183,35 +227,35 @@ export default async function Header() {
               xl:text-base
               hover:text-red-400
               transition
-              cursor-pointer
             "
           >
             {t("home")}
           </Link>
 
 
-          {/* CATEGORIES */}
-
           {Array.isArray(categories) &&
-            categories.map((category: any) => (
-              <Link
-                key={category.id}
-                href={`/categories/${category.slug}`}
-                className="
-                  whitespace-nowrap
-                  text-sm
-                  xl:text-base
-                  hover:text-red-400
-                  transition
-                  cursor-pointer
-                "
-              >
-                {getCategoryName(category)}
-              </Link>
-            ))}
+            categories.map(
+              (category: any) => (
 
+                <Link
+                  key={category.id}
+                  href={`/categories/${category.slug}`}
+                  className="
+                    whitespace-nowrap
+                    text-sm
+                    xl:text-base
+                    hover:text-red-400
+                    transition
+                  "
+                >
+                  {getCategoryName(
+                    category
+                  )}
+                </Link>
 
-          {/* ABOUT */}
+              )
+            )}
+
 
           <Link
             href="/about"
@@ -221,14 +265,11 @@ export default async function Header() {
               xl:text-base
               hover:text-red-400
               transition
-              cursor-pointer
             "
           >
             {t("about")}
           </Link>
 
-
-          {/* CONTACT */}
 
           <Link
             href="/contact"
@@ -238,7 +279,6 @@ export default async function Header() {
               xl:text-base
               hover:text-red-400
               transition
-              cursor-pointer
             "
           >
             {t("contact")}
@@ -247,9 +287,7 @@ export default async function Header() {
         </nav>
 
 
-        {/* ================================================== */}
-        {/* DESKTOP SEARCH + LANGUAGE */}
-        {/* ================================================== */}
+        {/* SEARCH + LANGUAGE */}
 
         <div
           className="
@@ -257,13 +295,11 @@ export default async function Header() {
             lg:flex
             items-center
             gap-4
-            xl:gap-5
+            xl:gap-6
             shrink-0
             ml-auto
           "
         >
-
-          {/* SEARCH */}
 
           <form
             action="/search"
@@ -271,19 +307,18 @@ export default async function Header() {
             className="
               flex
               items-center
-              shrink-0
-              ml-2
-              xl:ml-4
+              ml-4
             "
           >
+
             <input
               type="text"
               name="q"
               placeholder={t("search")}
               className="
-                w-28
-                xl:w-40
-                2xl:w-48
+                w-32
+                xl:w-44
+                2xl:w-52
                 px-3
                 xl:px-4
                 py-2
@@ -317,10 +352,9 @@ export default async function Header() {
             >
               🔍
             </button>
+
           </form>
 
-
-          {/* LANGUAGE */}
 
           <div className="shrink-0">
             <LanguageSwitcher />
@@ -329,9 +363,7 @@ export default async function Header() {
         </div>
 
 
-        {/* ================================================== */}
-        {/* MOBILE / TABLET MENU */}
-        {/* ================================================== */}
+        {/* MOBILE MENU */}
 
         <div
           className="
@@ -341,6 +373,7 @@ export default async function Header() {
             pointer-events-auto
           "
         >
+
           <MobileMenu
             categories={
               Array.isArray(categories)
@@ -348,9 +381,11 @@ export default async function Header() {
                 : []
             }
           />
+
         </div>
 
       </div>
+
     </header>
   );
 }
