@@ -31,14 +31,21 @@ if (!API) {
 |--------------------------------------------------------------------------
 | API FETCH
 |--------------------------------------------------------------------------
+|
+| GET requests use no-store so changes made on Render
+| are available immediately on Vercel.
+|
+| POST / PUT / PATCH / DELETE are also no-store.
+|
+|--------------------------------------------------------------------------
 */
 
 async function apiFetch<T>(
   endpoint: string,
-  options?: RequestInit,
-  revalidate = 60
+  options?: RequestInit
 ): Promise<T> {
-  const method = options?.method?.toUpperCase() ?? "GET";
+  const method =
+    options?.method?.toUpperCase() ?? "GET";
 
   const headers = new Headers(
     options?.headers
@@ -49,53 +56,16 @@ async function apiFetch<T>(
     "application/json"
   );
 
-  let res: Response;
+  const res = await fetch(
+    `${API}${endpoint}`,
+    {
+      ...options,
 
-  /*
-  |--------------------------------------------------------------------------
-  | GET REQUESTS
-  |--------------------------------------------------------------------------
-  */
+      headers,
 
-  if (method === "GET") {
-    res = await fetch(
-      `${API}${endpoint}`,
-      {
-        ...options,
-
-        headers,
-
-        next: {
-          revalidate,
-        },
-      }
-    );
-  }
-
-  /*
-  |--------------------------------------------------------------------------
-  | POST / PUT / PATCH / DELETE
-  |--------------------------------------------------------------------------
-  */
-
-  else {
-    res = await fetch(
-      `${API}${endpoint}`,
-      {
-        ...options,
-
-        headers,
-
-        cache: "no-store",
-      }
-    );
-  }
-
-  /*
-  |--------------------------------------------------------------------------
-  | RESPONSE
-  |--------------------------------------------------------------------------
-  */
+      cache: "no-store",
+    }
+  );
 
   let data: any = null;
 
@@ -106,12 +76,6 @@ async function apiFetch<T>(
       "Le serveur a retourné une réponse invalide."
     );
   }
-
-  /*
-  |--------------------------------------------------------------------------
-  | ERROR
-  |--------------------------------------------------------------------------
-  */
 
   if (!res.ok) {
     throw new Error(
@@ -136,9 +100,7 @@ export async function getPosts(
   page = 1
 ): Promise<PostsResponse> {
   return apiFetch<PostsResponse>(
-    `/posts?page=${page}`,
-    undefined,
-    60
+    `/posts?page=${page}`
   );
 }
 
@@ -147,9 +109,7 @@ export async function getPost(
   slug: string
 ) {
   const data: any = await apiFetch(
-    `/posts/${encodeURIComponent(slug)}`,
-    undefined,
-    60
+    `/posts/${encodeURIComponent(slug)}`
   );
 
   return data.data ?? data;
@@ -160,9 +120,7 @@ export async function getRelatedPosts(
   slug: string
 ) {
   const data: any = await apiFetch(
-    `/posts/${encodeURIComponent(slug)}/related`,
-    undefined,
-    60
+    `/posts/${encodeURIComponent(slug)}/related`
   );
 
   return data.data ?? data;
@@ -171,9 +129,7 @@ export async function getRelatedPosts(
 
 export async function getFeaturedPosts() {
   const data: any = await apiFetch(
-    `/featured-posts`,
-    undefined,
-    60
+    `/featured-posts`
   );
 
   return data.data ?? data;
@@ -182,9 +138,7 @@ export async function getFeaturedPosts() {
 
 export async function getMostReadPosts() {
   const data: any = await apiFetch(
-    `/most-read`,
-    undefined,
-    60
+    `/most-read`
   );
 
   return data.data ?? data;
@@ -193,9 +147,7 @@ export async function getMostReadPosts() {
 
 export async function getLatestPosts() {
   const data: any = await apiFetch(
-    `/posts`,
-    undefined,
-    60
+    `/posts`
   );
 
   return data.data ?? data;
@@ -210,9 +162,7 @@ export async function getLatestPosts() {
 
 export async function getCategories() {
   const data: any = await apiFetch(
-    "/categories",
-    undefined,
-    300
+    "/categories"
   );
 
   return data.data ?? data;
@@ -223,9 +173,7 @@ export async function getPostsByCategory(
   slug: string
 ) {
   const data: any = await apiFetch(
-    `/categories/${encodeURIComponent(slug)}/posts`,
-    undefined,
-    60
+    `/categories/${encodeURIComponent(slug)}/posts`
   );
 
   return data.data ?? data;
@@ -242,9 +190,7 @@ export async function searchPosts(
   query: string
 ) {
   const data: any = await apiFetch(
-    `/search?q=${encodeURIComponent(query)}`,
-    undefined,
-    30
+    `/search?q=${encodeURIComponent(query)}`
   );
 
   return data.data ?? data;
@@ -261,9 +207,7 @@ export async function getHomeData(
   page = 1
 ) {
   const data: any = await apiFetch(
-    `/home?page=${page}`,
-    undefined,
-    60
+    `/home?page=${page}`
   );
 
   return data.data ?? data;
@@ -278,9 +222,7 @@ export async function getHomeData(
 
 export async function getSettings() {
   const data: any = await apiFetch(
-    `/settings`,
-    undefined,
-    300
+    `/settings`
   );
 
   return data.data ?? data;
@@ -355,9 +297,7 @@ export async function incrementPostView(
 
 export async function getTags() {
   const data: any = await apiFetch(
-    `/tags`,
-    undefined,
-    300
+    `/tags`
   );
 
   return data.data ?? data;
@@ -368,9 +308,7 @@ export async function getTag(
   slug: string
 ) {
   const data: any = await apiFetch(
-    `/tags/${encodeURIComponent(slug)}`,
-    undefined,
-    300
+    `/tags/${encodeURIComponent(slug)}`
   );
 
   return data.data ?? data;
@@ -385,9 +323,7 @@ export async function getTag(
 
 export async function getAuthors() {
   const data: any = await apiFetch(
-    `/authors`,
-    undefined,
-    300
+    `/authors`
   );
 
   return data.data ?? data;
@@ -398,9 +334,7 @@ export async function getAuthor(
   slug: string
 ) {
   const data: any = await apiFetch(
-    `/authors/${encodeURIComponent(slug)}`,
-    undefined,
-    300
+    `/authors/${encodeURIComponent(slug)}`
   );
 
   return data.data ?? data;
@@ -417,9 +351,7 @@ export async function getBreakingNews(
   locale: string
 ): Promise<BreakingNewsResponse> {
   return apiFetch<BreakingNewsResponse>(
-    `/breaking-news?locale=${encodeURIComponent(locale)}`,
-    undefined,
-    30
+    `/breaking-news?locale=${encodeURIComponent(locale)}`
   );
 }
 
@@ -432,9 +364,7 @@ export async function getBreakingNews(
 
 export async function getTrendingPosts() {
   const data: any = await apiFetch(
-    `/trending`,
-    undefined,
-    60
+    `/trending`
   );
 
   return data.data ?? data;
@@ -455,9 +385,7 @@ export async function getAds(
     : "/ads";
 
   const data: any = await apiFetch(
-    url,
-    undefined,
-    120
+    url
   );
 
   return data.data ?? [];
