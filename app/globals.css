@@ -5,12 +5,6 @@
   --foreground: #171717;
 }
 
-/* Dark mode */
-html.dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-}
-
 /* Prevent horizontal overflow */
 html,
 body {
