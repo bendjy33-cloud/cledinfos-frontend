@@ -1111,7 +1111,7 @@ export default async function PostPage({
       </section>
 
 
-      {/* =====================================================
+    {/* =====================================================
           RELATED POSTS
       ===================================================== */}
 
@@ -1120,6 +1120,8 @@ export default async function PostPage({
           className="
             mt-20
             max-sm:mt-4
+
+            max-sm:!text-black
           "
         >
 
@@ -1134,6 +1136,10 @@ export default async function PostPage({
 
               text-gray-900
               dark:text-white
+
+              max-sm:!text-black
+              max-sm:!opacity-100
+              max-sm:!visible
             "
           >
             {t("related")}
