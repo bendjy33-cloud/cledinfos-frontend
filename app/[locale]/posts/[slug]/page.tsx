@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import ViewCounter from "@/components/ViewCounter";
 import PostCard from "@/components/PostCard";
@@ -187,10 +188,15 @@ function localizePost(post: any, locale: string) {
     ...post,
 
     title: title ?? "",
+
     subtitle: subtitle ?? "",
+
     content: content ?? "",
+
     meta_description: meta_description ?? "",
+
     keywords: keywords ?? "",
+
     category,
   };
 }
@@ -458,12 +464,17 @@ export default async function PostPage({
   return (
     <main
       className="
+        w-full
         max-w-6xl
         mx-auto
         px-4
         sm:px-6
-        py-8
-        sm:py-10
+        lg:px-8
+        pt-24
+        sm:pt-28
+        pb-10
+
+        bg-[var(--background)]
         text-gray-900
         dark:text-white
       "
@@ -489,31 +500,46 @@ export default async function PostPage({
 
       {/* BREADCRUMB */}
 
-      <Breadcrumb
-        items={[
-          ...(post.category?.name
-            ? [
-                {
-                  label:
-                    post.category.name,
+      <div
+        className="
+          text-gray-600
+          dark:text-gray-300
+        "
+      >
+        <Breadcrumb
+          items={[
+            ...(post.category?.name
+              ? [
+                  {
+                    label:
+                      post.category.name,
 
-                  href:
-                    `/categories/${post.category.slug}`,
-                },
-              ]
-            : []),
+                    href:
+                      `/categories/${post.category.slug}`,
+                  },
+                ]
+              : []),
 
-          {
-            label:
-              post.title,
-          },
-        ]}
-      />
+            {
+              label:
+                post.title,
+            },
+          ]}
+        />
+      </div>
 
 
-      {/* ARTICLE HEADER */}
+      {/* =====================================================
+          ARTICLE HEADER
+      ===================================================== */}
 
-      <section className="mb-12">
+      <section
+        className="
+          mb-12
+          text-gray-900
+          dark:text-white
+        "
+      >
 
         {/* CATEGORY */}
 
@@ -545,7 +571,8 @@ export default async function PostPage({
             font-bold
             leading-tight
             mt-5
-            mb-3
+            mb-4
+
             text-gray-900
             dark:text-white
           "
@@ -559,12 +586,14 @@ export default async function PostPage({
         {post.subtitle && (
           <p
             className="
-              text-xl
-              sm:text-2xl
-              text-gray-900
-              dark:text-gray-200
+              text-lg
+              sm:text-xl
+              md:text-2xl
               leading-relaxed
               mb-5
+
+              text-gray-700
+              dark:text-gray-200
             "
           >
             {post.subtitle}
@@ -578,10 +607,15 @@ export default async function PostPage({
           className="
             flex
             flex-wrap
-            gap-6
-            text-gray-500
-            dark:text-gray-400
+            gap-4
+            sm:gap-6
             mb-8
+
+            text-sm
+            sm:text-base
+
+            text-gray-600
+            dark:text-gray-300
           "
         >
 
@@ -607,7 +641,9 @@ export default async function PostPage({
         </div>
 
 
-        {/* IMAGE */}
+        {/* =====================================================
+            ARTICLE IMAGE
+        ===================================================== */}
 
         <div
           className="
@@ -616,10 +652,16 @@ export default async function PostPage({
             aspect-video
             rounded-2xl
             overflow-hidden
+
             bg-gray-100
-            dark:bg-slate-800
+            dark:bg-gray-800
+
+            border
+            border-gray-200
+            dark:border-gray-700
           "
         >
+
           <Image
             src={
               post.image ||
@@ -632,56 +674,68 @@ export default async function PostPage({
             fill
             priority
             unoptimized
-            className="object-contain"
+            sizes="
+              (max-width: 640px) 100vw,
+              (max-width: 1024px) 90vw,
+              1200px
+            "
+            className="
+              object-contain
+            "
           />
+
         </div>
 
       </section>
 
 
-      {/* TABLE OF CONTENTS */}
+      {/* =====================================================
+          TABLE OF CONTENTS
+      ===================================================== */}
 
       <div
         className="
           text-gray-900
-          dark:text-gray-100
+          dark:text-white
         "
       >
         <TableOfContents />
       </div>
 
 
-      {/* ARTICLE CONTENT */}
+      {/* =====================================================
+          ARTICLE CONTENT
+      ===================================================== */}
 
       <article
         className="
           prose
-          lg:prose-lg
+          prose-lg
           max-w-none
 
-          text-gray-900
-          dark:text-gray-100
-
           prose-headings:text-gray-900
-          dark:prose-headings:text-white
+          prose-headings:font-bold
 
           prose-p:text-gray-700
-          dark:prose-p:text-gray-200
+          prose-p:leading-8
 
           prose-li:text-gray-700
-          dark:prose-li:text-gray-200
 
           prose-strong:text-gray-900
-          dark:prose-strong:text-white
 
           prose-a:text-red-600
-          dark:prose-a:text-red-400
-
-          prose-blockquote:text-gray-700
-          dark:prose-blockquote:text-gray-200
 
           prose-img:rounded-xl
+
           prose-headings:scroll-mt-28
+
+          dark:prose-invert
+
+          dark:prose-headings:text-white
+          dark:prose-p:text-gray-200
+          dark:prose-li:text-gray-200
+          dark:prose-strong:text-white
+          dark:prose-a:text-red-400
         "
         dangerouslySetInnerHTML={{
           __html:
@@ -691,37 +745,57 @@ export default async function PostPage({
       />
 
 
-      {/* COMMENTS */}
+      {/* =====================================================
+          COMMENTS
+      ===================================================== */}
 
-      <div
+      <section
         className="
+          mt-12
+
           text-gray-900
-          dark:text-gray-100
+          dark:text-white
+
+          [&_*]:text-gray-900
+          dark:[&_*]:text-white
         "
       >
+
         <Comments
           slug={post.slug}
         />
-      </div>
+
+      </section>
 
 
-      {/* TAGS */}
+      {/* =====================================================
+          TAGS
+      ===================================================== */}
 
       {post.tags &&
         post.tags.length > 0 && (
-          <section className="mt-10">
+          <section
+            className="
+              mt-10
+
+              text-gray-900
+              dark:text-white
+            "
+          >
 
             <h3
               className="
                 text-2xl
                 font-bold
                 mb-4
+
                 text-gray-900
                 dark:text-white
               "
             >
               {t("tags")}
             </h3>
+
 
             <div
               className="
@@ -742,9 +816,9 @@ export default async function PostPage({
                       rounded-full
 
                       bg-gray-100
-                      text-gray-700
+                      dark:bg-gray-800
 
-                      dark:bg-slate-800
+                      text-gray-700
                       dark:text-gray-200
 
                       hover:bg-red-600
@@ -764,14 +838,18 @@ export default async function PostPage({
         )}
 
 
-      {/* SHARE */}
+      {/* =====================================================
+          SHARE
+      ===================================================== */}
 
       <section
         className="
           mt-12
           border-t
+
           border-gray-200
-          dark:border-slate-700
+          dark:border-gray-700
+
           pt-8
         "
       >
@@ -781,12 +859,14 @@ export default async function PostPage({
             text-2xl
             font-bold
             mb-5
+
             text-gray-900
             dark:text-white
           "
         >
           {t("share")}
         </h3>
+
 
         <div
           className="
@@ -813,6 +893,7 @@ export default async function PostPage({
               px-5
               py-3
               rounded-lg
+              font-semibold
               transition
             "
           >
@@ -837,6 +918,7 @@ export default async function PostPage({
               px-5
               py-3
               rounded-lg
+              font-semibold
               transition
             "
           >
@@ -861,6 +943,7 @@ export default async function PostPage({
               px-5
               py-3
               rounded-lg
+              font-semibold
               transition
             "
           >
@@ -872,14 +955,22 @@ export default async function PostPage({
       </section>
 
 
-      {/* AUTHOR */}
+      {/* =====================================================
+          AUTHOR
+      ===================================================== */}
 
-      <div
+      <section
         className="
+          mt-10
+
           text-gray-900
           dark:text-white
+
+          [&_*]:text-gray-900
+          dark:[&_*]:text-white
         "
       >
+
         <AuthorBox
           author={
             post.author
@@ -888,13 +979,20 @@ export default async function PostPage({
             post.published_at
           }
         />
-      </div>
+
+      </section>
 
 
-      {/* RELATED POSTS */}
+      {/* =====================================================
+          RELATED POSTS
+      ===================================================== */}
 
       {related.length > 0 && (
-        <section className="mt-20">
+        <section
+          className="
+            mt-20
+          "
+        >
 
           <h2
             className="
@@ -902,6 +1000,7 @@ export default async function PostPage({
               sm:text-4xl
               font-bold
               mb-8
+
               text-gray-900
               dark:text-white
             "
@@ -913,9 +1012,11 @@ export default async function PostPage({
           <div
             className="
               grid
-              md:grid-cols-2
+              grid-cols-1
+              sm:grid-cols-2
               lg:grid-cols-3
-              gap-8
+              gap-6
+              md:gap-8
             "
           >
 
