@@ -6,7 +6,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import Breadcrumb from "@/components/Breadcrumb";
 import ViewCounter from "@/components/ViewCounter";
 import PostCard from "@/components/PostCard";
-import TableOfContents from "@/components/TableOfContents";
+
 import AuthorBox from "@/components/AuthorBox";
 import Comments from "@/components/Comments";
 
@@ -723,18 +723,7 @@ export default async function PostPage({
       </section>
 
 
-      {/* =====================================================
-          TABLE OF CONTENTS
-      ===================================================== */}
-
-      <div
-        className="
-          text-gray-900
-          dark:text-white
-        "
-      >
-        <TableOfContents />
-      </div>
+     
 
 
       {/* =====================================================
