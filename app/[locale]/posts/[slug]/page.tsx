@@ -191,7 +191,6 @@ function localizePost(post: any, locale: string) {
     content: content ?? "",
     meta_description: meta_description ?? "",
     keywords: keywords ?? "",
-
     category,
   };
 }
@@ -463,7 +462,7 @@ export default async function PostPage({
         mx-auto
         px-4
         sm:px-6
-        py-6
+        py-8
         sm:py-10
         text-gray-900
         dark:text-white
@@ -528,6 +527,7 @@ export default async function PostPage({
               py-1
               rounded-full
               text-sm
+              font-semibold
             "
           >
             {post.category.name}
@@ -539,8 +539,9 @@ export default async function PostPage({
 
         <h1
           className="
-            text-4xl
-            sm:text-5xl
+            text-3xl
+            sm:text-4xl
+            md:text-5xl
             font-bold
             leading-tight
             mt-5
@@ -640,7 +641,14 @@ export default async function PostPage({
 
       {/* TABLE OF CONTENTS */}
 
-      <TableOfContents />
+      <div
+        className="
+          text-gray-900
+          dark:text-gray-100
+        "
+      >
+        <TableOfContents />
+      </div>
 
 
       {/* ARTICLE CONTENT */}
@@ -650,11 +658,30 @@ export default async function PostPage({
           prose
           lg:prose-lg
           max-w-none
+
+          text-gray-900
+          dark:text-gray-100
+
+          prose-headings:text-gray-900
+          dark:prose-headings:text-white
+
+          prose-p:text-gray-700
+          dark:prose-p:text-gray-200
+
+          prose-li:text-gray-700
+          dark:prose-li:text-gray-200
+
+          prose-strong:text-gray-900
+          dark:prose-strong:text-white
+
+          prose-a:text-red-600
+          dark:prose-a:text-red-400
+
+          prose-blockquote:text-gray-700
+          dark:prose-blockquote:text-gray-200
+
           prose-img:rounded-xl
           prose-headings:scroll-mt-28
-          text-gray-900
-          dark:text-gray-200
-          dark:prose-invert
         "
         dangerouslySetInnerHTML={{
           __html:
@@ -666,9 +693,16 @@ export default async function PostPage({
 
       {/* COMMENTS */}
 
-      <Comments
-        slug={post.slug}
-      />
+      <div
+        className="
+          text-gray-900
+          dark:text-gray-100
+        "
+      >
+        <Comments
+          slug={post.slug}
+        />
+      </div>
 
 
       {/* TAGS */}
@@ -689,7 +723,6 @@ export default async function PostPage({
               {t("tags")}
             </h3>
 
-
             <div
               className="
                 flex
@@ -707,12 +740,16 @@ export default async function PostPage({
                       px-4
                       py-2
                       rounded-full
+
                       bg-gray-100
                       text-gray-700
+
                       dark:bg-slate-800
                       dark:text-gray-200
+
                       hover:bg-red-600
                       hover:text-white
+
                       transition
                     "
                   >
@@ -751,7 +788,6 @@ export default async function PostPage({
           {t("share")}
         </h3>
 
-
         <div
           className="
             flex
@@ -777,6 +813,7 @@ export default async function PostPage({
               px-5
               py-3
               rounded-lg
+              transition
             "
           >
             Facebook
@@ -800,6 +837,7 @@ export default async function PostPage({
               px-5
               py-3
               rounded-lg
+              transition
             "
           >
             WhatsApp
@@ -823,6 +861,7 @@ export default async function PostPage({
               px-5
               py-3
               rounded-lg
+              transition
             "
           >
             X
@@ -835,14 +874,21 @@ export default async function PostPage({
 
       {/* AUTHOR */}
 
-      <AuthorBox
-        author={
-          post.author
-        }
-        published_at={
-          post.published_at
-        }
-      />
+      <div
+        className="
+          text-gray-900
+          dark:text-white
+        "
+      >
+        <AuthorBox
+          author={
+            post.author
+          }
+          published_at={
+            post.published_at
+          }
+        />
+      </div>
 
 
       {/* RELATED POSTS */}
