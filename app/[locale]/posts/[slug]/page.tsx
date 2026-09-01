@@ -570,7 +570,9 @@ export default async function PostPage({
         )}
 
 
-        {/* TITLE */}
+        {/* =====================================================
+            TITLE
+        ===================================================== */}
 
         <h1
           className="
@@ -586,13 +588,17 @@ export default async function PostPage({
 
             text-gray-900
             dark:text-white
+
+            max-sm:!text-black
           "
         >
           {post.title}
         </h1>
 
 
-        {/* SUBTITLE */}
+        {/* =====================================================
+            SUBTITLE
+        ===================================================== */}
 
         {post.subtitle && (
           <p
@@ -607,6 +613,8 @@ export default async function PostPage({
 
               text-gray-700
               dark:text-gray-200
+
+              max-sm:!text-black
             "
           >
             {post.subtitle}
@@ -614,7 +622,9 @@ export default async function PostPage({
         )}
 
 
-        {/* META */}
+        {/* =====================================================
+            META
+        ===================================================== */}
 
         <div
           className="
@@ -760,6 +770,34 @@ export default async function PostPage({
           dark:prose-li:text-gray-200
           dark:prose-strong:text-white
           dark:prose-a:text-red-400
+
+          max-sm:!text-black
+
+          max-sm:[&_h1]:!text-black
+          max-sm:[&_h2]:!text-black
+          max-sm:[&_h3]:!text-black
+          max-sm:[&_h4]:!text-black
+          max-sm:[&_h5]:!text-black
+          max-sm:[&_h6]:!text-black
+
+          max-sm:[&_p]:!text-black
+
+          max-sm:[&_li]:!text-black
+
+          max-sm:[&_strong]:!text-black
+
+          max-sm:[&_b]:!text-black
+
+          max-sm:[&_em]:!text-black
+
+          max-sm:[&_blockquote]:!text-black
+
+          max-sm:[&_span]:!text-black
+
+          max-sm:[&_td]:!text-black
+          max-sm:[&_th]:!text-black
+
+          max-sm:[&_figcaption]:!text-black
         "
         dangerouslySetInnerHTML={{
           __html:
@@ -771,12 +809,6 @@ export default async function PostPage({
 
       {/* =====================================================
           COMMENTS
-          
-          MOBILE:
-          Tout tèks anndan Comments yo nwa.
-          
-          DESKTOP:
-          Li kenbe koulè nòmal li.
       ===================================================== */}
 
       <section
@@ -786,11 +818,9 @@ export default async function PostPage({
           text-gray-900
           dark:text-white
 
-          /* MOBILE ONLY */
           max-sm:!text-black
           max-sm:[&_*]:!text-black
 
-          /* HEADINGS */
           max-sm:[&_h1]:!text-black
           max-sm:[&_h2]:!text-black
           max-sm:[&_h3]:!text-black
@@ -798,23 +828,18 @@ export default async function PostPage({
           max-sm:[&_h5]:!text-black
           max-sm:[&_h6]:!text-black
 
-          /* PARAGRAPHS */
           max-sm:[&_p]:!text-black
 
-          /* SMALL / SPAN / LABEL */
           max-sm:[&_small]:!text-black
           max-sm:[&_span]:!text-black
           max-sm:[&_label]:!text-black
 
-          /* INPUTS */
           max-sm:[&_input]:!text-black
           max-sm:[&_textarea]:!text-black
 
-          /* PLACEHOLDERS */
           max-sm:[&_input::placeholder]:!text-gray-600
           max-sm:[&_textarea::placeholder]:!text-gray-600
 
-          /* LINKS */
           max-sm:[&_a]:!text-black
         "
       >
@@ -1042,12 +1067,6 @@ export default async function PostPage({
 
       {/* =====================================================
           AUTHOR
-          
-          MOBILE:
-          Tout tèks AuthorBox la nwa.
-          
-          DESKTOP:
-          Li kenbe koulè nòmal yo.
       ===================================================== */}
 
       <section
@@ -1057,11 +1076,9 @@ export default async function PostPage({
           text-gray-900
           dark:text-white
 
-          /* MOBILE ONLY */
           max-sm:!text-black
           max-sm:[&_*]:!text-black
 
-          /* HEADINGS */
           max-sm:[&_h1]:!text-black
           max-sm:[&_h2]:!text-black
           max-sm:[&_h3]:!text-black
@@ -1069,15 +1086,12 @@ export default async function PostPage({
           max-sm:[&_h5]:!text-black
           max-sm:[&_h6]:!text-black
 
-          /* TEXT */
           max-sm:[&_p]:!text-black
           max-sm:[&_span]:!text-black
           max-sm:[&_small]:!text-black
 
-          /* LINKS */
           max-sm:[&_a]:!text-black
 
-          /* STRONG / BOLD */
           max-sm:[&_strong]:!text-black
           max-sm:[&_b]:!text-black
         "
@@ -1091,6 +1105,7 @@ export default async function PostPage({
           published_at={
             post.published_at
           }
+
         />
 
       </section>
