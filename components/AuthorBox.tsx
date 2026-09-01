@@ -36,36 +36,89 @@ export default function AuthorBox({
     "/avatar.png";
 
   return (
-    <section className="mt-12 rounded-2xl border bg-gray-50 p-6">
+    <section
+      className="
+        mt-12
 
-      {/* TITLE */}
+        rounded-2xl
 
-      <h3 className="text-2xl font-bold mb-6">
+        border
+        border-gray-200
+
+        bg-gray-50
+
+        p-6
+
+        text-gray-900
+
+        /* MOBILE: TOUT TEXT AN NWA */
+        max-sm:!text-black
+        max-sm:[&_*]:!text-black
+      "
+    >
+
+      {/* =====================================================
+          TITLE
+      ===================================================== */}
+
+      <h3
+        className="
+          text-2xl
+          font-bold
+          mb-6
+
+          text-gray-900
+
+          max-sm:!text-black
+        "
+      >
         {t("aboutAuthor")}
       </h3>
 
-      {/* AUTHOR */}
 
-      <div className="flex flex-col md:flex-row gap-6">
+      {/* =====================================================
+          AUTHOR
+      ===================================================== */}
 
-        {/* AUTHOR PHOTO */}
+      <div
+        className="
+          flex
+          flex-col
+          md:flex-row
+
+          gap-6
+        "
+      >
+
+        {/* =====================================================
+            AUTHOR PHOTO
+        ===================================================== */}
 
         <div className="shrink-0">
 
           <div
             className="
               relative
+
               w-28
               h-28
+
               rounded-full
+
               overflow-hidden
+
               border
+
+              border-gray-200
+
               bg-gray-100
+
               flex
               items-center
               justify-center
             "
           >
+
             <Image
               src={authorPhoto}
               alt={author.name}
@@ -74,39 +127,83 @@ export default function AuthorBox({
               sizes="112px"
               className="object-contain"
             />
+
           </div>
 
         </div>
 
-        {/* AUTHOR INFORMATION */}
 
-        <div className="flex-1">
+        {/* =====================================================
+            AUTHOR INFORMATION
+        ===================================================== */}
 
-          {/* NAME */}
+        <div
+          className="
+            flex-1
+
+            text-gray-900
+
+            max-sm:!text-black
+            max-sm:[&_*]:!text-black
+          "
+        >
+
+          {/* =================================================
+              NAME
+          ================================================= */}
 
           <Link
             href={`/authors/${author.slug}`}
             className="
               text-2xl
               font-bold
+
+              text-gray-900
+
               hover:text-red-600
+
               transition
+
+              max-sm:!text-black
             "
           >
             {author.name}
           </Link>
 
-          {/* JOB TITLE */}
+
+          {/* =================================================
+              JOB TITLE
+          ================================================= */}
 
           {author.job_title && (
-            <p className="text-red-600 font-medium mt-1">
+            <p
+              className="
+                text-red-600
+                font-medium
+
+                mt-1
+
+                max-sm:!text-black
+              "
+            >
               {author.job_title}
             </p>
           )}
 
-          {/* PUBLISHED DATE */}
 
-          <p className="text-gray-500 mt-3">
+          {/* =================================================
+              PUBLISHED DATE
+          ================================================= */}
+
+          <p
+            className="
+              text-gray-500
+
+              mt-3
+
+              max-sm:!text-black
+            "
+          >
             {t("publishedOn")}{" "}
 
             {format.dateTime(
@@ -119,51 +216,99 @@ export default function AuthorBox({
             )}
           </p>
 
-          {/* BIO */}
+
+          {/* =================================================
+              BIO
+          ================================================= */}
 
           {author.bio && (
-            <p className="mt-5 text-gray-700 leading-7">
+            <p
+              className="
+                mt-5
+
+                text-gray-700
+
+                leading-7
+
+                max-sm:!text-black
+              "
+            >
               {author.bio}
             </p>
           )}
 
-          {/* SOCIAL LINKS */}
 
-          <div className="flex flex-wrap gap-4 mt-6">
+          {/* =================================================
+              SOCIAL LINKS
+          ================================================= */}
+
+          <div
+            className="
+              flex
+              flex-wrap
+
+              gap-4
+
+              mt-6
+            "
+          >
+
+            {/* FACEBOOK */}
 
             {author.facebook && (
               <a
                 href={author.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
+
                 className="
                   text-blue-600
+
                   hover:underline
+
+                  max-sm:!text-black
                 "
               >
                 Facebook
               </a>
             )}
 
+
+            {/* X */}
+
             {author.twitter && (
               <a
                 href={author.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
+
+                className="
+                  text-gray-900
+
+                  hover:underline
+
+                  max-sm:!text-black
+                "
               >
                 X
               </a>
             )}
+
+
+            {/* LINKEDIN */}
 
             {author.linkedin && (
               <a
                 href={author.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+
                 className="
                   text-blue-700
+
                   hover:underline
+
+                  max-sm:!text-black
                 "
               >
                 LinkedIn
