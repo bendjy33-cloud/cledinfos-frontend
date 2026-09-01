@@ -1,6 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useTranslations, useFormatter } from "next-intl";
+import {
+  useTranslations,
+  useFormatter,
+  useLocale,
+} from "next-intl";
 
 type Author = {
   name: string;
@@ -8,7 +14,12 @@ type Author = {
   photo?: string | null;
   photo_url?: string | null;
   job_title?: string | null;
-  bio?: string | null;
+
+  bio_fr?: string | null;
+  bio_en?: string | null;
+  bio_ht?: string | null;
+  bio_es?: string | null;
+
   facebook?: string | null;
   twitter?: string | null;
   linkedin?: string | null;
@@ -25,6 +36,7 @@ export default function AuthorBox({
 }: Props) {
   const t = useTranslations("AuthorBox");
   const format = useFormatter();
+  const locale = useLocale();
 
   if (!author) {
     return null;
@@ -34,6 +46,42 @@ export default function AuthorBox({
     author.photo_url ||
     author.photo ||
     "/avatar.png";
+
+  /*
+  |--------------------------------------------------------------------------
+  | LOCALIZED BIO
+  |--------------------------------------------------------------------------
+  |
+  | FR → bio_fr
+  | EN → bio_en
+  | HT → bio_ht
+  | ES → bio_es
+  |
+  | Si bio lang aktyèl la pa disponib,
+  | li itilize lòt lang yo kòm fallback.
+  |--------------------------------------------------------------------------
+  */
+
+  const authorBio =
+    locale === "en"
+      ? author.bio_en ??
+        author.bio_fr ??
+        author.bio_ht ??
+        author.bio_es
+      : locale === "ht"
+        ? author.bio_ht ??
+          author.bio_fr ??
+          author.bio_en ??
+          author.bio_es
+        : locale === "es"
+          ? author.bio_es ??
+            author.bio_fr ??
+            author.bio_en ??
+            author.bio_ht
+          : author.bio_fr ??
+            author.bio_en ??
+            author.bio_ht ??
+            author.bio_es;
 
   return (
     <section
@@ -90,9 +138,9 @@ export default function AuthorBox({
         "
       >
 
-        {/* =====================================================
+        {/* =================================================
             AUTHOR PHOTO
-        ===================================================== */}
+        ================================================= */}
 
         <div className="shrink-0">
 
@@ -133,9 +181,9 @@ export default function AuthorBox({
         </div>
 
 
-        {/* =====================================================
+        {/* =================================================
             AUTHOR INFORMATION
-        ===================================================== */}
+        ================================================= */}
 
         <div
           className="
@@ -221,7 +269,7 @@ export default function AuthorBox({
               BIO
           ================================================= */}
 
-          {author.bio && (
+          {authorBio && (
             <p
               className="
                 mt-5
@@ -233,7 +281,7 @@ export default function AuthorBox({
                 max-sm:!text-black
               "
             >
-              {author.bio}
+              {authorBio}
             </p>
           )}
 
@@ -260,7 +308,6 @@ export default function AuthorBox({
                 href={author.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-
                 className="
                   text-blue-600
 
@@ -281,11 +328,12 @@ export default function AuthorBox({
                 href={author.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-
                 className="
                   text-gray-900
 
                   hover:underline
+
+                  transition
 
                   max-sm:!text-black
                 "
@@ -302,7 +350,6 @@ export default function AuthorBox({
                 href={author.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-
                 className="
                   text-blue-700
 
