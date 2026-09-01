@@ -188,13 +188,9 @@ function localizePost(post: any, locale: string) {
     ...post,
 
     title: title ?? "",
-
     subtitle: subtitle ?? "",
-
     content: content ?? "",
-
     meta_description: meta_description ?? "",
-
     keywords: keywords ?? "",
 
     category,
@@ -278,7 +274,6 @@ export async function generateMetadata({
             `${SITE_URL}/placeholder.jpg`,
 
           width: 1200,
-
           height: 630,
 
           alt:
@@ -418,7 +413,6 @@ export default async function PostPage({
           `${SITE_URL}/placeholder.jpg`,
 
         width: 1200,
-
         height: 630,
       },
     ],
@@ -467,27 +461,38 @@ export default async function PostPage({
         w-full
         max-w-6xl
         mx-auto
+
         px-4
         sm:px-6
         lg:px-8
+
         pt-24
         sm:pt-28
+
         pb-10
 
         bg-[var(--background)]
+
         text-gray-900
         dark:text-white
+
+        max-sm:text-black
+        max-sm:[&_*]:text-black
       "
     >
 
-      {/* VIEW COUNTER */}
+      {/* =====================================================
+          VIEW COUNTER
+      ===================================================== */}
 
       <ViewCounter
         slug={post.slug}
       />
 
 
-      {/* JSON-LD */}
+      {/* =====================================================
+          JSON-LD
+      ===================================================== */}
 
       <script
         type="application/ld+json"
@@ -498,12 +503,17 @@ export default async function PostPage({
       />
 
 
-      {/* BREADCRUMB */}
+      {/* =====================================================
+          BREADCRUMB
+      ===================================================== */}
 
       <div
         className="
           text-gray-600
           dark:text-gray-300
+
+          max-sm:!text-black
+          max-sm:[&_*]:!text-black
         "
       >
         <Breadcrumb
@@ -536,8 +546,12 @@ export default async function PostPage({
       <section
         className="
           mb-12
+
           text-gray-900
           dark:text-white
+
+          max-sm:!text-black
+          max-sm:[&_*]:!text-black
         "
       >
 
@@ -547,11 +561,17 @@ export default async function PostPage({
           <span
             className="
               inline-block
+
               bg-red-600
               text-white
+
+              max-sm:!text-white
+
               px-3
               py-1
+
               rounded-full
+
               text-sm
               font-semibold
             "
@@ -561,27 +581,35 @@ export default async function PostPage({
         )}
 
 
-        {/* TITLE */}
+        {/* =====================================================
+            TITLE
+        ===================================================== */}
 
         <h1
           className="
             text-3xl
             sm:text-4xl
             md:text-5xl
+
             font-bold
             leading-tight
+
             mt-5
             mb-4
 
-            text-gray-900
-            dark:text-white
+            !text-gray-900
+            dark:!text-white
+
+            max-sm:!text-black
           "
         >
           {post.title}
         </h1>
 
 
-        {/* SUBTITLE */}
+        {/* =====================================================
+            SUBTITLE
+        ===================================================== */}
 
         {post.subtitle && (
           <p
@@ -589,11 +617,15 @@ export default async function PostPage({
               text-lg
               sm:text-xl
               md:text-2xl
+
               leading-relaxed
+
               mb-5
 
-              text-gray-700
-              dark:text-gray-200
+              !text-gray-700
+              dark:!text-gray-200
+
+              max-sm:!text-black
             "
           >
             {post.subtitle}
@@ -601,21 +633,28 @@ export default async function PostPage({
         )}
 
 
-        {/* META */}
+        {/* =====================================================
+            META
+        ===================================================== */}
 
         <div
           className="
             flex
             flex-wrap
+
             gap-4
             sm:gap-6
+
             mb-8
 
             text-sm
             sm:text-base
 
-            text-gray-600
-            dark:text-gray-300
+            !text-gray-600
+            dark:!text-gray-300
+
+            max-sm:!text-black
+            max-sm:[&_*]:!text-black
           "
         >
 
@@ -649,7 +688,9 @@ export default async function PostPage({
           className="
             relative
             w-full
+
             aspect-video
+
             rounded-2xl
             overflow-hidden
 
@@ -667,18 +708,24 @@ export default async function PostPage({
               post.image ||
               "/placeholder.jpg"
             }
+
             alt={
               post.title ||
               "Article"
             }
+
             fill
+
             priority
+
             unoptimized
+
             sizes="
               (max-width: 640px) 100vw,
               (max-width: 1024px) 90vw,
               1200px
             "
+
             className="
               object-contain
             "
@@ -697,6 +744,9 @@ export default async function PostPage({
         className="
           text-gray-900
           dark:text-white
+
+          max-sm:!text-black
+          max-sm:[&_*]:!text-black
         "
       >
         <TableOfContents />
@@ -713,17 +763,19 @@ export default async function PostPage({
           prose-lg
           max-w-none
 
-          prose-headings:text-gray-900
+          !text-gray-800
+
+          prose-headings:!text-gray-900
           prose-headings:font-bold
 
-          prose-p:text-gray-700
+          prose-p:!text-gray-800
           prose-p:leading-8
 
-          prose-li:text-gray-700
+          prose-li:!text-gray-800
 
-          prose-strong:text-gray-900
+          prose-strong:!text-gray-900
 
-          prose-a:text-red-600
+          prose-a:!text-red-600
 
           prose-img:rounded-xl
 
@@ -731,11 +783,40 @@ export default async function PostPage({
 
           dark:prose-invert
 
-          dark:prose-headings:text-white
-          dark:prose-p:text-gray-200
-          dark:prose-li:text-gray-200
-          dark:prose-strong:text-white
-          dark:prose-a:text-red-400
+          dark:prose-headings:!text-white
+          dark:prose-p:!text-gray-200
+          dark:prose-li:!text-gray-200
+          dark:prose-strong:!text-white
+          dark:prose-a:!text-red-400
+
+          /* MOBILE - TOUT NOU */
+          max-sm:!text-black
+
+          max-sm:[&_h1]:!text-black
+          max-sm:[&_h2]:!text-black
+          max-sm:[&_h3]:!text-black
+          max-sm:[&_h4]:!text-black
+          max-sm:[&_h5]:!text-black
+          max-sm:[&_h6]:!text-black
+
+          max-sm:[&_p]:!text-black
+
+          max-sm:[&_span]:!text-black
+
+          max-sm:[&_li]:!text-black
+
+          max-sm:[&_strong]:!text-black
+
+          max-sm:[&_b]:!text-black
+
+          max-sm:[&_em]:!text-black
+
+          max-sm:[&_blockquote]:!text-black
+
+          max-sm:[&_td]:!text-black
+          max-sm:[&_th]:!text-black
+
+          max-sm:[&_figcaption]:!text-black
         "
         dangerouslySetInnerHTML={{
           __html:
@@ -756,8 +837,33 @@ export default async function PostPage({
           text-gray-900
           dark:text-white
 
-          [&_*]:text-gray-900
-          dark:[&_*]:text-white
+          max-sm:!text-black
+          max-sm:[&_*]:!text-black
+
+          [&_p]:!text-gray-900
+          dark:[&_p]:!text-white
+
+          [&_h1]:!text-gray-900
+          [&_h2]:!text-gray-900
+          [&_h3]:!text-gray-900
+          [&_h4]:!text-gray-900
+
+          dark:[&_h1]:!text-white
+          dark:[&_h2]:!text-white
+          dark:[&_h3]:!text-white
+          dark:[&_h4]:!text-white
+
+          max-sm:[&_p]:!text-black
+          max-sm:[&_h1]:!text-black
+          max-sm:[&_h2]:!text-black
+          max-sm:[&_h3]:!text-black
+          max-sm:[&_h4]:!text-black
+
+          max-sm:[&_span]:!text-black
+          max-sm:[&_label]:!text-black
+
+          max-sm:[&_input]:!text-black
+          max-sm:[&_textarea]:!text-black
         "
       >
 
@@ -780,6 +886,9 @@ export default async function PostPage({
 
               text-gray-900
               dark:text-white
+
+              max-sm:!text-black
+              max-sm:[&_*]:!text-black
             "
           >
 
@@ -787,10 +896,13 @@ export default async function PostPage({
               className="
                 text-2xl
                 font-bold
+
                 mb-4
 
-                text-gray-900
-                dark:text-white
+                !text-gray-900
+                dark:!text-white
+
+                max-sm:!text-black
               "
             >
               {t("tags")}
@@ -813,18 +925,21 @@ export default async function PostPage({
                     className="
                       px-4
                       py-2
+
                       rounded-full
 
                       bg-gray-100
                       dark:bg-gray-800
 
-                      text-gray-700
-                      dark:text-gray-200
+                      !text-gray-700
+                      dark:!text-gray-200
 
                       hover:bg-red-600
-                      hover:text-white
+                      hover:!text-white
 
                       transition
+
+                      max-sm:!text-black
                     "
                   >
                     #{tag.name}
@@ -845,12 +960,15 @@ export default async function PostPage({
       <section
         className="
           mt-12
+
           border-t
 
           border-gray-200
           dark:border-gray-700
 
           pt-8
+
+          max-sm:text-black
         "
       >
 
@@ -858,10 +976,13 @@ export default async function PostPage({
           className="
             text-2xl
             font-bold
+
             mb-5
 
-            text-gray-900
-            dark:text-white
+            !text-gray-900
+            dark:!text-white
+
+            max-sm:!text-black
           "
         >
           {t("share")}
@@ -881,19 +1002,26 @@ export default async function PostPage({
           <a
             target="_blank"
             rel="noopener noreferrer"
+
             href={
               `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                 `${SITE_URL}/${locale}/posts/${post.slug}`
               )}`
             }
+
             className="
               bg-blue-600
               hover:bg-blue-700
-              text-white
+
+              !text-white
+
               px-5
               py-3
+
               rounded-lg
+
               font-semibold
+
               transition
             "
           >
@@ -906,19 +1034,26 @@ export default async function PostPage({
           <a
             target="_blank"
             rel="noopener noreferrer"
+
             href={
               `https://wa.me/?text=${encodeURIComponent(
                 `${SITE_URL}/${locale}/posts/${post.slug}`
               )}`
             }
+
             className="
               bg-green-600
               hover:bg-green-700
-              text-white
+
+              !text-white
+
               px-5
               py-3
+
               rounded-lg
+
               font-semibold
+
               transition
             "
           >
@@ -931,19 +1066,26 @@ export default async function PostPage({
           <a
             target="_blank"
             rel="noopener noreferrer"
+
             href={
               `https://twitter.com/intent/tweet?url=${encodeURIComponent(
                 `${SITE_URL}/${locale}/posts/${post.slug}`
               )}`
             }
+
             className="
               bg-black
               hover:bg-gray-800
-              text-white
+
+              !text-white
+
               px-5
               py-3
+
               rounded-lg
+
               font-semibold
+
               transition
             "
           >
@@ -966,8 +1108,34 @@ export default async function PostPage({
           text-gray-900
           dark:text-white
 
-          [&_*]:text-gray-900
-          dark:[&_*]:text-white
+          max-sm:!text-black
+          max-sm:[&_*]:!text-black
+
+          [&_h1]:!text-gray-900
+          [&_h2]:!text-gray-900
+          [&_h3]:!text-gray-900
+          [&_h4]:!text-gray-900
+
+          [&_p]:!text-gray-700
+          [&_span]:!text-gray-700
+
+          dark:[&_h1]:!text-white
+          dark:[&_h2]:!text-white
+          dark:[&_h3]:!text-white
+          dark:[&_h4]:!text-white
+
+          dark:[&_p]:!text-gray-200
+          dark:[&_span]:!text-gray-200
+
+          max-sm:[&_h1]:!text-black
+          max-sm:[&_h2]:!text-black
+          max-sm:[&_h3]:!text-black
+          max-sm:[&_h4]:!text-black
+
+          max-sm:[&_p]:!text-black
+          max-sm:[&_span]:!text-black
+          max-sm:[&_strong]:!text-black
+          max-sm:[&_b]:!text-black
         "
       >
 
@@ -975,6 +1143,7 @@ export default async function PostPage({
           author={
             post.author
           }
+
           published_at={
             post.published_at
           }
@@ -991,6 +1160,8 @@ export default async function PostPage({
         <section
           className="
             mt-20
+
+            max-sm:text-black
           "
         >
 
@@ -998,11 +1169,15 @@ export default async function PostPage({
             className="
               text-3xl
               sm:text-4xl
+
               font-bold
+
               mb-8
 
-              text-gray-900
-              dark:text-white
+              !text-gray-900
+              dark:!text-white
+
+              max-sm:!text-black
             "
           >
             {t("related")}
@@ -1012,9 +1187,11 @@ export default async function PostPage({
           <div
             className="
               grid
+
               grid-cols-1
               sm:grid-cols-2
               lg:grid-cols-3
+
               gap-6
               md:gap-8
             "
