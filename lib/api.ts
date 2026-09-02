@@ -273,7 +273,7 @@ export async function getHomeData(
   const data: any = await apiFetch(
     `/home?page=${page}`,
     undefined,
-    5
+    0
   );
 
   return data.data ?? data;
