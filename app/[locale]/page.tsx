@@ -7,7 +7,6 @@ import Ads from "@/components/Ads";
 import Newsletter from "@/components/Newsletter";
 import { getLocale, getTranslations } from "next-intl/server";
 
-// Force homepage to always get fresh data
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
@@ -137,24 +136,6 @@ export default async function HomePage() {
   );
 
   // ========================================
-  // MOST READ
-  // ========================================
-
-  const mostRead = (home.mostRead ?? []).map((post: any) =>
-    getLocalizedPost(post)
-  );
-
-  // ========================================
-  // LATEST
-  // ========================================
-
-  const latestRaw = home.latest?.data ?? home.latest ?? [];
-
-  const latest = latestRaw.map((post: any) =>
-    getLocalizedPost(post)
-  );
-
-  // ========================================
   // TRENDING
   // ========================================
 
@@ -188,7 +169,6 @@ export default async function HomePage() {
         dark:text-white
       "
     >
-
       {/* ========================================
           HOME BANNER
       ======================================== */}
@@ -210,7 +190,6 @@ export default async function HomePage() {
       >
         <HomeBanner src="/home-banner.png" />
       </div>
-
 
       {/* ========================================
           MAIN CONTENT + SIDEBAR
@@ -243,9 +222,7 @@ export default async function HomePage() {
                 md:p-6
               "
             >
-
               <div className="mb-5 md:mb-6">
-
                 <h2
                   className="
                     text-2xl
@@ -259,11 +236,7 @@ export default async function HomePage() {
                 </h2>
 
                 <div className="mt-2 w-12 h-1 bg-red-600 rounded-full" />
-
               </div>
-
-
-              {/* FEATURED GRID */}
 
               <div
                 className="
@@ -275,20 +248,15 @@ export default async function HomePage() {
                   md:gap-6
                 "
               >
-
                 {featured.map((post: any) => (
                   <PostCard
                     key={post.id}
                     post={post}
                   />
                 ))}
-
               </div>
-
             </section>
           )}
-
-
 
           {/* ========================================
               VIEW ALL
@@ -310,7 +278,6 @@ export default async function HomePage() {
               p-4
             "
           >
-
             <Link
               href="/actualites"
               className="
@@ -332,11 +299,8 @@ export default async function HomePage() {
             >
               {t("viewAll")} →
             </Link>
-
           </div>
-
         </section>
-
 
         {/* ========================================
             SIDEBAR
@@ -364,11 +328,8 @@ export default async function HomePage() {
               dark:text-white
             "
           >
-
             <TrendingPosts posts={trending} />
-
           </div>
-
 
           {/* ========================================
               ADS
@@ -389,11 +350,8 @@ export default async function HomePage() {
               dark:text-white
             "
           >
-
             <Ads ads={ads} />
-
           </div>
-
 
           {/* ========================================
               NEWSLETTER
@@ -412,15 +370,10 @@ export default async function HomePage() {
               overflow-hidden
             "
           >
-
             <Newsletter />
-
           </div>
-
         </aside>
-
       </div>
-
     </main>
   );
 }
