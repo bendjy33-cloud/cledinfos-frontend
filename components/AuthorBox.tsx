@@ -8,12 +8,20 @@ import {
   useLocale,
 } from "next-intl";
 
+type LocalizedJobTitle = {
+  fr?: string | null;
+  en?: string | null;
+  ht?: string | null;
+  es?: string | null;
+};
+
 type Author = {
   name: string;
   slug: string;
   photo?: string | null;
   photo_url?: string | null;
-  job_title?: string | null;
+
+  job_title?: LocalizedJobTitle | null;
 
   bio_fr?: string | null;
   bio_en?: string | null;
@@ -49,16 +57,34 @@ export default function AuthorBox({
 
   /*
   |--------------------------------------------------------------------------
-  | LOCALIZED BIO
+  | LOCALIZED JOB TITLE
   |--------------------------------------------------------------------------
-  |
-  | FR → bio_fr
-  | EN → bio_en
-  | HT → bio_ht
-  | ES → bio_es
-  |
-  | Si bio lang aktyèl la pa disponib,
-  | li itilize lòt lang yo kòm fallback.
+  */
+
+  const authorJobTitle =
+    locale === "en"
+      ? author.job_title?.en ??
+        author.job_title?.fr ??
+        author.job_title?.ht ??
+        author.job_title?.es
+      : locale === "ht"
+        ? author.job_title?.ht ??
+          author.job_title?.fr ??
+          author.job_title?.en ??
+          author.job_title?.es
+        : locale === "es"
+          ? author.job_title?.es ??
+            author.job_title?.fr ??
+            author.job_title?.en ??
+            author.job_title?.ht
+          : author.job_title?.fr ??
+            author.job_title?.en ??
+            author.job_title?.ht ??
+            author.job_title?.es;
+
+  /*
+  |--------------------------------------------------------------------------
+  | LOCALIZED BIO
   |--------------------------------------------------------------------------
   */
 
@@ -87,86 +113,54 @@ export default function AuthorBox({
     <section
       className="
         mt-12
-
         rounded-2xl
-
         border
         border-gray-200
-
         bg-gray-50
-
         p-6
-
         text-gray-900
-
-        /* MOBILE: TOUT TEXT AN NWA */
         max-sm:!text-black
         max-sm:[&_*]:!text-black
       "
     >
-
-      {/* =====================================================
-          TITLE
-      ===================================================== */}
-
       <h3
         className="
           text-2xl
           font-bold
           mb-6
-
           text-gray-900
-
           max-sm:!text-black
         "
       >
         {t("aboutAuthor")}
       </h3>
 
-
-      {/* =====================================================
-          AUTHOR
-      ===================================================== */}
-
       <div
         className="
           flex
           flex-col
           md:flex-row
-
           gap-6
         "
       >
-
-        {/* =================================================
-            AUTHOR PHOTO
-        ================================================= */}
+        {/* AUTHOR PHOTO */}
 
         <div className="shrink-0">
-
           <div
             className="
               relative
-
               w-28
               h-28
-
               rounded-full
-
               overflow-hidden
-
               border
-
               border-gray-200
-
               bg-gray-100
-
               flex
               items-center
               justify-center
             "
           >
-
             <Image
               src={authorPhoto}
               alt={author.name}
@@ -175,80 +169,56 @@ export default function AuthorBox({
               sizes="112px"
               className="object-contain"
             />
-
           </div>
-
         </div>
 
-
-        {/* =================================================
-            AUTHOR INFORMATION
-        ================================================= */}
+        {/* AUTHOR INFORMATION */}
 
         <div
           className="
             flex-1
-
             text-gray-900
-
             max-sm:!text-black
             max-sm:[&_*]:!text-black
           "
         >
-
-          {/* =================================================
-              NAME
-          ================================================= */}
+          {/* NAME */}
 
           <Link
             href={`/authors/${author.slug}`}
             className="
               text-2xl
               font-bold
-
               text-gray-900
-
               hover:text-red-600
-
               transition
-
               max-sm:!text-black
             "
           >
             {author.name}
           </Link>
 
+          {/* JOB TITLE */}
 
-          {/* =================================================
-              JOB TITLE
-          ================================================= */}
-
-          {author.job_title && (
+          {authorJobTitle && (
             <p
               className="
                 text-red-600
                 font-medium
-
                 mt-1
-
                 max-sm:!text-black
               "
             >
-              {author.job_title}
+              {authorJobTitle}
             </p>
           )}
 
-
-          {/* =================================================
-              PUBLISHED DATE
-          ================================================= */}
+          {/* PUBLISHED DATE */}
 
           <p
             className="
               text-gray-500
-
               mt-3
-
               max-sm:!text-black
             "
           >
@@ -264,20 +234,14 @@ export default function AuthorBox({
             )}
           </p>
 
-
-          {/* =================================================
-              BIO
-          ================================================= */}
+          {/* BIO */}
 
           {authorBio && (
             <p
               className="
                 mt-5
-
                 text-gray-700
-
                 leading-7
-
                 max-sm:!text-black
               "
             >
@@ -285,24 +249,16 @@ export default function AuthorBox({
             </p>
           )}
 
-
-          {/* =================================================
-              SOCIAL LINKS
-          ================================================= */}
+          {/* SOCIAL LINKS */}
 
           <div
             className="
               flex
               flex-wrap
-
               gap-4
-
               mt-6
             "
           >
-
-            {/* FACEBOOK */}
-
             {author.facebook && (
               <a
                 href={author.facebook}
@@ -310,18 +266,13 @@ export default function AuthorBox({
                 rel="noopener noreferrer"
                 className="
                   text-blue-600
-
                   hover:underline
-
                   max-sm:!text-black
                 "
               >
                 Facebook
               </a>
             )}
-
-
-            {/* X */}
 
             {author.twitter && (
               <a
@@ -330,20 +281,14 @@ export default function AuthorBox({
                 rel="noopener noreferrer"
                 className="
                   text-gray-900
-
                   hover:underline
-
                   transition
-
                   max-sm:!text-black
                 "
               >
                 X
               </a>
             )}
-
-
-            {/* LINKEDIN */}
 
             {author.linkedin && (
               <a
@@ -352,22 +297,16 @@ export default function AuthorBox({
                 rel="noopener noreferrer"
                 className="
                   text-blue-700
-
                   hover:underline
-
                   max-sm:!text-black
                 "
               >
                 LinkedIn
               </a>
             )}
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }
