@@ -641,7 +641,11 @@ export default async function PostPage({
 
             text-gray-600
             dark:text-gray-300
+
+            max-sm:!text-black
+            max-sm:[&_*]:!text-black
           "
+          
         >
 
           <span>
