@@ -289,69 +289,6 @@ export default async function HomePage() {
           )}
 
 
-        {/* ========================================
-            LATEST ARTICLES
-        ======================================== */}
-
-        {latest.length > 0 && (
-          <section
-            className="
-              mt-8
-              md:mt-10
-              bg-white
-              dark:bg-slate-900
-              rounded-xl
-              border
-              border-gray-100
-              dark:border-slate-800
-              shadow-md
-              p-4
-              sm:p-5
-              md:p-6
-            "
-          >
-
-            <div className="mb-5 md:mb-6">
-
-              <h2
-                className="
-                  text-2xl
-                  sm:text-3xl
-                  font-bold
-                  text-gray-900
-                  dark:text-white
-                "
-              >
-                {t("latest")}
-              </h2>
-
-              <div className="mt-2 w-12 h-1 bg-red-600 rounded-full" />
-
-            </div>
-
-            <div
-              className="
-                grid
-                grid-cols-1
-                sm:grid-cols-2
-                lg:grid-cols-3
-                gap-5
-                md:gap-6
-              "
-            >
-
-              {latest.map((post: any) => (
-                <PostCard
-                  key={post.id}
-                  post={post}
-                />
-              ))}
-
-            </div>
-
-          </section>
-        )}
-
 
           {/* ========================================
               VIEW ALL
