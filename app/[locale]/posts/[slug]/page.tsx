@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -6,9 +5,9 @@ import { getLocale, getTranslations } from "next-intl/server";
 import Breadcrumb from "@/components/Breadcrumb";
 import ViewCounter from "@/components/ViewCounter";
 import PostCard from "@/components/PostCard";
-
 import AuthorBox from "@/components/AuthorBox";
 import Comments from "@/components/Comments";
+import PostImageGallery from "@/components/PostImageGallery";
 
 import {
   getPost,
@@ -43,7 +42,10 @@ const ORGANIZATION = {
 |--------------------------------------------------------------------------
 */
 
-function localizePost(post: any, locale: string) {
+function localizePost(
+  post: any,
+  locale: string
+) {
   if (!post) return post;
 
   // TITLE
@@ -190,7 +192,8 @@ function localizePost(post: any, locale: string) {
     title: title ?? "",
     subtitle: subtitle ?? "",
     content: content ?? "",
-    meta_description: meta_description ?? "",
+    meta_description:
+      meta_description ?? "",
     keywords: keywords ?? "",
 
     category,
@@ -645,7 +648,6 @@ export default async function PostPage({
             max-sm:!text-black
             max-sm:[&_*]:!text-black
           "
-          
         >
 
           <span>
@@ -671,63 +673,16 @@ export default async function PostPage({
 
 
         {/* =====================================================
-            ARTICLE IMAGE
+            ARTICLE IMAGE / GALLERY
         ===================================================== */}
 
-        <div
-          className="
-            relative
-
-            w-full
-            aspect-video
-
-            rounded-2xl
-
-            overflow-hidden
-
-            bg-gray-100
-            dark:bg-gray-800
-
-            border
-            border-gray-200
-            dark:border-gray-700
-          "
-        >
-
-          <Image
-            src={
-              post.image ||
-              "/placeholder.jpg"
-            }
-
-            alt={
-              post.title ||
-              "Article"
-            }
-
-            fill
-
-            priority
-
-            unoptimized
-
-            sizes="
-              (max-width: 640px) 100vw,
-              (max-width: 1024px) 90vw,
-              1200px
-            "
-
-            className="
-              object-contain
-            "
-          />
-
-        </div>
+        <PostImageGallery
+          mainImage={post.image}
+          images={post.images}
+          title={post.title}
+        />
 
       </section>
-
-
-     
 
 
       {/* =====================================================
@@ -1098,13 +1053,12 @@ export default async function PostPage({
           published_at={
             post.published_at
           }
-
         />
 
       </section>
 
 
-    {/* =====================================================
+      {/* =====================================================
           RELATED POSTS
       ===================================================== */}
 
