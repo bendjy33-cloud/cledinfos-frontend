@@ -165,7 +165,7 @@ export async function getRelatedPosts(
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}/related`,
     undefined,
-    5
+    0
   );
 
   return data.data ?? data;
