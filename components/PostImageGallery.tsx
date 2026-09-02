@@ -2,13 +2,18 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type GalleryImage = {
   id?: number;
   image?: string | null;
   image_url?: string | null;
   sort_order?: number;
+};
+
+type GalleryItem = {
+  id: string | number;
+  image: string;
 };
 
 type PostImageGalleryProps = {
@@ -24,39 +29,60 @@ export default function PostImageGallery({
 }: PostImageGalleryProps) {
   /*
   |--------------------------------------------------------------------------
-  | KONSTWI LIST TOUT IMAGES YO
+  | KONSTWI LIS TOUT IMAGES YO
   |--------------------------------------------------------------------------
   */
 
-  const allImages = [
-    ...(mainImage
-      ? [
-          {
-            id: "main",
-            image: mainImage,
-          },
-        ]
-      : []),
+  const allImages = useMemo<GalleryItem[]>(() => {
+    const result: GalleryItem[] = [];
 
-    ...images
+    // MAIN IMAGE
+    if (
+      typeof mainImage === "string" &&
+      mainImage.trim() !== ""
+    ) {
+      result.push({
+        id: "main",
+        image: mainImage.trim(),
+      });
+    }
+
+    // GALLERY IMAGES
+    const galleryImages = [...images]
       .filter(
         (item) =>
-          item.image_url ||
-          item.image
+          (typeof item.image_url === "string" &&
+            item.image_url.trim() !== "") ||
+          (typeof item.image === "string" &&
+            item.image.trim() !== "")
       )
       .sort(
         (a, b) =>
           (a.sort_order ?? 0) -
           (b.sort_order ?? 0)
-      )
-      .map((item) => ({
-        id: item.id ?? Math.random(),
-        image:
-          item.image_url ||
-          item.image ||
-          "",
-      })),
-  ].filter((item) => item.image);
+      );
+
+    galleryImages.forEach((item, index) => {
+      const url =
+        typeof item.image_url === "string" &&
+        item.image_url.trim() !== ""
+          ? item.image_url.trim()
+          : typeof item.image === "string"
+            ? item.image.trim()
+            : "";
+
+      if (!url) {
+        return;
+      }
+
+      result.push({
+        id: item.id ?? `gallery-${index}`,
+        image: url,
+      });
+    });
+
+    return result;
+  }, [mainImage, images]);
 
   /*
   |--------------------------------------------------------------------------
@@ -64,9 +90,14 @@ export default function PostImageGallery({
   |--------------------------------------------------------------------------
   */
 
-  console.log("MAIN IMAGE:", mainImage);
-  console.log("GALLERY IMAGES:", images);
-  console.log("ALL IMAGES:", allImages);
+  useEffect(() => {
+    console.log("=================================");
+    console.log("POST IMAGE GALLERY");
+    console.log("MAIN IMAGE:", mainImage);
+    console.log("GALLERY IMAGES:", images);
+    console.log("ALL IMAGES:", allImages);
+    console.log("=================================");
+  }, [mainImage, images, allImages]);
 
   /*
   |--------------------------------------------------------------------------
@@ -74,12 +105,11 @@ export default function PostImageGallery({
   |--------------------------------------------------------------------------
   */
 
-  const [currentIndex, setCurrentIndex] =
-    useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   /*
   |--------------------------------------------------------------------------
-  | RESET INDEX SI LIST LA CHANJE
+  | RESET INDEX WHEN IMAGES CHANGE
   |--------------------------------------------------------------------------
   */
 
@@ -93,11 +123,8 @@ export default function PostImageGallery({
   |--------------------------------------------------------------------------
   */
 
-  const touchStartX =
-    useRef<number | null>(null);
-
-  const touchEndX =
-    useRef<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const handleTouchStart = (
     event: React.TouchEvent<HTMLDivElement>
@@ -224,7 +251,28 @@ export default function PostImageGallery({
   */
 
   const currentImage =
-    allImages[currentIndex];
+    allImages[currentIndex] ?? allImages[0];
+
+  /*
+  |--------------------------------------------------------------------------
+  | IMAGE ERROR
+  |--------------------------------------------------------------------------
+  */
+
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement>
+  ) => {
+    const img = event.currentTarget;
+
+    console.error(
+      "IMAGE FAILED TO LOAD:",
+      img.src
+    );
+
+    if (!img.src.endsWith("/placeholder.jpg")) {
+      img.src = "/placeholder.jpg";
+    }
+  };
 
   /*
   |--------------------------------------------------------------------------
@@ -249,6 +297,7 @@ export default function PostImageGallery({
         "
       >
         <img
+          key={currentImage.image}
           src={currentImage.image}
           alt={title}
           className="
@@ -259,6 +308,7 @@ export default function PostImageGallery({
             object-contain
           "
           draggable={false}
+          onError={handleImageError}
         />
       </div>
     );
@@ -293,6 +343,7 @@ export default function PostImageGallery({
       {/* IMAGE */}
 
       <img
+        key={currentImage.image}
         src={currentImage.image}
         alt={`${title} - ${currentIndex + 1}`}
         className="
@@ -304,6 +355,7 @@ export default function PostImageGallery({
           pointer-events-none
         "
         draggable={false}
+        onError={handleImageError}
       />
 
       {/* LEFT ARROW */}
