@@ -38,7 +38,6 @@ async function apiFetch<T>(
   options?: RequestInit,
   revalidate = 5
 ): Promise<T> {
-
   const method =
     options?.method?.toUpperCase() ?? "GET";
 
@@ -58,7 +57,6 @@ async function apiFetch<T>(
   */
 
   if (method === "GET") {
-
     const res = await fetch(
       `${API}${endpoint}`,
       {
@@ -92,7 +90,6 @@ async function apiFetch<T>(
   return handleResponse<T>(res);
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | RESPONSE
@@ -102,7 +99,6 @@ async function apiFetch<T>(
 async function handleResponse<T>(
   res: Response
 ): Promise<T> {
-
   let data: any = null;
 
   try {
@@ -125,7 +121,6 @@ async function handleResponse<T>(
   return data;
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | POSTS
@@ -135,7 +130,6 @@ async function handleResponse<T>(
 export async function getPosts(
   page = 1
 ): Promise<PostsResponse> {
-
   return apiFetch<PostsResponse>(
     `/posts?page=${page}`,
     undefined,
@@ -143,11 +137,9 @@ export async function getPosts(
   );
 }
 
-
 export async function getPost(
   slug: string
 ) {
-
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}`,
     undefined,
@@ -157,11 +149,9 @@ export async function getPost(
   return data.data ?? data;
 }
 
-
 export async function getRelatedPosts(
   slug: string
 ) {
-
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}/related`,
     undefined,
@@ -171,9 +161,7 @@ export async function getRelatedPosts(
   return data.data ?? data;
 }
 
-
 export async function getFeaturedPosts() {
-
   const data: any = await apiFetch(
     `/featured-posts`,
     undefined,
@@ -183,9 +171,7 @@ export async function getFeaturedPosts() {
   return data.data ?? data;
 }
 
-
 export async function getMostReadPosts() {
-
   const data: any = await apiFetch(
     `/most-read`,
     undefined,
@@ -195,9 +181,7 @@ export async function getMostReadPosts() {
   return data.data ?? data;
 }
 
-
 export async function getLatestPosts() {
-
   const data: any = await apiFetch(
     `/posts`,
     undefined,
@@ -207,7 +191,6 @@ export async function getLatestPosts() {
   return data.data ?? data;
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | CATEGORIES
@@ -215,7 +198,6 @@ export async function getLatestPosts() {
 */
 
 export async function getCategories() {
-
   const data: any = await apiFetch(
     "/categories",
     undefined,
@@ -225,11 +207,9 @@ export async function getCategories() {
   return data.data ?? data;
 }
 
-
 export async function getPostsByCategory(
   slug: string
 ) {
-
   const data: any = await apiFetch(
     `/categories/${encodeURIComponent(slug)}/posts`,
     undefined,
@@ -238,7 +218,6 @@ export async function getPostsByCategory(
 
   return data.data ?? data;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -249,7 +228,6 @@ export async function getPostsByCategory(
 export async function searchPosts(
   query: string
 ) {
-
   const data: any = await apiFetch(
     `/search?q=${encodeURIComponent(query)}`,
     undefined,
@@ -258,7 +236,6 @@ export async function searchPosts(
 
   return data.data ?? data;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -269,16 +246,14 @@ export async function searchPosts(
 export async function getHomeData(
   page = 1
 ) {
-
   const data: any = await apiFetch(
     `/home?page=${page}`,
     undefined,
-    0
+    30
   );
 
   return data.data ?? data;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -287,7 +262,6 @@ export async function getHomeData(
 */
 
 export async function getSettings() {
-
   const data: any = await apiFetch(
     `/settings`,
     undefined,
@@ -296,7 +270,6 @@ export async function getSettings() {
 
   return data.data ?? data;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -307,7 +280,6 @@ export async function getSettings() {
 export async function subscribeNewsletter(
   email: string
 ): Promise<NewsletterResponse> {
-
   return apiFetch<NewsletterResponse>(
     `/newsletter`,
     {
@@ -324,7 +296,6 @@ export async function subscribeNewsletter(
   );
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | POST VIEWS
@@ -334,7 +305,6 @@ export async function subscribeNewsletter(
 export async function incrementPostView(
   slug: string
 ) {
-
   const res = await fetch(
     `${API}/posts/${encodeURIComponent(slug)}/view`,
     {
@@ -356,7 +326,6 @@ export async function incrementPostView(
   return res.json();
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | TAGS
@@ -364,7 +333,6 @@ export async function incrementPostView(
 */
 
 export async function getTags() {
-
   const data: any = await apiFetch(
     `/tags`,
     undefined,
@@ -374,11 +342,9 @@ export async function getTags() {
   return data.data ?? data;
 }
 
-
 export async function getTag(
   slug: string
 ) {
-
   const data: any = await apiFetch(
     `/tags/${encodeURIComponent(slug)}`,
     undefined,
@@ -388,7 +354,6 @@ export async function getTag(
   return data.data ?? data;
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | AUTHORS
@@ -396,7 +361,6 @@ export async function getTag(
 */
 
 export async function getAuthors() {
-
   const data: any = await apiFetch(
     `/authors`,
     undefined,
@@ -406,11 +370,9 @@ export async function getAuthors() {
   return data.data ?? data;
 }
 
-
 export async function getAuthor(
   slug: string
 ) {
-
   const data: any = await apiFetch(
     `/authors/${encodeURIComponent(slug)}`,
     undefined,
@@ -419,7 +381,6 @@ export async function getAuthor(
 
   return data.data ?? data;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -430,14 +391,12 @@ export async function getAuthor(
 export async function getBreakingNews(
   locale: string
 ): Promise<BreakingNewsResponse> {
-
   return apiFetch<BreakingNewsResponse>(
     `/breaking-news?locale=${encodeURIComponent(locale)}`,
     undefined,
     2
   );
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -446,7 +405,6 @@ export async function getBreakingNews(
 */
 
 export async function getTrendingPosts() {
-
   const data: any = await apiFetch(
     `/trending`,
     undefined,
@@ -455,7 +413,6 @@ export async function getTrendingPosts() {
 
   return data.data ?? data;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -466,7 +423,6 @@ export async function getTrendingPosts() {
 export async function getAds(
   position?: string
 ) {
-
   const url = position
     ? `/ads?position=${encodeURIComponent(position)}`
     : "/ads";
