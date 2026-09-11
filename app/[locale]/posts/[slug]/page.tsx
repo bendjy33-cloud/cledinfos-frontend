@@ -321,12 +321,26 @@ export default async function PostPage({
 
   /*
   |--------------------------------------------------------------------------
-  | GET POST
+  | GET POST + RELATED POSTS
   |--------------------------------------------------------------------------
+  |
+  | IMPORTANT:
+  | We fetch both at the same time instead of waiting for
+  | getPost() to finish before starting getRelatedPosts().
+  |
   */
 
-  const rawPost =
-    await getPost(slug);
+  const [rawPost, rawRelated] =
+    await Promise.all([
+      getPost(slug),
+      getRelatedPosts(slug),
+    ]);
+
+  /*
+  |--------------------------------------------------------------------------
+  | CHECK POST
+  |--------------------------------------------------------------------------
+  */
 
   if (!rawPost) {
     return null;
@@ -346,12 +360,9 @@ export default async function PostPage({
 
   /*
   |--------------------------------------------------------------------------
-  | RELATED POSTS
+  | LOCALIZED RELATED POSTS
   |--------------------------------------------------------------------------
   */
-
-  const rawRelated =
-    await getRelatedPosts(slug);
 
   const related =
     Array.isArray(rawRelated)
