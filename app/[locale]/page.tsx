@@ -7,21 +7,13 @@ import Ads from "@/components/Ads";
 import Newsletter from "@/components/Newsletter";
 import { getLocale, getTranslations } from "next-intl/server";
 
-export const revalidate = 30;
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const t = await getTranslations("home");
   const locale = await getLocale();
 
-  // ========================================
-  // HOME DATA + ADS
-  // Load both requests in parallel
-  // ========================================
-
-  const [home, ads] = await Promise.all([
-    getHomeData(),
-    getAds("sidebar"),
-  ]);
+  const home = await getHomeData();
 
   // ========================================
   // LOCALIZE POST
@@ -150,6 +142,12 @@ export default async function HomePage() {
   const trending = (home.trending ?? []).map((post: any) =>
     getLocalizedPost(post)
   );
+
+  // ========================================
+  // ADS
+  // ========================================
+
+  const ads = await getAds("sidebar");
 
   // ========================================
   // PAGE
