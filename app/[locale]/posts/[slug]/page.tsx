@@ -637,6 +637,20 @@ export default async function PostPage({
 
 
         {/* =====================================================
+            ARTICLE IMAGE / GALLERY
+        ===================================================== */}
+
+        <PostImageGallery
+          mainImage={post.image}
+          images={post.images}
+          title={post.title}
+        />
+
+      </section>
+
+
+      
+        {/* =====================================================
             META
         ===================================================== */}
 
@@ -681,19 +695,6 @@ export default async function PostPage({
           </span>
 
         </div>
-
-
-        {/* =====================================================
-            ARTICLE IMAGE / GALLERY
-        ===================================================== */}
-
-        <PostImageGallery
-          mainImage={post.image}
-          images={post.images}
-          title={post.title}
-        />
-
-      </section>
 
 
       {/* =====================================================
