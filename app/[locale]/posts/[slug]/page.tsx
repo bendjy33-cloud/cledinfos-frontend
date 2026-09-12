@@ -658,14 +658,15 @@ export default async function PostPage({
           className="
             flex
             flex-wrap
-
+            items-center
+            justify-center
             gap-4
             sm:gap-6
-
             mb-8
 
             text-sm
             sm:text-base
+            text-center
 
             text-gray-600
             dark:text-gray-300
