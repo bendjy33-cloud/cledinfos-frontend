@@ -143,7 +143,7 @@ export async function getPost(
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}`,
     undefined,
-    5
+    60
   );
 
   return data.data ?? data;
@@ -155,7 +155,7 @@ export async function getRelatedPosts(
   const data: any = await apiFetch(
     `/posts/${encodeURIComponent(slug)}/related`,
     undefined,
-    0
+    60
   );
 
   return data.data ?? data;
@@ -175,7 +175,7 @@ export async function getMostReadPosts() {
   const data: any = await apiFetch(
     `/most-read`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;
@@ -185,7 +185,7 @@ export async function getLatestPosts() {
   const data: any = await apiFetch(
     `/posts`,
     undefined,
-    30
+    5
   );
 
   return data.data ?? data;

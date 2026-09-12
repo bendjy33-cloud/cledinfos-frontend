@@ -14,6 +14,7 @@ export default function PostCard({ post }: Props) {
   return (
     <Link
       href={`/posts/${post.slug}`}
+      prefetch={true}
       className="
         block
         bg-white
