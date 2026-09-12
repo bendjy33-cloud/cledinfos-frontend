@@ -175,7 +175,7 @@ export async function getMostReadPosts() {
   const data: any = await apiFetch(
     `/most-read`,
     undefined,
-    5
+    30
   );
 
   return data.data ?? data;
@@ -185,7 +185,7 @@ export async function getLatestPosts() {
   const data: any = await apiFetch(
     `/posts`,
     undefined,
-    5
+    30
   );
 
   return data.data ?? data;
