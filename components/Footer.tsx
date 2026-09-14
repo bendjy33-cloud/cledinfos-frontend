@@ -7,6 +7,7 @@ import {
   FaXTwitter,
   FaTiktok,
   FaWhatsapp,
+  FaLinkedin
 } from "react-icons/fa6";
 
 type Props = {
@@ -199,6 +200,18 @@ export default async function Footer({ settings }: Props) {
                 <span>WhatsApp</span>
               </a>
             )}
+
+          {settings.linkedin && (
+            <a
+              href={settings.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-sm sm:text-base text-gray-300 hover:text-blue-500 transition"
+            >
+              <FaLinkedin className="text-xl sm:text-2xl shrink-0 text-[#0A66C2]" />
+              <span>LinkedIn</span>
+            </a>
+          )}
 
           </div>
         </div>
