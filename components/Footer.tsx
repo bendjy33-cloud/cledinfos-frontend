@@ -7,7 +7,7 @@ import {
   FaXTwitter,
   FaTiktok,
   FaWhatsapp,
-  FaLinkedin
+  FaLinkedin,
 } from "react-icons/fa6";
 
 type Props = {
