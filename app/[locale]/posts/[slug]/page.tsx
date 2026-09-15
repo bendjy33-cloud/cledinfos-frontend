@@ -12,6 +12,7 @@ import PostImageGallery from "@/components/PostImageGallery";
 import {
   getPost,
   getRelatedPosts,
+  getComments,
 } from "@/lib/api";
 
 type Props = {
@@ -192,8 +193,7 @@ function localizePost(
     title: title ?? "",
     subtitle: subtitle ?? "",
     content: content ?? "",
-    meta_description:
-      meta_description ?? "",
+    meta_description: meta_description ?? "",
     keywords: keywords ?? "",
 
     category,
@@ -321,20 +321,19 @@ export default async function PostPage({
 
   /*
   |--------------------------------------------------------------------------
-  | GET POST + RELATED POSTS
+  | GET POST + RELATED POSTS + COMMENTS
   |--------------------------------------------------------------------------
-  |
-  | IMPORTANT:
-  | We fetch both at the same time instead of waiting for
-  | getPost() to finish before starting getRelatedPosts().
-  |
   */
 
-  const [rawPost, rawRelated] =
-    await Promise.all([
-      getPost(slug),
-      getRelatedPosts(slug),
-    ]);
+  const [
+    rawPost,
+    rawRelated,
+    rawComments,
+  ] = await Promise.all([
+    getPost(slug),
+    getRelatedPosts(slug),
+    getComments(slug),
+  ]);
 
   /*
   |--------------------------------------------------------------------------
@@ -649,55 +648,54 @@ export default async function PostPage({
       </section>
 
 
-      
-        {/* =====================================================
-            META
-        ===================================================== */}
+      {/* =====================================================
+          META
+      ===================================================== */}
 
-        <div
-          className="
-            flex
-            flex-wrap
+      <div
+        className="
+          flex
+          flex-wrap
 
-            justify-center
+          justify-center
 
-            gap-4
-            sm:gap-6
+          gap-4
+          sm:gap-6
 
-            mb-8
+          mb-8
 
-            text-sm
-            sm:text-base
-            text-center
+          text-sm
+          sm:text-base
+          text-center
 
-            text-gray-600
-            dark:text-gray-300
+          text-gray-600
+          dark:text-gray-300
 
-            max-sm:!text-black
-            max-sm:[&_*]:!text-black
-          "
-        >
+          max-sm:!text-black
+          max-sm:[&_*]:!text-black
+        "
+      >
 
-          <span>
-            👁️{" "}
-            {post.views}{" "}
-            {t("views")}
-          </span>
+        <span>
+          👁️{" "}
+          {post.views}{" "}
+          {t("views")}
+        </span>
 
-          <span>
-            📅{" "}
+        <span>
+          📅{" "}
 
-            {post.published_at
-              ? new Date(
-                  post.published_at
-                ).toLocaleDateString(
-                  localeMap[locale] ??
-                    "fr-FR"
-                )
-              : ""}
-          </span>
+          {post.published_at
+            ? new Date(
+                post.published_at
+              ).toLocaleDateString(
+                localeMap[locale] ??
+                  "fr-FR"
+              )
+            : ""}
+        </span>
 
-        </div>
+      </div>
 
 
       {/* =====================================================
@@ -809,6 +807,7 @@ export default async function PostPage({
 
         <Comments
           slug={post.slug}
+          initialComments={rawComments}
         />
 
       </section>

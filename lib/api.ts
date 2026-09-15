@@ -161,6 +161,18 @@ export async function getRelatedPosts(
   return data.data ?? data;
 }
 
+export async function getComments(
+  slug: string
+) {
+  const data: any = await apiFetch(
+    `/posts/${encodeURIComponent(slug)}/comments`,
+    undefined,
+    5
+  );
+
+  return data.data ?? [];
+}
+
 export async function getFeaturedPosts() {
   const data: any = await apiFetch(
     `/featured-posts`,
