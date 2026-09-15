@@ -352,7 +352,7 @@ export async function generateMetadata(): Promise<Metadata> {
             />
 
             <h3 className="text-xl font-bold mt-5">
-              Zacharie MORLAN
+              Zachary CONSTANT
             </h3>
 
             <p>{t("team.designer")}</p>
