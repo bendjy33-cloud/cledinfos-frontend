@@ -704,33 +704,62 @@ export default async function PostPage({
 
       <article
         className="
-          prose
-          prose-lg
           max-w-none
+          text-lg
+          leading-8
+          text-gray-800
+          dark:text-gray-200
 
-          prose-headings:text-gray-900
-          prose-headings:font-bold
+          [&_p]:mb-6
+          [&_p]:leading-8
 
-          prose-p:text-gray-700
-          prose-p:leading-8
+          [&_h1]:mt-8
+          [&_h1]:mb-6
+          [&_h1]:text-3xl
+          [&_h1]:font-bold
 
-          prose-li:text-gray-700
+          [&_h2]:mt-10
+          [&_h2]:mb-5
+          [&_h2]:text-2xl
+          [&_h2]:font-bold
 
-          prose-strong:text-gray-900
+          [&_h3]:mt-8
+          [&_h3]:mb-4
+          [&_h3]:text-xl
+          [&_h3]:font-bold
 
-          prose-a:text-red-600
+          [&_h4]:mt-6
+          [&_h4]:mb-3
+          [&_h4]:font-bold
 
-          prose-img:rounded-xl
+          [&_strong]:font-bold
 
-          prose-headings:scroll-mt-28
+          [&_ul]:mb-6
+          [&_ul]:list-disc
+          [&_ul]:pl-6
 
-          dark:prose-invert
+          [&_ol]:mb-6
+          [&_ol]:list-decimal
+          [&_ol]:pl-6
 
-          dark:prose-headings:text-white
-          dark:prose-p:text-gray-200
-          dark:prose-li:text-gray-200
-          dark:prose-strong:text-white
-          dark:prose-a:text-red-400
+          [&_li]:mb-2
+
+          [&_blockquote]:my-6
+          [&_blockquote]:border-l-4
+          [&_blockquote]:border-red-600
+          [&_blockquote]:pl-5
+          [&_blockquote]:italic
+
+          [&_a]:text-red-600
+          [&_a]:underline
+
+          [&_img]:my-8
+          [&_img]:rounded-xl
+
+          dark:[&_p]:text-gray-200
+          dark:[&_li]:text-gray-200
+          dark:[&_strong]:text-white
+          dark:[&_a]:text-red-400
 
           max-sm:!text-black
 
