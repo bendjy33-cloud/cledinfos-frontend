@@ -98,167 +98,176 @@ export default async function Header() {
         "
       >
         {/* ================================================== */}
-        {/* SITE NAME / LOGO */}
-        {/* ================================================== */}
-
-        <Link
-          href="/"
-          className="
-            flex
-            shrink-0
-            items-center
-            cursor-pointer
-            pr-6
-            2xl:pr-8
-          "
-        >
-          {logoUrl ? (
-            <Image
-              src={logoUrl}
-              alt={settings?.site_name || "Clé d'Infos"}
-              width={180}
-              height={60}
-              priority
-              unoptimized
-              className="
-                h-8
-                w-auto
-                max-w-[120px]
-                object-contain
-                sm:h-9
-                sm:max-w-[145px]
-                md:h-10
-                md:max-w-[165px]
-                lg:h-12
-                lg:max-w-[180px]
-              "
-            />
-          ) : (
-            <span
-              className="
-                whitespace-nowrap
-                text-lg
-                font-extrabold
-                text-red-500
-                sm:text-xl
-                md:text-2xl
-                lg:text-3xl
-              "
-            >
-              {settings?.site_name || "Clé d'Infos"}
-            </span>
-          )}
-        </Link>
-
-        {/* ================================================== */}
-        {/* DESKTOP NAVIGATION */}
-        {/* ================================================== */}
-
-        <nav
-          className="
-            hidden
-            min-w-0
-            flex-1
-            items-center
-            overflow-x-auto
-            overflow-y-hidden
-            whitespace-nowrap
-            2xl:flex
-            2xl:gap-4
-            [scrollbar-width:none]
-            [&::-webkit-scrollbar]:hidden
-          "
-        >
-          {/* HOME */}
-
-          <Link
-            href="/"
-            className="
-              shrink-0
-              whitespace-nowrap
-              text-sm
-              transition
-              hover:text-red-400
-            "
-          >
-            {t("home")}
-          </Link>
-
-          {/* CATEGORIES */}
-
-          {Array.isArray(categories) &&
-            categories.map((category: any) => (
-              <Link
-                key={category.id}
-                href={`/categories/${category.slug}`}
-                className="
-                  shrink-0
-                  whitespace-nowrap
-                  text-sm
-                  transition
-                  hover:text-red-400
-                "
-              >
-                {getCategoryName(category)}
-              </Link>
-            ))}
-
-          {/* ABOUT */}
-
-          <Link
-            href="/about"
-            className="
-              shrink-0
-              whitespace-nowrap
-              text-sm
-              transition
-              hover:text-red-400
-            "
-          >
-            {t("about")}
-          </Link>
-
-          {/* CONTACT */}
-
-          <Link
-            href="/contact"
-            className="
-              shrink-0
-              whitespace-nowrap
-              text-sm
-              transition
-              hover:text-red-400
-            "
-          >
-            {t("contact")}
-          </Link>
-        </nav>
-
-        {/* ================================================== */}
-        {/* SEARCH + LANGUAGE */}
+        {/* 1. SITE NAME / LOGO */}
         {/* ================================================== */}
 
         <div
           className="
-            ml-6
-            flex
             shrink-0
-            items-center
-            gap-3
-            2xl:ml-8
-            2xl:gap-4
+            pr-5
+            2xl:pr-7
           "
         >
-          {/* SEARCH */}
+          <Link
+            href="/"
+            className="
+              flex
+              shrink-0
+              items-center
+              cursor-pointer
+            "
+          >
+            {logoUrl ? (
+              <Image
+                src={logoUrl}
+                alt={settings?.site_name || "Clé d'Infos"}
+                width={180}
+                height={60}
+                priority
+                unoptimized
+                className="
+                  h-8
+                  w-auto
+                  max-w-[120px]
+                  object-contain
+                  sm:h-9
+                  sm:max-w-[145px]
+                  md:h-10
+                  md:max-w-[165px]
+                  lg:h-12
+                  lg:max-w-[180px]
+                "
+              />
+            ) : (
+              <span
+                className="
+                  whitespace-nowrap
+                  text-lg
+                  font-extrabold
+                  text-red-500
+                  sm:text-xl
+                  md:text-2xl
+                  lg:text-3xl
+                "
+              >
+                {settings?.site_name || "Clé d'Infos"}
+              </span>
+            )}
+          </Link>
+        </div>
 
+        {/* ================================================== */}
+        {/* 2. DESKTOP MENU ZONE */}
+        {/* ================================================== */}
+
+        <div
+          className="
+            hidden
+            min-w-0
+            flex-1
+            overflow-hidden
+            2xl:block
+          "
+        >
+          <nav
+            className="
+              flex
+              min-w-0
+              items-center
+              gap-4
+              overflow-x-auto
+              overflow-y-hidden
+              whitespace-nowrap
+              [scrollbar-width:none]
+              [&::-webkit-scrollbar]:hidden
+            "
+          >
+            {/* HOME */}
+
+            <Link
+              href="/"
+              className="
+                shrink-0
+                whitespace-nowrap
+                text-sm
+                transition
+                hover:text-red-400
+              "
+            >
+              {t("home")}
+            </Link>
+
+            {/* CATEGORIES */}
+
+            {Array.isArray(categories) &&
+              categories.map((category: any) => (
+                <Link
+                  key={category.id}
+                  href={`/categories/${category.slug}`}
+                  className="
+                    shrink-0
+                    whitespace-nowrap
+                    text-sm
+                    transition
+                    hover:text-red-400
+                  "
+                >
+                  {getCategoryName(category)}
+                </Link>
+              ))}
+
+            {/* ABOUT */}
+
+            <Link
+              href="/about"
+              className="
+                shrink-0
+                whitespace-nowrap
+                text-sm
+                transition
+                hover:text-red-400
+              "
+            >
+              {t("about")}
+            </Link>
+
+            {/* CONTACT */}
+
+            <Link
+              href="/contact"
+              className="
+                shrink-0
+                whitespace-nowrap
+                text-sm
+                transition
+                hover:text-red-400
+              "
+            >
+              {t("contact")}
+            </Link>
+          </nav>
+        </div>
+
+        {/* ================================================== */}
+        {/* 3. SEARCHBOX */}
+        {/* ================================================== */}
+
+        <div
+          className="
+            hidden
+            shrink-0
+            pl-5
+            2xl:block
+            2xl:pl-7
+          "
+        >
           <form
             action="/search"
             method="GET"
             className="
-              hidden
+              flex
               shrink-0
               items-center
-              2xl:flex
             "
           >
             <input
@@ -300,39 +309,46 @@ export default async function Header() {
               🔍
             </button>
           </form>
+        </div>
 
-          {/* LANGUAGE */}
+        {/* ================================================== */}
+        {/* 4. LANGUAGE SWITCHER */}
+        {/* ================================================== */}
 
-          <div
-            className="
-              relative
-              z-[9999]
-              flex
-              shrink-0
-              items-center
-            "
-          >
-            <LanguageSwitcher />
-          </div>
+        <div
+          className="
+            relative
+            z-[9999]
+            flex
+            shrink-0
+            items-center
+            pl-3
+            2xl:pl-4
+          "
+        >
+          <LanguageSwitcher />
+        </div>
 
-          {/* MOBILE / TABLET MENU */}
+        {/* ================================================== */}
+        {/* MOBILE / TABLET MENU */}
+        {/* ================================================== */}
 
-          <div
-            className="
-              flex
-              shrink-0
-              items-center
-              2xl:hidden
-            "
-          >
-            <MobileMenu
-              categories={
-                Array.isArray(categories)
-                  ? categories
-                  : []
-              }
-            />
-          </div>
+        <div
+          className="
+            flex
+            shrink-0
+            items-center
+            pl-2
+            2xl:hidden
+          "
+        >
+          <MobileMenu
+            categories={
+              Array.isArray(categories)
+                ? categories
+                : []
+            }
+          />
         </div>
       </div>
     </header>
