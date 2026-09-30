@@ -98,15 +98,12 @@ export default async function Header() {
           md:py-3
           lg:px-8
           lg:py-3
-
           2xl:justify-center
           2xl:gap-5
         "
       >
         {/* =====================================================
             LOGO
-            Mobile/Tablet: GOCH
-            Desktop: nòmalman nan gwoup santre a
         ====================================================== */}
         <Link
           href="/"
@@ -170,7 +167,6 @@ export default async function Header() {
             2xl:gap-5
           "
         >
-          {/* HOME */}
           <Link
             href="/"
             className="
@@ -184,7 +180,6 @@ export default async function Header() {
             {t("home")}
           </Link>
 
-          {/* CATEGORIES */}
           {Array.isArray(categories) &&
             categories.map((category: any) => (
               <Link
@@ -202,7 +197,6 @@ export default async function Header() {
               </Link>
             ))}
 
-          {/* ABOUT */}
           <Link
             href="/about"
             className="
@@ -216,7 +210,6 @@ export default async function Header() {
             {t("about")}
           </Link>
 
-          {/* CONTACT */}
           <Link
             href="/contact"
             className="
@@ -233,8 +226,7 @@ export default async function Header() {
 
         {/* =====================================================
             RIGHT SIDE
-            Desktop: Search + Language
-            Mobile/Tablet: Search + Language + MobileMenu
+            SEARCH + LANGUAGE + MOBILE MENU
         ====================================================== */}
         <div
           className="
@@ -248,56 +240,80 @@ export default async function Header() {
         >
           {/* =================================================
               SEARCH
+              Mobile / Tablet: icon/button only
+              Desktop: full searchbox
           ================================================= */}
-          <form
-            action="/search"
-            method="GET"
-            className="
-              hidden
-              shrink-0
-              items-center
-              2xl:flex
-            "
-          >
-            <input
-              type="text"
-              name="q"
-              placeholder={t("search")}
-              className="
-                w-32
-                rounded-l-lg
-                border
-                border-gray-300
-                bg-white
-                px-3
-                py-2
-                text-sm
-                text-black
-                placeholder:text-gray-500
-                focus:outline-none
-                focus:ring-2
-                focus:ring-red-500
-                2xl:w-36
-              "
-            />
-
-            <button
-              type="submit"
+          <div className="flex shrink-0 items-center">
+            {/* MOBILE / TABLET SEARCH BUTTON */}
+            <Link
+              href="/search"
               aria-label={t("search")}
               className="
-                shrink-0
-                rounded-r-lg
-                bg-red-600
-                px-3
-                py-2
+                flex
+                h-9
+                w-9
+                items-center
+                justify-center
+                rounded-lg
                 transition
-                hover:bg-red-700
-                cursor-pointer
+                hover:bg-slate-800
+                2xl:hidden
               "
             >
               🔍
-            </button>
-          </form>
+            </Link>
+
+            {/* DESKTOP SEARCHBOX */}
+            <form
+              action="/search"
+              method="GET"
+              className="
+                hidden
+                shrink-0
+                items-center
+                2xl:flex
+              "
+            >
+              <input
+                type="text"
+                name="q"
+                placeholder={t("search")}
+                className="
+                  w-32
+                  rounded-l-lg
+                  border
+                  border-gray-300
+                  bg-white
+                  px-3
+                  py-2
+                  text-sm
+                  text-black
+                  placeholder:text-gray-500
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-red-500
+                  2xl:w-36
+                "
+              />
+
+              <button
+                type="submit"
+                aria-label={t("search")}
+                className="
+                  shrink-0
+                  rounded-r-lg
+                  bg-red-600
+                  px-3
+                  py-2
+                  transition
+                  hover:bg-red-700
+                  cursor-pointer
+                "
+              >
+                🔍
+              </button>
+            </form>
+          </div>
 
           {/* =================================================
               LANGUAGE SWITCHER
@@ -315,7 +331,7 @@ export default async function Header() {
           </div>
 
           {/* =================================================
-              MOBILE / TABLET MENU
+              MOBILE MENU
           ================================================= */}
           <div
             className="
