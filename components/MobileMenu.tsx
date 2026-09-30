@@ -68,9 +68,9 @@ export default function MobileMenu({ categories }: Props) {
   return (
     <div className="relative z-[9999]">
 
-      {/* ================================================== */}
-      {/* MENU BUTTON */}
-      {/* ================================================== */}
+      {/* ==================================================
+          MENU BUTTON
+      ================================================== */}
 
       <button
         type="button"
@@ -110,9 +110,9 @@ export default function MobileMenu({ categories }: Props) {
         )}
       </button>
 
-      {/* ================================================== */}
-      {/* MOBILE MENU */}
-      {/* ================================================== */}
+      {/* ==================================================
+          MOBILE MENU
+      ================================================== */}
 
       {open && (
         <div
@@ -146,58 +146,9 @@ export default function MobileMenu({ categories }: Props) {
             "
           >
 
-            {/* ================================================== */}
-            {/* SEARCH */}
-            {/* ================================================== */}
-
-            <div className="border-b border-slate-700 p-4">
-              <form
-                action="/search"
-                method="GET"
-                className="flex w-full"
-              >
-                <input
-                  type="text"
-                  name="q"
-                  placeholder={t("search")}
-                  className="
-                    min-w-0
-                    flex-1
-                    rounded-l-lg
-                    bg-white
-                    px-3
-                    py-2.5
-                    text-black
-                    placeholder:text-gray-500
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-red-500
-                  "
-                />
-
-                <button
-                  type="submit"
-                  aria-label={t("search")}
-                  className="
-                    shrink-0
-                    rounded-r-lg
-                    bg-red-600
-                    px-4
-                    transition
-                    hover:bg-red-700
-                    active:bg-red-800
-                    cursor-pointer
-                    touch-manipulation
-                  "
-                >
-                  🔍
-                </button>
-              </form>
-            </div>
-
-            {/* ================================================== */}
-            {/* NAVIGATION */}
-            {/* ================================================== */}
+            {/* ==================================================
+                NAVIGATION
+            ================================================== */}
 
             <nav className="flex flex-col">
 
