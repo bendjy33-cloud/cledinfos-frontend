@@ -86,236 +86,203 @@ export default async function Header() {
           w-full
           max-w-7xl
           items-center
+          justify-center
+          gap-3
           overflow-visible
           px-3
           py-2
+          sm:gap-4
           sm:px-4
           sm:py-2.5
           md:px-6
           md:py-3
           lg:px-8
           lg:py-3
-
-          2xl:grid
-          2xl:grid-cols-[auto_minmax(0,1fr)_auto_auto]
-          2xl:items-center
+          2xl:gap-5
         "
       >
-        {/* ================================================== */}
-        {/* 1. SITE NAME / LOGO */}
-        {/* ================================================== */}
-
-        <div
+        {/* =====================================================
+            LOGO
+        ====================================================== */}
+        <Link
+          href="/"
           className="
+            flex
             shrink-0
-            pr-6
+            items-center
+            cursor-pointer
           "
         >
+          {logoUrl ? (
+            <Image
+              src={logoUrl}
+              alt={settings?.site_name || "Clé d'Infos"}
+              width={180}
+              height={60}
+              priority
+              unoptimized
+              className="
+                h-8
+                w-auto
+                max-w-[120px]
+                object-contain
+                sm:h-9
+                sm:max-w-[145px]
+                md:h-10
+                md:max-w-[165px]
+                lg:h-12
+                lg:max-w-[180px]
+              "
+            />
+          ) : (
+            <span
+              className="
+                whitespace-nowrap
+                text-lg
+                font-extrabold
+                text-red-500
+                sm:text-xl
+                md:text-2xl
+                lg:text-3xl
+              "
+            >
+              {settings?.site_name || "Clé d'Infos"}
+            </span>
+          )}
+        </Link>
+
+        {/* =====================================================
+            DESKTOP NAVIGATION
+        ====================================================== */}
+        <nav
+          className="
+            hidden
+            shrink
+            items-center
+            justify-center
+            gap-4
+            whitespace-nowrap
+            2xl:flex
+            2xl:gap-5
+          "
+        >
+          {/* HOME */}
           <Link
             href="/"
             className="
-              flex
               shrink-0
-              items-center
-              cursor-pointer
+              whitespace-nowrap
+              text-sm
+              transition
+              hover:text-red-400
             "
           >
-            {logoUrl ? (
-              <Image
-                src={logoUrl}
-                alt={settings?.site_name || "Clé d'Infos"}
-                width={180}
-                height={60}
-                priority
-                unoptimized
+            {t("home")}
+          </Link>
+
+          {/* CATEGORIES */}
+          {Array.isArray(categories) &&
+            categories.map((category: any) => (
+              <Link
+                key={category.id}
+                href={`/categories/${category.slug}`}
                 className="
-                  h-8
-                  w-auto
-                  max-w-[120px]
-                  object-contain
-                  sm:h-9
-                  sm:max-w-[145px]
-                  md:h-10
-                  md:max-w-[165px]
-                  lg:h-12
-                  lg:max-w-[180px]
-                "
-              />
-            ) : (
-              <span
-                className="
+                  shrink-0
                   whitespace-nowrap
-                  text-lg
-                  font-extrabold
-                  text-red-500
-                  sm:text-xl
-                  md:text-2xl
-                  lg:text-3xl
+                  text-sm
+                  transition
+                  hover:text-red-400
                 "
               >
-                {settings?.site_name || "Clé d'Infos"}
-              </span>
-            )}
-          </Link>
-        </div>
+                {getCategoryName(category)}
+              </Link>
+            ))}
 
-        {/* ================================================== */}
-        {/* 2. DESKTOP MENU */}
-        {/* ================================================== */}
-
-        <div
-          className="
-            hidden
-            min-w-0
-            overflow-hidden
-            2xl:block
-          "
-        >
-          <nav
+          {/* ABOUT */}
+          <Link
+            href="/about"
             className="
-              flex
-              min-w-0
-              items-center
-              justify-center
-              gap-4
-              overflow-x-auto
-              overflow-y-hidden
+              shrink-0
               whitespace-nowrap
-              [scrollbar-width:none]
-              [&::-webkit-scrollbar]:hidden
+              text-sm
+              transition
+              hover:text-red-400
             "
           >
-            {/* HOME */}
+            {t("about")}
+          </Link>
 
-            <Link
-              href="/"
-              className="
-                shrink-0
-                whitespace-nowrap
-                text-sm
-                transition
-                hover:text-red-400
-              "
-            >
-              {t("home")}
-            </Link>
+          {/* CONTACT */}
+          <Link
+            href="/contact"
+            className="
+              shrink-0
+              whitespace-nowrap
+              text-sm
+              transition
+              hover:text-red-400
+            "
+          >
+            {t("contact")}
+          </Link>
+        </nav>
 
-            {/* CATEGORIES */}
-
-            {Array.isArray(categories) &&
-              categories.map((category: any) => (
-                <Link
-                  key={category.id}
-                  href={`/categories/${category.slug}`}
-                  className="
-                    shrink-0
-                    whitespace-nowrap
-                    text-sm
-                    transition
-                    hover:text-red-400
-                  "
-                >
-                  {getCategoryName(category)}
-                </Link>
-              ))}
-
-            {/* ABOUT */}
-
-            <Link
-              href="/about"
-              className="
-                shrink-0
-                whitespace-nowrap
-                text-sm
-                transition
-                hover:text-red-400
-              "
-            >
-              {t("about")}
-            </Link>
-
-            {/* CONTACT */}
-
-            <Link
-              href="/contact"
-              className="
-                shrink-0
-                whitespace-nowrap
-                text-sm
-                transition
-                hover:text-red-400
-              "
-            >
-              {t("contact")}
-            </Link>
-          </nav>
-        </div>
-
-        {/* ================================================== */}
-        {/* 3. SEARCH */}
-        {/* ================================================== */}
-
-        <div
+        {/* =====================================================
+            DESKTOP SEARCH
+        ====================================================== */}
+        <form
+          action="/search"
+          method="GET"
           className="
             hidden
             shrink-0
-            pl-6
-            2xl:block
+            items-center
+            2xl:flex
           "
         >
-          <form
-            action="/search"
-            method="GET"
+          <input
+            type="text"
+            name="q"
+            placeholder={t("search")}
             className="
-              flex
+              w-32
+              rounded-l-lg
+              border
+              border-gray-300
+              bg-white
+              px-3
+              py-2
+              text-sm
+              text-black
+              placeholder:text-gray-500
+              focus:outline-none
+              focus:ring-2
+              focus:ring-red-500
+              2xl:w-36
+            "
+          />
+
+          <button
+            type="submit"
+            aria-label={t("search")}
+            className="
               shrink-0
-              items-center
+              rounded-r-lg
+              bg-red-600
+              px-3
+              py-2
+              transition
+              hover:bg-red-700
+              cursor-pointer
             "
           >
-            <input
-              type="text"
-              name="q"
-              placeholder={t("search")}
-              className="
-                w-36
-                rounded-l-lg
-                border
-                border-gray-300
-                bg-white
-                px-3
-                py-2
-                text-sm
-                text-black
-                placeholder:text-gray-500
-                focus:outline-none
-                focus:ring-2
-                focus:ring-red-500
-              "
-            />
+            🔍
+          </button>
+        </form>
 
-            <button
-              type="submit"
-              aria-label={t("search")}
-              className="
-                shrink-0
-                cursor-pointer
-                rounded-r-lg
-                bg-red-600
-                px-3
-                py-2
-                transition
-                hover:bg-red-700
-              "
-            >
-              🔍
-            </button>
-          </form>
-        </div>
-
-        {/* ================================================== */}
-        {/* 4. LANGUAGE */}
-        {/* ================================================== */}
-
+        {/* =====================================================
+            LANGUAGE SWITCHER
+        ====================================================== */}
         <div
           className="
             relative
@@ -323,23 +290,20 @@ export default async function Header() {
             hidden
             shrink-0
             items-center
-            pl-4
             2xl:flex
           "
         >
           <LanguageSwitcher />
         </div>
 
-        {/* ================================================== */}
-        {/* MOBILE / TABLET MENU */}
-        {/* ================================================== */}
-
+        {/* =====================================================
+            MOBILE / TABLET MENU
+        ====================================================== */}
         <div
           className="
             flex
             shrink-0
             items-center
-            justify-end
             2xl:hidden
           "
         >
