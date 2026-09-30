@@ -51,7 +51,7 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative z-[9999] isolate">
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -76,7 +76,7 @@ export default function LanguageSwitcher() {
             absolute
             right-0
             top-full
-            z-[100]
+            z-[9999]
             mt-2
             w-40
             overflow-hidden
@@ -84,7 +84,7 @@ export default function LanguageSwitcher() {
             border
             border-slate-700
             bg-slate-900
-            shadow-xl
+            shadow-2xl
           "
         >
           {locales.map((item) => (
