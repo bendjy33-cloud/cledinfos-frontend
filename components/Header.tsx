@@ -86,7 +86,7 @@ export default async function Header() {
           w-full
           max-w-7xl
           items-center
-          justify-center
+          justify-between
           gap-3
           overflow-visible
           px-3
@@ -98,11 +98,15 @@ export default async function Header() {
           md:py-3
           lg:px-8
           lg:py-3
+
+          2xl:justify-center
           2xl:gap-5
         "
       >
         {/* =====================================================
             LOGO
+            Mobile/Tablet: GOCH
+            Desktop: nòmalman nan gwoup santre a
         ====================================================== */}
         <Link
           href="/"
@@ -228,92 +232,107 @@ export default async function Header() {
         </nav>
 
         {/* =====================================================
-            DESKTOP SEARCH
-        ====================================================== */}
-        <form
-          action="/search"
-          method="GET"
-          className="
-            hidden
-            shrink-0
-            items-center
-            2xl:flex
-          "
-        >
-          <input
-            type="text"
-            name="q"
-            placeholder={t("search")}
-            className="
-              w-32
-              rounded-l-lg
-              border
-              border-gray-300
-              bg-white
-              px-3
-              py-2
-              text-sm
-              text-black
-              placeholder:text-gray-500
-              focus:outline-none
-              focus:ring-2
-              focus:ring-red-500
-              2xl:w-36
-            "
-          />
-
-          <button
-            type="submit"
-            aria-label={t("search")}
-            className="
-              shrink-0
-              rounded-r-lg
-              bg-red-600
-              px-3
-              py-2
-              transition
-              hover:bg-red-700
-              cursor-pointer
-            "
-          >
-            🔍
-          </button>
-        </form>
-
-        {/* =====================================================
-            LANGUAGE SWITCHER
-        ====================================================== */}
-        <div
-          className="
-            relative
-            z-[9999]
-            hidden
-            shrink-0
-            items-center
-            2xl:flex
-          "
-        >
-          <LanguageSwitcher />
-        </div>
-
-        {/* =====================================================
-            MOBILE / TABLET MENU
+            RIGHT SIDE
+            Desktop: Search + Language
+            Mobile/Tablet: Search + Language + MobileMenu
         ====================================================== */}
         <div
           className="
             flex
             shrink-0
             items-center
-            2xl:hidden
+            gap-1
+            sm:gap-2
+            2xl:gap-4
           "
         >
-          <MobileMenu
-            categories={
-              Array.isArray(categories)
-                ? categories
-                : []
-            }
-          />
+          {/* =================================================
+              SEARCH
+          ================================================= */}
+          <form
+            action="/search"
+            method="GET"
+            className="
+              hidden
+              shrink-0
+              items-center
+              2xl:flex
+            "
+          >
+            <input
+              type="text"
+              name="q"
+              placeholder={t("search")}
+              className="
+                w-32
+                rounded-l-lg
+                border
+                border-gray-300
+                bg-white
+                px-3
+                py-2
+                text-sm
+                text-black
+                placeholder:text-gray-500
+                focus:outline-none
+                focus:ring-2
+                focus:ring-red-500
+                2xl:w-36
+              "
+            />
+
+            <button
+              type="submit"
+              aria-label={t("search")}
+              className="
+                shrink-0
+                rounded-r-lg
+                bg-red-600
+                px-3
+                py-2
+                transition
+                hover:bg-red-700
+                cursor-pointer
+              "
+            >
+              🔍
+            </button>
+          </form>
+
+          {/* =================================================
+              LANGUAGE SWITCHER
+          ================================================= */}
+          <div
+            className="
+              relative
+              z-[9999]
+              flex
+              shrink-0
+              items-center
+            "
+          >
+            <LanguageSwitcher />
+          </div>
+
+          {/* =================================================
+              MOBILE / TABLET MENU
+          ================================================= */}
+          <div
+            className="
+              flex
+              shrink-0
+              items-center
+              2xl:hidden
+            "
+          >
+            <MobileMenu
+              categories={
+                Array.isArray(categories)
+                  ? categories
+                  : []
+              }
+            />
+          </div>
         </div>
       </div>
     </header>
