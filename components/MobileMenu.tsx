@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { Menu, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import {
+  Menu,
+  X,
+} from "lucide-react";
+import {
+  useLocale,
+  useTranslations,
+} from "next-intl";
 
 type Category = {
   id: number;
@@ -18,13 +24,17 @@ type Props = {
   categories: Category[];
 };
 
-export default function MobileMenu({ categories }: Props) {
+export default function MobileMenu({
+  categories,
+}: Props) {
   const t = useTranslations("MobileMenu");
   const locale = useLocale();
 
   const [open, setOpen] = useState(false);
 
-  function getCategoryName(category: Category) {
+  function getCategoryName(
+    category: Category
+  ) {
     switch (locale) {
       case "es":
         return (
@@ -40,6 +50,7 @@ export default function MobileMenu({ categories }: Props) {
           category.name_en ||
           category.name_fr ||
           category.name_ht ||
+          category.name_es ||
           ""
         );
 
@@ -48,6 +59,7 @@ export default function MobileMenu({ categories }: Props) {
           category.name_ht ||
           category.name_fr ||
           category.name_en ||
+          category.name_es ||
           ""
         );
 
@@ -57,6 +69,7 @@ export default function MobileMenu({ categories }: Props) {
           category.name_fr ||
           category.name_en ||
           category.name_ht ||
+          category.name_es ||
           ""
         );
     }
@@ -65,97 +78,121 @@ export default function MobileMenu({ categories }: Props) {
   return (
     <div className="relative z-[9999]">
 
-      {/* ========================= */}
+      {/* ================================================== */}
       {/* MENU BUTTON */}
-      {/* ========================= */}
+      {/* ================================================== */}
 
       <button
         type="button"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() =>
+          setOpen((prev) => !prev)
+        }
         className="
           relative
           z-[10000]
           flex
+          h-10
+          w-10
+          shrink-0
+          touch-manipulation
+          cursor-pointer
+          select-none
           items-center
           justify-center
-          w-11
-          h-11
-          p-2
           rounded-lg
           text-white
+          transition
           hover:bg-slate-800
           active:bg-slate-700
-          transition
-          cursor-pointer
-          touch-manipulation
-          pointer-events-auto
-          select-none
+          sm:h-11
+          sm:w-11
         "
-        aria-label={open ? t("close") : t("menu")}
+        aria-label={
+          open
+            ? t("close")
+            : t("menu")
+        }
         aria-expanded={open}
       >
         {open ? (
           <X
-            className="w-7 h-7 pointer-events-none"
+            className="h-6 w-6 pointer-events-none sm:h-7 sm:w-7"
             strokeWidth={2.5}
           />
         ) : (
           <Menu
-            className="w-7 h-7 pointer-events-none"
+            className="h-6 w-6 pointer-events-none sm:h-7 sm:w-7"
             strokeWidth={2.5}
           />
         )}
       </button>
 
-
-      {/* ========================= */}
+      {/* ================================================== */}
       {/* MOBILE MENU */}
-      {/* ========================= */}
+      {/* ================================================== */}
 
       {open && (
         <div
           className="
             fixed
-            top-[70px]
             left-3
             right-3
+            top-[60px]
             z-[9999]
-            max-h-[calc(100vh-82px)]
+            max-h-[calc(100dvh-72px)]
             overflow-hidden
             rounded-xl
-            bg-slate-900
-            text-white
             border
             border-slate-700
+            bg-slate-900
+            text-white
             shadow-2xl
+            sm:top-[64px]
+            md:top-[68px]
+            md:left-4
+            md:right-4
+            md:max-h-[calc(100dvh-80px)]
           "
         >
+          <div
+            className="
+              max-h-[calc(100dvh-72px)]
+              overflow-y-auto
+              overscroll-contain
+              sm:max-h-[calc(100dvh-76px)]
+              md:max-h-[calc(100dvh-80px)]
+            "
+          >
 
-          <div className="max-h-[calc(100vh-82px)] overflow-y-auto overscroll-contain">
-
+            {/* ================================================== */}
             {/* SEARCH */}
+            {/* ================================================== */}
 
-            <div className="p-4 border-b border-slate-700">
-
+            <div
+              className="
+                border-b
+                border-slate-700
+                p-4
+              "
+            >
               <form
                 action="/search"
                 method="GET"
                 className="flex w-full"
               >
-
                 <input
                   type="text"
                   name="q"
                   placeholder={t("search")}
                   className="
-                    flex-1
                     min-w-0
+                    flex-1
+                    rounded-l-lg
+                    bg-white
                     px-3
                     py-2.5
-                    bg-white
                     text-black
                     placeholder:text-gray-500
-                    rounded-l-lg
                     focus:outline-none
                     focus:ring-2
                     focus:ring-red-500
@@ -167,25 +204,24 @@ export default function MobileMenu({ categories }: Props) {
                   aria-label={t("search")}
                   className="
                     shrink-0
+                    rounded-r-lg
                     bg-red-600
+                    px-4
+                    transition
                     hover:bg-red-700
                     active:bg-red-800
-                    px-4
-                    rounded-r-lg
-                    transition
                     cursor-pointer
                     touch-manipulation
                   "
                 >
                   🔍
                 </button>
-
               </form>
-
             </div>
 
-
+            {/* ================================================== */}
             {/* NAVIGATION */}
+            {/* ================================================== */}
 
             <nav className="flex flex-col">
 
@@ -193,80 +229,89 @@ export default function MobileMenu({ categories }: Props) {
 
               <Link
                 href="/"
-                onClick={() => setOpen(false)}
+                onClick={() =>
+                  setOpen(false)
+                }
                 className="
-                  px-4
-                  py-3.5
                   border-b
                   border-slate-700
-                  hover:bg-slate-800
-                  active:bg-slate-800
-                  hover:text-red-400
+                  px-4
+                  py-3.5
                   transition
+                  hover:bg-slate-800
+                  hover:text-red-400
+                  active:bg-slate-800
                   touch-manipulation
                 "
               >
                 🏠 {t("home")}
               </Link>
 
-
               {/* CATEGORIES */}
 
-              {categories.map((category) => (
-                <Link
-                  key={category.id}
-                  href={`/categories/${category.slug}`}
-                  onClick={() => setOpen(false)}
-                  className="
-                    px-4
-                    py-3.5
-                    border-b
-                    border-slate-700
-                    hover:bg-slate-800
-                    active:bg-slate-800
-                    hover:text-red-400
-                    transition
-                    touch-manipulation
-                  "
-                >
-                  {getCategoryName(category)}
-                </Link>
-              ))}
-
+              {categories.map(
+                (category) => (
+                  <Link
+                    key={category.id}
+                    href={`/categories/${category.slug}`}
+                    onClick={() =>
+                      setOpen(false)
+                    }
+                    className="
+                      border-b
+                      border-slate-700
+                      px-4
+                      py-3.5
+                      transition
+                      hover:bg-slate-800
+                      hover:text-red-400
+                      active:bg-slate-800
+                      touch-manipulation
+                    "
+                  >
+                    {getCategoryName(
+                      category
+                    )}
+                  </Link>
+                )
+              )}
 
               {/* ABOUT */}
 
               <Link
                 href="/about"
-                onClick={() => setOpen(false)}
+                onClick={() =>
+                  setOpen(false)
+                }
                 className="
-                  px-4
-                  py-3.5
                   border-b
                   border-slate-700
-                  hover:bg-slate-800
-                  active:bg-slate-800
-                  hover:text-red-400
+                  px-4
+                  py-3.5
                   transition
+                  hover:bg-slate-800
+                  hover:text-red-400
+                  active:bg-slate-800
                   touch-manipulation
                 "
               >
                 {t("about")}
               </Link>
 
-
               {/* CONTACT */}
 
               <Link
                 href="/contact"
-                onClick={() => setOpen(false)}
+                onClick={() =>
+                  setOpen(false)
+                }
                 className="
                   px-4
                   py-3.5
-                  hover:bg-slate-800
-                  active:bg-slate-800
-                  hover:text-red-400
                   transition
+                  hover:bg-slate-800
+                  hover:text-red-400
+                  active:bg-slate-800
                   touch-manipulation
                 "
               >
@@ -274,11 +319,9 @@ export default function MobileMenu({ categories }: Props) {
               </Link>
 
             </nav>
-
           </div>
         </div>
       )}
-
     </div>
   );
 }

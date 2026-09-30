@@ -11,25 +11,16 @@ export default async function Header() {
   const t = await getTranslations("menu");
   const locale = await getLocale();
 
-  /*
-   * Fetch categories and settings in parallel.
-   */
   const [categories, settings] = await Promise.all([
     getCategories(),
     getSettings(),
   ]);
 
-  /*
-   * Logo
-   */
   const logoUrl =
     settings?.logo_url ||
     settings?.logo ||
     null;
 
-  /*
-   * Get translated category name
-   */
   function getCategoryName(category: any) {
     switch (locale) {
       case "es":
@@ -80,8 +71,9 @@ export default async function Header() {
       className="
         sticky
         top-0
-        w-full
         z-50
+        w-full
+        overflow-visible
         bg-slate-900
         text-white
         shadow-lg
@@ -89,20 +81,22 @@ export default async function Header() {
     >
       <div
         className="
-          max-w-7xl
           mx-auto
           flex
+          w-full
+          max-w-7xl
           items-center
-          gap-3
-          sm:gap-4
-          md:gap-5
+          gap-2
           px-3
+          py-2
+          sm:gap-3
           sm:px-4
+          sm:py-2.5
+          md:gap-4
           md:px-6
+          md:py-3
           lg:px-8
-          py-2.5
-          sm:py-3
-          md:py-4
+          lg:py-3.5
         "
       >
 
@@ -114,11 +108,10 @@ export default async function Header() {
           href="/"
           className="
             flex
+            min-w-0
+            shrink
             items-center
-            shrink-0
             cursor-pointer
-            mr-1
-            sm:mr-2
           "
         >
           {logoUrl ? (
@@ -132,15 +125,12 @@ export default async function Header() {
               className="
                 h-8
                 w-auto
-                max-w-[125px]
+                max-w-[120px]
                 object-contain
-
                 sm:h-9
-                sm:max-w-[150px]
-
+                sm:max-w-[145px]
                 md:h-10
-                md:max-w-[170px]
-
+                md:max-w-[165px]
                 lg:h-12
                 lg:max-w-[180px]
               "
@@ -148,13 +138,13 @@ export default async function Header() {
           ) : (
             <span
               className="
+                whitespace-nowrap
                 text-lg
+                font-extrabold
+                text-red-500
                 sm:text-xl
                 md:text-2xl
                 lg:text-3xl
-                font-extrabold
-                text-red-500
-                whitespace-nowrap
               "
             >
               {settings?.site_name || "Clé d'Infos"}
@@ -169,13 +159,14 @@ export default async function Header() {
         <nav
           className="
             hidden
-            lg:flex
+            min-w-0
+            shrink
             items-center
-            gap-3
-            xl:gap-4
-            2xl:gap-5
+            gap-2
             whitespace-nowrap
-            shrink-0
+            lg:flex
+            xl:gap-3
+            2xl:gap-4
           "
         >
           {/* HOME */}
@@ -185,10 +176,9 @@ export default async function Header() {
             className="
               whitespace-nowrap
               text-sm
-              xl:text-base
-              hover:text-red-400
               transition
-              cursor-pointer
+              hover:text-red-400
+              xl:text-base
             "
           >
             {t("home")}
@@ -204,10 +194,9 @@ export default async function Header() {
                 className="
                   whitespace-nowrap
                   text-sm
-                  xl:text-base
-                  hover:text-red-400
                   transition
-                  cursor-pointer
+                  hover:text-red-400
+                  xl:text-base
                 "
               >
                 {getCategoryName(category)}
@@ -221,10 +210,9 @@ export default async function Header() {
             className="
               whitespace-nowrap
               text-sm
-              xl:text-base
-              hover:text-red-400
               transition
-              cursor-pointer
+              hover:text-red-400
+              xl:text-base
             "
           >
             {t("about")}
@@ -237,10 +225,9 @@ export default async function Header() {
             className="
               whitespace-nowrap
               text-sm
-              xl:text-base
-              hover:text-red-400
               transition
-              cursor-pointer
+              hover:text-red-400
+              xl:text-base
             "
           >
             {t("contact")}
@@ -248,27 +235,33 @@ export default async function Header() {
         </nav>
 
         {/* ================================================== */}
-        {/* DESKTOP SEARCH */}
+        {/* RIGHT SIDE */}
         {/* ================================================== */}
 
         <div
           className="
-            hidden
-            lg:flex
-            items-center
-            shrink-0
             ml-auto
+            flex
+            shrink-0
+            items-center
+            gap-1
+            sm:gap-2
+            md:gap-2
+            lg:gap-3
           "
         >
+
+          {/* ================================================== */}
+          {/* DESKTOP SEARCH */}
+          {/* ================================================== */}
+
           <form
             action="/search"
             method="GET"
             className="
-              flex
+              hidden
               items-center
-              shrink-0
-              ml-2
-              xl:ml-4
+              lg:flex
             "
           >
             <input
@@ -277,21 +270,20 @@ export default async function Header() {
               placeholder={t("search")}
               className="
                 w-28
-                xl:w-40
-                2xl:w-48
-                px-3
-                xl:px-4
-                py-2
-                text-sm
-                bg-white
-                text-black
-                placeholder:text-gray-500
+                rounded-l-lg
                 border
                 border-gray-300
-                rounded-l-lg
+                bg-white
+                px-3
+                py-2
+                text-sm
+                text-black
+                placeholder:text-gray-500
                 focus:outline-none
                 focus:ring-2
                 focus:ring-red-500
+                xl:w-36
+                2xl:w-44
               "
             />
 
@@ -299,60 +291,49 @@ export default async function Header() {
               type="submit"
               aria-label={t("search")}
               className="
-                bg-red-600
-                hover:bg-red-700
-                px-3
-                xl:px-4
-                py-2
-                rounded-r-lg
-                transition
-                cursor-pointer
                 shrink-0
+                rounded-r-lg
+                bg-red-600
+                px-3
+                py-2
+                transition
+                hover:bg-red-700
+                cursor-pointer
               "
             >
               🔍
             </button>
           </form>
-        </div>
 
-        {/* ================================================== */}
-        {/* LANGUAGE SWITCHER */}
-        {/* ================================================== */}
+          {/* ================================================== */}
+          {/* LANGUAGE - ALWAYS VISIBLE */}
+          {/* ================================================== */}
 
-        <div
-          className="
-            flex
-            items-center
-            justify-center
-            shrink-0
-            ml-auto
-            lg:ml-4
-            xl:ml-5
-          "
-        >
-          <LanguageSwitcher />
-        </div>
+          <div className="flex shrink-0 items-center">
+            <LanguageSwitcher />
+          </div>
 
-        {/* ================================================== */}
-        {/* MOBILE / TABLET MENU */}
-        {/* ================================================== */}
+          {/* ================================================== */}
+          {/* MOBILE / TABLET MENU */}
+          {/* ================================================== */}
 
-        <div
-          className="
-            flex
-            items-center
-            shrink-0
-            lg:hidden
-            pointer-events-auto
-          "
-        >
-          <MobileMenu
-            categories={
-              Array.isArray(categories)
-                ? categories
-                : []
-            }
-          />
+          <div
+            className="
+              flex
+              shrink-0
+              items-center
+              lg:hidden
+            "
+          >
+            <MobileMenu
+              categories={
+                Array.isArray(categories)
+                  ? categories
+                  : []
+              }
+            />
+          </div>
+
         </div>
       </div>
     </header>
