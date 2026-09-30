@@ -97,12 +97,10 @@ export default async function Header() {
           md:py-3
           lg:px-8
           lg:py-3
-          2xl:gap-4
+          2xl:gap-6
         "
       >
-        {/* ================================================== */}
         {/* LOGO */}
-        {/* ================================================== */}
 
         <Link
           href="/"
@@ -152,10 +150,7 @@ export default async function Header() {
           )}
         </Link>
 
-        {/* ================================================== */}
         {/* DESKTOP NAVIGATION */}
-        {/* Visible only when there is enough horizontal space */}
-        {/* ================================================== */}
 
         <nav
           className="
@@ -167,7 +162,7 @@ export default async function Header() {
             gap-2
             whitespace-nowrap
             2xl:flex
-            2xl:gap-3
+            2xl:gap-5
           "
         >
           {/* HOME */}
@@ -231,9 +226,7 @@ export default async function Header() {
           </Link>
         </nav>
 
-        {/* ================================================== */}
         {/* RIGHT SIDE */}
-        {/* ================================================== */}
 
         <div
           className="
@@ -243,12 +236,10 @@ export default async function Header() {
             items-center
             gap-1
             sm:gap-2
-            2xl:gap-3
+            2xl:gap-4
           "
         >
-          {/* ================================================== */}
           {/* DESKTOP SEARCH */}
-          {/* ================================================== */}
 
           <form
             action="/search"
@@ -299,10 +290,7 @@ export default async function Header() {
             </button>
           </form>
 
-          {/* ================================================== */}
           {/* LANGUAGE SWITCHER */}
-          {/* Always visible */}
-          {/* ================================================== */}
 
           <div
             className="
@@ -314,9 +302,7 @@ export default async function Header() {
             <LanguageSwitcher />
           </div>
 
-          {/* ================================================== */}
           {/* MOBILE / TABLET MENU */}
-          {/* ================================================== */}
 
           <div
             className="
