@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 type PostsResponse = {
   data: any[];
   meta?: any;
@@ -25,7 +27,7 @@ const API = process.env.NEXT_PUBLIC_API_URL;
 
 if (!API) {
   throw new Error("NEXT_PUBLIC_API_URL is not defined");
-}
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +64,6 @@ async function apiFetch<T>(
       {
         ...options,
         headers,
-
         next: {
           revalidate,
         },
@@ -112,9 +113,9 @@ async function handleResponse<T>(
   if (!res.ok) {
     throw new Error(
       data?.message ||
-      data?.errors?.email?.[0] ||
-      data?.errors?.message?.[0] ||
-      "Une erreur est survenue"
+        data?.errors?.email?.[0] ||
+        data?.errors?.message?.[0] ||
+        "Une erreur est survenue"
     );
   }
 
@@ -209,15 +210,23 @@ export async function getLatestPosts() {
 |--------------------------------------------------------------------------
 */
 
-export async function getCategories() {
-  const data: any = await apiFetch(
-    "/categories",
-    undefined,
-    5
-  );
+export const getCategories = cache(
+  async () => {
+    const data: any = await apiFetch(
+      "/categories",
+      undefined,
+      60
+    );
 
-  return data.data ?? data;
-}
+    return data.data ?? data;
+  }
+);
+
+/*
+|--------------------------------------------------------------------------
+| POSTS BY CATEGORY
+|--------------------------------------------------------------------------
+*/
 
 export async function getPostsByCategory(
   slug: string
@@ -225,7 +234,7 @@ export async function getPostsByCategory(
   const data: any = await apiFetch(
     `/categories/${encodeURIComponent(slug)}/posts`,
     undefined,
-    5
+    30
   );
 
   return data.data ?? data;
