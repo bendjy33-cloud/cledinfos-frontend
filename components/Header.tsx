@@ -13,7 +13,6 @@ export default async function Header() {
 
   /*
    * Fetch categories and settings in parallel.
-   * This avoids waiting for one API request before starting the other.
    */
   const [categories, settings] = await Promise.all([
     getCategories(),
@@ -22,7 +21,6 @@ export default async function Header() {
 
   /*
    * Logo
-   * Prefer logo_url, then logo as fallback.
    */
   const logoUrl =
     settings?.logo_url ||
@@ -95,7 +93,9 @@ export default async function Header() {
           mx-auto
           flex
           items-center
-          gap-5
+          gap-3
+          sm:gap-4
+          md:gap-5
           px-3
           sm:px-4
           md:px-6
@@ -117,7 +117,8 @@ export default async function Header() {
             items-center
             shrink-0
             cursor-pointer
-            mr-2
+            mr-1
+            sm:mr-2
           "
         >
           {logoUrl ? (
@@ -177,7 +178,6 @@ export default async function Header() {
             shrink-0
           "
         >
-
           {/* HOME */}
 
           <Link
@@ -245,11 +245,10 @@ export default async function Header() {
           >
             {t("contact")}
           </Link>
-
         </nav>
 
         {/* ================================================== */}
-        {/* DESKTOP SEARCH + LANGUAGE */}
+        {/* DESKTOP SEARCH */}
         {/* ================================================== */}
 
         <div
@@ -257,15 +256,10 @@ export default async function Header() {
             hidden
             lg:flex
             items-center
-            gap-4
-            xl:gap-5
             shrink-0
             ml-auto
           "
         >
-
-          {/* SEARCH */}
-
           <form
             action="/search"
             method="GET"
@@ -319,13 +313,24 @@ export default async function Header() {
               🔍
             </button>
           </form>
+        </div>
 
-          {/* LANGUAGE */}
+        {/* ================================================== */}
+        {/* LANGUAGE SWITCHER */}
+        {/* ================================================== */}
 
-          <div className="shrink-0">
-            <LanguageSwitcher />
-          </div>
-
+        <div
+          className="
+            flex
+            items-center
+            justify-center
+            shrink-0
+            ml-auto
+            lg:ml-4
+            xl:ml-5
+          "
+        >
+          <LanguageSwitcher />
         </div>
 
         {/* ================================================== */}
@@ -334,7 +339,8 @@ export default async function Header() {
 
         <div
           className="
-            ml-auto
+            flex
+            items-center
             shrink-0
             lg:hidden
             pointer-events-auto
@@ -348,7 +354,6 @@ export default async function Header() {
             }
           />
         </div>
-
       </div>
     </header>
   );
