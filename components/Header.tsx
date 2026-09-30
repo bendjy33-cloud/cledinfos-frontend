@@ -95,6 +95,10 @@ export default async function Header() {
           md:py-3
           lg:px-8
           lg:py-3
+
+          2xl:grid
+          2xl:grid-cols-[auto_minmax(0,1fr)_auto_auto]
+          2xl:items-center
         "
       >
         {/* ================================================== */}
@@ -104,8 +108,7 @@ export default async function Header() {
         <div
           className="
             shrink-0
-            pr-5
-            2xl:pr-7
+            pr-6
           "
         >
           <Link
@@ -157,14 +160,13 @@ export default async function Header() {
         </div>
 
         {/* ================================================== */}
-        {/* 2. DESKTOP MENU ZONE */}
+        {/* 2. DESKTOP MENU */}
         {/* ================================================== */}
 
         <div
           className="
             hidden
             min-w-0
-            flex-1
             overflow-hidden
             2xl:block
           "
@@ -174,6 +176,7 @@ export default async function Header() {
               flex
               min-w-0
               items-center
+              justify-center
               gap-4
               overflow-x-auto
               overflow-y-hidden
@@ -249,16 +252,15 @@ export default async function Header() {
         </div>
 
         {/* ================================================== */}
-        {/* 3. SEARCHBOX */}
+        {/* 3. SEARCH */}
         {/* ================================================== */}
 
         <div
           className="
             hidden
             shrink-0
-            pl-5
+            pl-6
             2xl:block
-            2xl:pl-7
           "
         >
           <form
@@ -275,7 +277,7 @@ export default async function Header() {
               name="q"
               placeholder={t("search")}
               className="
-                w-32
+                w-36
                 rounded-l-lg
                 border
                 border-gray-300
@@ -288,7 +290,6 @@ export default async function Header() {
                 focus:outline-none
                 focus:ring-2
                 focus:ring-red-500
-                2xl:w-36
               "
             />
 
@@ -312,18 +313,18 @@ export default async function Header() {
         </div>
 
         {/* ================================================== */}
-        {/* 4. LANGUAGE SWITCHER */}
+        {/* 4. LANGUAGE */}
         {/* ================================================== */}
 
         <div
           className="
             relative
             z-[9999]
-            flex
+            hidden
             shrink-0
             items-center
-            pl-3
-            2xl:pl-4
+            pl-4
+            2xl:flex
           "
         >
           <LanguageSwitcher />
@@ -338,7 +339,7 @@ export default async function Header() {
             flex
             shrink-0
             items-center
-            pl-2
+            justify-end
             2xl:hidden
           "
         >
