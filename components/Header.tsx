@@ -87,7 +87,7 @@ export default async function Header() {
           max-w-7xl
           items-center
           gap-2
-          overflow-hidden
+          overflow-visible
           px-3
           py-2
           sm:gap-3
