@@ -2,14 +2,8 @@
 
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
-import {
-  Menu,
-  X,
-} from "lucide-react";
-import {
-  useLocale,
-  useTranslations,
-} from "next-intl";
+import { Menu, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 type Category = {
   id: number;
@@ -24,17 +18,13 @@ type Props = {
   categories: Category[];
 };
 
-export default function MobileMenu({
-  categories,
-}: Props) {
+export default function MobileMenu({ categories }: Props) {
   const t = useTranslations("MobileMenu");
   const locale = useLocale();
 
   const [open, setOpen] = useState(false);
 
-  function getCategoryName(
-    category: Category
-  ) {
+  function getCategoryName(category: Category) {
     switch (locale) {
       case "es":
         return (
@@ -84,44 +74,37 @@ export default function MobileMenu({
 
       <button
         type="button"
-        onClick={() =>
-          setOpen((prev) => !prev)
-        }
+        onClick={() => setOpen((prev) => !prev)}
         className="
           relative
           z-[10000]
           flex
-          h-10
-          w-10
-          shrink-0
-          touch-manipulation
-          cursor-pointer
-          select-none
+          h-11
+          w-11
           items-center
           justify-center
           rounded-lg
+          p-2
           text-white
           transition
           hover:bg-slate-800
           active:bg-slate-700
-          sm:h-11
-          sm:w-11
+          cursor-pointer
+          touch-manipulation
+          select-none
         "
-        aria-label={
-          open
-            ? t("close")
-            : t("menu")
-        }
+        aria-label={open ? t("close") : t("menu")}
         aria-expanded={open}
+        aria-controls="mobile-navigation"
       >
         {open ? (
           <X
-            className="h-6 w-6 pointer-events-none sm:h-7 sm:w-7"
+            className="h-7 w-7 pointer-events-none"
             strokeWidth={2.5}
           />
         ) : (
           <Menu
-            className="h-6 w-6 pointer-events-none sm:h-7 sm:w-7"
+            className="h-7 w-7 pointer-events-none"
             strokeWidth={2.5}
           />
         )}
@@ -133,13 +116,13 @@ export default function MobileMenu({
 
       {open && (
         <div
+          id="mobile-navigation"
           className="
             fixed
             left-3
             right-3
-            top-[60px]
+            top-[64px]
             z-[9999]
-            max-h-[calc(100dvh-72px)]
             overflow-hidden
             rounded-xl
             border
@@ -147,20 +130,19 @@ export default function MobileMenu({
             bg-slate-900
             text-white
             shadow-2xl
-            sm:top-[64px]
-            md:top-[68px]
-            md:left-4
-            md:right-4
-            md:max-h-[calc(100dvh-80px)]
+            sm:left-4
+            sm:right-4
+            md:left-6
+            md:right-6
+            lg:left-8
+            lg:right-8
           "
         >
           <div
             className="
-              max-h-[calc(100dvh-72px)]
+              max-h-[calc(100vh-76px)]
               overflow-y-auto
               overscroll-contain
-              sm:max-h-[calc(100dvh-76px)]
-              md:max-h-[calc(100dvh-80px)]
             "
           >
 
@@ -168,13 +150,7 @@ export default function MobileMenu({
             {/* SEARCH */}
             {/* ================================================== */}
 
-            <div
-              className="
-                border-b
-                border-slate-700
-                p-4
-              "
-            >
+            <div className="border-b border-slate-700 p-4">
               <form
                 action="/search"
                 method="GET"
@@ -229,9 +205,7 @@ export default function MobileMenu({
 
               <Link
                 href="/"
-                onClick={() =>
-                  setOpen(false)
-                }
+                onClick={() => setOpen(false)}
                 className="
                   border-b
                   border-slate-700
@@ -239,8 +213,8 @@ export default function MobileMenu({
                   py-3.5
                   transition
                   hover:bg-slate-800
-                  hover:text-red-400
                   active:bg-slate-800
+                  hover:text-red-400
                   touch-manipulation
                 "
               >
@@ -249,40 +223,32 @@ export default function MobileMenu({
 
               {/* CATEGORIES */}
 
-              {categories.map(
-                (category) => (
-                  <Link
-                    key={category.id}
-                    href={`/categories/${category.slug}`}
-                    onClick={() =>
-                      setOpen(false)
-                    }
-                    className="
-                      border-b
-                      border-slate-700
-                      px-4
-                      py-3.5
-                      transition
-                      hover:bg-slate-800
-                      hover:text-red-400
-                      active:bg-slate-800
-                      touch-manipulation
-                    "
-                  >
-                    {getCategoryName(
-                      category
-                    )}
-                  </Link>
-                )
-              )}
+              {categories.map((category) => (
+                <Link
+                  key={category.id}
+                  href={`/categories/${category.slug}`}
+                  onClick={() => setOpen(false)}
+                  className="
+                    border-b
+                    border-slate-700
+                    px-4
+                    py-3.5
+                    transition
+                    hover:bg-slate-800
+                    active:bg-slate-800
+                    hover:text-red-400
+                    touch-manipulation
+                  "
+                >
+                  {getCategoryName(category)}
+                </Link>
+              ))}
 
               {/* ABOUT */}
 
               <Link
                 href="/about"
-                onClick={() =>
-                  setOpen(false)
-                }
+                onClick={() => setOpen(false)}
                 className="
                   border-b
                   border-slate-700
@@ -290,8 +256,8 @@ export default function MobileMenu({
                   py-3.5
                   transition
                   hover:bg-slate-800
-                  hover:text-red-400
                   active:bg-slate-800
+                  hover:text-red-400
                   touch-manipulation
                 "
               >
@@ -302,16 +268,14 @@ export default function MobileMenu({
 
               <Link
                 href="/contact"
-                onClick={() =>
-                  setOpen(false)
-                }
+                onClick={() => setOpen(false)}
                 className="
                   px-4
                   py-3.5
                   transition
                   hover:bg-slate-800
-                  hover:text-red-400
                   active:bg-slate-800
+                  hover:text-red-400
                   touch-manipulation
                 "
               >

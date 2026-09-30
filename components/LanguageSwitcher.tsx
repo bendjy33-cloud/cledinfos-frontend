@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  usePathname,
-  useRouter,
-} from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { Globe } from "lucide-react";
 
 export default function LanguageSwitcher() {
@@ -54,49 +51,24 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <div className="relative z-[10000]">
-      {/* ================================================== */}
-      {/* GLOBE BUTTON */}
-      {/* ================================================== */}
-
+    <div className="relative">
       <button
         type="button"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => setOpen(!open)}
         aria-label={t("label")}
         aria-expanded={open}
         className="
           flex
-          h-10
-          w-10
-          shrink-0
-          touch-manipulation
-          cursor-pointer
-          select-none
           items-center
           justify-center
           rounded-lg
-          text-white
+          p-2
           transition
           hover:bg-slate-800
-          active:bg-slate-700
-          sm:h-11
-          sm:w-11
         "
       >
-        <Globe
-          className="
-            h-5
-            w-5
-            sm:h-[22px]
-            sm:w-[22px]
-          "
-          strokeWidth={2}
-        />
+        <Globe size={22} />
       </button>
-
-      {/* ================================================== */}
-      {/* LANGUAGE DROPDOWN */}
-      {/* ================================================== */}
 
       {open && (
         <div
@@ -104,7 +76,7 @@ export default function LanguageSwitcher() {
             absolute
             right-0
             top-full
-            z-[10001]
+            z-[100]
             mt-2
             w-40
             overflow-hidden
@@ -112,28 +84,22 @@ export default function LanguageSwitcher() {
             border
             border-slate-700
             bg-slate-900
-            shadow-2xl
+            shadow-xl
           "
         >
           {locales.map((item) => (
             <button
               key={item.code}
               type="button"
-              onClick={() =>
-                changeLocale(item.code)
-              }
+              onClick={() => changeLocale(item.code)}
               className={`
-                flex
                 w-full
-                items-center
-                gap-2
+                whitespace-nowrap
                 px-4
                 py-3
                 text-left
                 text-sm
                 transition
-                touch-manipulation
-                cursor-pointer
                 ${
                   item.code === locale
                     ? "bg-red-600 text-white"
@@ -141,8 +107,7 @@ export default function LanguageSwitcher() {
                 }
               `}
             >
-              <span>{item.flag}</span>
-              <span>{item.label}</span>
+              {item.flag} {item.label}
             </button>
           ))}
         </div>

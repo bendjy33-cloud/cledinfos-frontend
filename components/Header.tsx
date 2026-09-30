@@ -87,19 +87,19 @@ export default async function Header() {
           max-w-7xl
           items-center
           gap-2
+          overflow-hidden
           px-3
           py-2
           sm:gap-3
           sm:px-4
           sm:py-2.5
-          md:gap-4
           md:px-6
           md:py-3
           lg:px-8
-          lg:py-3.5
+          lg:py-3
+          2xl:gap-4
         "
       >
-
         {/* ================================================== */}
         {/* LOGO */}
         {/* ================================================== */}
@@ -109,7 +109,7 @@ export default async function Header() {
           className="
             flex
             min-w-0
-            shrink
+            shrink-0
             items-center
             cursor-pointer
           "
@@ -154,19 +154,20 @@ export default async function Header() {
 
         {/* ================================================== */}
         {/* DESKTOP NAVIGATION */}
+        {/* Visible only when there is enough horizontal space */}
         {/* ================================================== */}
 
         <nav
           className="
             hidden
             min-w-0
-            shrink
+            flex-1
             items-center
+            justify-center
             gap-2
             whitespace-nowrap
-            lg:flex
-            xl:gap-3
-            2xl:gap-4
+            2xl:flex
+            2xl:gap-3
           "
         >
           {/* HOME */}
@@ -178,7 +179,6 @@ export default async function Header() {
               text-sm
               transition
               hover:text-red-400
-              xl:text-base
             "
           >
             {t("home")}
@@ -196,7 +196,6 @@ export default async function Header() {
                   text-sm
                   transition
                   hover:text-red-400
-                  xl:text-base
                 "
               >
                 {getCategoryName(category)}
@@ -212,7 +211,6 @@ export default async function Header() {
               text-sm
               transition
               hover:text-red-400
-              xl:text-base
             "
           >
             {t("about")}
@@ -227,7 +225,6 @@ export default async function Header() {
               text-sm
               transition
               hover:text-red-400
-              xl:text-base
             "
           >
             {t("contact")}
@@ -246,11 +243,9 @@ export default async function Header() {
             items-center
             gap-1
             sm:gap-2
-            md:gap-2
-            lg:gap-3
+            2xl:gap-3
           "
         >
-
           {/* ================================================== */}
           {/* DESKTOP SEARCH */}
           {/* ================================================== */}
@@ -261,7 +256,7 @@ export default async function Header() {
             className="
               hidden
               items-center
-              lg:flex
+              2xl:flex
             "
           >
             <input
@@ -269,7 +264,7 @@ export default async function Header() {
               name="q"
               placeholder={t("search")}
               className="
-                w-28
+                w-36
                 rounded-l-lg
                 border
                 border-gray-300
@@ -282,8 +277,7 @@ export default async function Header() {
                 focus:outline-none
                 focus:ring-2
                 focus:ring-red-500
-                xl:w-36
-                2xl:w-44
+                2xl:w-40
               "
             />
 
@@ -306,10 +300,17 @@ export default async function Header() {
           </form>
 
           {/* ================================================== */}
-          {/* LANGUAGE - ALWAYS VISIBLE */}
+          {/* LANGUAGE SWITCHER */}
+          {/* Always visible */}
           {/* ================================================== */}
 
-          <div className="flex shrink-0 items-center">
+          <div
+            className="
+              flex
+              shrink-0
+              items-center
+            "
+          >
             <LanguageSwitcher />
           </div>
 
@@ -322,7 +323,7 @@ export default async function Header() {
               flex
               shrink-0
               items-center
-              lg:hidden
+              2xl:hidden
             "
           >
             <MobileMenu
@@ -333,7 +334,6 @@ export default async function Header() {
               }
             />
           </div>
-
         </div>
       </div>
     </header>
