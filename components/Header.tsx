@@ -86,30 +86,30 @@ export default async function Header() {
           w-full
           max-w-7xl
           items-center
-          gap-2
           overflow-visible
           px-3
           py-2
-          sm:gap-3
           sm:px-4
           sm:py-2.5
           md:px-6
           md:py-3
           lg:px-8
           lg:py-3
-          2xl:gap-6
         "
       >
-        {/* LOGO */}
+        {/* ================================================== */}
+        {/* SITE NAME / LOGO */}
+        {/* ================================================== */}
 
         <Link
           href="/"
           className="
             flex
-            min-w-0
             shrink-0
             items-center
             cursor-pointer
+            pr-6
+            2xl:pr-8
           "
         >
           {logoUrl ? (
@@ -150,7 +150,9 @@ export default async function Header() {
           )}
         </Link>
 
+        {/* ================================================== */}
         {/* DESKTOP NAVIGATION */}
+        {/* ================================================== */}
 
         <nav
           className="
@@ -158,11 +160,13 @@ export default async function Header() {
             min-w-0
             flex-1
             items-center
-            justify-center
-            gap-2
+            overflow-x-auto
+            overflow-y-hidden
             whitespace-nowrap
             2xl:flex
-            2xl:gap-5
+            2xl:gap-4
+            [scrollbar-width:none]
+            [&::-webkit-scrollbar]:hidden
           "
         >
           {/* HOME */}
@@ -170,6 +174,7 @@ export default async function Header() {
           <Link
             href="/"
             className="
+              shrink-0
               whitespace-nowrap
               text-sm
               transition
@@ -187,6 +192,7 @@ export default async function Header() {
                 key={category.id}
                 href={`/categories/${category.slug}`}
                 className="
+                  shrink-0
                   whitespace-nowrap
                   text-sm
                   transition
@@ -202,6 +208,7 @@ export default async function Header() {
           <Link
             href="/about"
             className="
+              shrink-0
               whitespace-nowrap
               text-sm
               transition
@@ -216,6 +223,7 @@ export default async function Header() {
           <Link
             href="/contact"
             className="
+              shrink-0
               whitespace-nowrap
               text-sm
               transition
@@ -226,26 +234,29 @@ export default async function Header() {
           </Link>
         </nav>
 
-        {/* RIGHT SIDE */}
+        {/* ================================================== */}
+        {/* SEARCH + LANGUAGE */}
+        {/* ================================================== */}
 
         <div
           className="
-            ml-auto
+            ml-6
             flex
             shrink-0
             items-center
-            gap-1
-            sm:gap-2
+            gap-3
+            2xl:ml-8
             2xl:gap-4
           "
         >
-          {/* DESKTOP SEARCH */}
+          {/* SEARCH */}
 
           <form
             action="/search"
             method="GET"
             className="
               hidden
+              shrink-0
               items-center
               2xl:flex
             "
@@ -255,7 +266,7 @@ export default async function Header() {
               name="q"
               placeholder={t("search")}
               className="
-                w-36
+                w-32
                 rounded-l-lg
                 border
                 border-gray-300
@@ -268,7 +279,7 @@ export default async function Header() {
                 focus:outline-none
                 focus:ring-2
                 focus:ring-red-500
-                2xl:w-40
+                2xl:w-36
               "
             />
 
@@ -277,23 +288,25 @@ export default async function Header() {
               aria-label={t("search")}
               className="
                 shrink-0
+                cursor-pointer
                 rounded-r-lg
                 bg-red-600
                 px-3
                 py-2
                 transition
                 hover:bg-red-700
-                cursor-pointer
               "
             >
               🔍
             </button>
           </form>
 
-          {/* LANGUAGE SWITCHER */}
+          {/* LANGUAGE */}
 
           <div
             className="
+              relative
+              z-[9999]
               flex
               shrink-0
               items-center
